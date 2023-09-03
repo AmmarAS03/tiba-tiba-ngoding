@@ -69,9 +69,19 @@ route.get('/', async(req, res) => {
     const userid = req.session.userid;
     const infos = await supabase
     .from('users')
-    .select('email, username')
-    .eq('userid', userid);
+    .select('*')
+    .eq('id', userid);
+    const total_program = await supabase
+    .from('program')
+    .select('title')
+    .eq('posted_by', userid);
+    if (total_program.data == null) {
+        infos.data[0]['total_program'] = 0;
+    }
+    else {
+        infos.data[0]['total_program'] = `${total_program.data.length}`;
+    }
     res.send(infos.data[0]);
-})
+});
 
 export default route;
