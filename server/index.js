@@ -8,6 +8,8 @@ import session from "express-session";
 
 //import router
 import authRouter from "./routes/users.js";
+import progsRouter from "./routes/programs.js";
+import partiRouter from "./routes/participants.js";
 
 //setup express server
 const app = express();
@@ -38,6 +40,8 @@ app.get('/', (req,res) => {
     res.send('berhasil!');
 });
 app.use('/users', authRouter);
+app.use('/programs', progsRouter);
+app.use('/participants', partiRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running on port: http://localhost:${PORT}`);
