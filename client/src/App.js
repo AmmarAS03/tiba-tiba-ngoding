@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import LandingPage from './pages/Landing';
 import LoginPage from './pages/Login';
+import RegisterPage from './pages/Register';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/register" element={<RegisterPage />}></Route>
         </Routes>
       </BrowserRouter>
     </>
