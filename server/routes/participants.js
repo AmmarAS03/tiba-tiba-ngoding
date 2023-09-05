@@ -22,6 +22,10 @@ route.get('/get-joinedprog', async(req, res) => {
     try {
         const userid = req.session.userid;
         const programs = await supabase.from('participants').select('*').eq('userid', userid);
+        for(const program of programs.data){
+            const participants = await supabase.from('programs').select('*').eq('id', program.progid);
+            program['programs'] = participants.data;
+        }
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);

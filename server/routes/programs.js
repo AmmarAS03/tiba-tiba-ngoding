@@ -64,6 +64,30 @@ route.delete('/del-program/:id', async(req, res) => {
     }
 });
 
-//Update a program??
+//Update a program
+route.put('/edit-prog/:progid', async(req, res) => {
+    try {
+        const { progid } = req.params;
+
+        if(req.body.title) {
+            await supabase.from('programs').update({ title: req.body.title }).eq('id', progid).select();
+        }
+        if(req.body.deskripsi) {
+            await supabase.from('programs').update({ deskripsi: req.body.deskripsi }).eq('id', progid).select();
+        }
+        if(req.body.lokasi) {
+            await supabase.from('programs').update({ lokasi: req.body.lokasi }).eq('id', progid).select();
+        }
+        if(req.body.tgl) {
+            await supabase.from('programs').update({ tanggal_program_mulai: req.body.tgl }).eq('id', progid).select();
+        }
+        if(req.body.target) {
+            await supabase.from('programs').update({ target_partisipan: req.body.target }).eq('id', progid).select();
+        }
+        res.send("the program has been edited.");
+    } catch (error) {
+        console.error(error.message);
+    }
+});
 
 export default route;
