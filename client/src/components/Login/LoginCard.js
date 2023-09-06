@@ -34,12 +34,12 @@ function LoginCard() {
                         LOGIN
                     </div>
                 </div>
-                <div class="flex flex-row w-[168px] h-[25px] justify-center text-[var(--State---Blue, #FFF)] text-center font-poppins text-[12px] font-normal leading-[160%] gap-1">
-                    <div>
+                <div class="flex flex-row w-[168px] h-[25px] justify-center text-center font-poppins text-[12px] font-normal leading-[160%] gap-1">
+                    <div className="text-[#FFFFFF]">
                         New to Gatherly?
                     </div>
                     <div class="text-[#03B3D7]">
-                        Sign Up
+                        Register
                     </div>
                 </div>
             </div>
