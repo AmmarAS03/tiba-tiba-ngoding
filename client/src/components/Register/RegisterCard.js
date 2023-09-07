@@ -132,7 +132,7 @@ function RegisterCard() {
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
           </div>
-          <div class="flex flex-col items-start gap-[3.642px]">
+          {/* <div class="flex flex-col items-start gap-[3.642px]">
             <span class="text-white font-dmsans text-[14.566px] font-bold leading-normal">
               Password Confirmation
             </span>
@@ -144,7 +144,7 @@ function RegisterCard() {
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
-          </div>
+          </div> */}
           <div class="flex flex-col items-start gap-[3.642px]">
             <span class="text-white font-dmsans text-[14.566px] font-bold leading-normal">
               Birthdate
