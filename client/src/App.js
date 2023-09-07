@@ -8,6 +8,7 @@ import CreateProgramPage from './pages/CreateProgram';
 import Navbar from './components/UI/Commons/Navbar';
 
 import RegisterPage from './pages/Register';
+import ProductPage from './pages/Product';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/tesnavbar" element={<Navbar />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
+          <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
         </Routes>
       </BrowserRouter>
