@@ -7,7 +7,6 @@ function RegisterCard() {
         <div class="w-[383.355px] h-[36.903px] text-white text-center font-dmsans text-[25.491px] font-normal leading-normal">
           Create your Account
         </div>
-
         <div class="flex flex-col justify-center items-center gap-[14.566px]">
           <div class="flex flex-col items-start gap-[7.283px]">
             <div class="flex flex-col items-start gap-[3.642px]">

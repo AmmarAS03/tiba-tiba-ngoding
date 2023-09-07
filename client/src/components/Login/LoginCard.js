@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
 
 function LoginCard() {
-    // State to hold the values of the input fields
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // Event handler for the first input field
     const handleEmail = (e) => {
         setEmail(e.target.value);
     };
 
-    // Event handler for the second input field
     const handlePassword = (e) => {
         setPassword(e.target.value);
     }
 
-    const LoginButton = () => {
+    // TODO: Integrate this function with the backend
+    const loginButton = () => {
+        console.log(email, password);
         setEmail('');
         setPassword('');
-        console.log(email, password);
     }
 
+     // TODO: Integrate this function with the backend
     const ToRegisterButton = () => {
         console.log('register');
     }
@@ -59,7 +58,7 @@ function LoginCard() {
                         />
                     </div>
                 </div>
-                <button onClick={LoginButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+                <button onClick={loginButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
                     <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                         LOGIN
                     </div>
