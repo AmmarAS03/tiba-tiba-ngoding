@@ -2,7 +2,7 @@ import React from "react";
 
 function List() {
   return (
-    <div class="flex p-[80px] flex-col items-center gap-[30px] flex-1 bg-[#FFF]">
+    <div class="flex p-[363px] flex-col items-center gap-[30px] flex-1 bg-[#FFF]">
       <h2 class="text-black text-right font-poppins text-[32px] font-bold leading-[140%]">
         Daftar Kegiatan
       </h2>
