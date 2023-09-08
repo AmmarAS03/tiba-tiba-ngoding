@@ -36,7 +36,7 @@ function List() {
       <div class="flex flex-col items-center gap-[20px]">
 
         <div class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
-          <div class="flex p-[0px] flex-col justify-center items-start gap-[40px] flex-[1px]">
+          <div class="flex p-[0px] flex-col justify-center items-start gap-[18px] flex-[1px]">
             <div class="flex flex-col justify-center items-center self-stretch">
               <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
                 Membersihkan Danau Kenanga
@@ -68,7 +68,6 @@ function List() {
 
               <div class="flex flex-col justify-center items-center flex-1">
                 <div class="self-stretch text-[var(--Primary, #545F71)] text-right font-poppins text-12 font-normal leading-[160%]">
-                  <p>pppo</p>
                 </div>
               </div>
             </div>
