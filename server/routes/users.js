@@ -66,22 +66,26 @@ route.get('/logout', (req, res) => {
 
 //get user's infos
 route.get('/', async(req, res) => {
-    const userid = req.session.userid;
-    const infos = await supabase
-    .from('users')
-    .select('*')
-    .eq('id', userid);
-    const total_program = await supabase
-    .from('program')
-    .select('title')
-    .eq('posted_by', userid);
-    if (total_program.data == null) {
-        infos.data[0]['total_program'] = 0;
+    try {
+        const userid = req.session.userid;
+        const infos = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', userid);
+        const total_program = await supabase
+        .from('program')
+        .select('title')
+        .eq('posted_by', userid);
+        if (total_program.data == null) {
+            infos.data[0]['total_program'] = 0;
+        }
+        else {
+            infos.data[0]['total_program'] = `${total_program.data.length}`;
+        }
+        res.send(infos.data[0]);
+    } catch (error) {
+        console.error(error.message);
     }
-    else {
-        infos.data[0]['total_program'] = `${total_program.data.length}`;
-    }
-    res.send(infos.data[0]);
 });
 
 export default route;
