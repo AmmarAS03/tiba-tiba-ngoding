@@ -1,53 +1,27 @@
 import React, { useState } from 'react';
 
-function CreateProgramCard() {
-    const [activity, setActivity] = useState('');
-    const [description, setDescription] = useState('');
-    const [region, setRegion] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
-    const [participant, setParticipant] = useState('');
-    const [linkGroup, setLinkGroup] = useState('');
+const CreateProgramCard = () => {
+    const [title, setTitle] = useState('');
+    const [deskripsi, setDeskripsi] = useState('');
+    const [lokasi, setLokasi] = useState('');
+    const [tgl, setTgl] = useState('');
+    const [target, setTarget] = useState('');
 
-    const handleActivity = (e) => {
-        setActivity(e.target.value);
-    };
+    
 
-    const handleDescription = (e) => {
-        setDescription(e.target.value);
-    };
-
-    const handleRegion = (e) => {
-        setRegion(e.target.value);
-    };
-
-    const handleDate = (e) => {
-        setDate(e.target.value);
-    };
-
-    const handleTime = (e) => {
-        setTime(e.target.value);
-    };
-
-    const handleParticipant = (e) => {
-        setParticipant(e.target.value);
-    };
-
-    const handleLinkGroup = (e) => {
-        setLinkGroup(e.target.value);
-    };
-
-     // TODO: Integrate this function with the backend
-    const submitButton = () => {
-        console.log(activity, description, region, date, time, participant, linkGroup);
-        console.log("submit");
-        setActivity('');
-        setDescription('');
-        setRegion('');
-        setDate('');
-        setTime('');
-        setParticipant('');
-        setLinkGroup('');
+     // TODO: Integrate this function with the backend (DONE)
+    const submitButton = async(e) => {
+        try {
+            const body = { title, deskripsi, lokasi, tgl, target }
+            const response = await fetch("http://localhost:5000/programs/add-program", {
+                method: "POST", 
+                headers: { "Content-Type": "application/json" }, 
+                body: JSON.stringify(body) 
+            });
+            console.log(response);
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
 
@@ -74,8 +48,8 @@ function CreateProgramCard() {
                                 <input
                                     type="text"
                                     id="activity"
-                                    value={activity}
-                                    onChange={handleActivity}
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
                                     placeholder="Kegiatan"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
@@ -85,8 +59,8 @@ function CreateProgramCard() {
                                 <input
                                     type="text"
                                     id="description"
-                                    value={description}
-                                    onChange={handleDescription}
+                                    value={deskripsi}
+                                    onChange={e => setDeskripsi(e.target.value)}
                                     placeholder="Activity's description"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
@@ -96,8 +70,8 @@ function CreateProgramCard() {
                                 <input
                                     type="text"
                                     id="region"
-                                    value={region}
-                                    onChange={handleRegion}
+                                    value={lokasi}
+                                    onChange={e => setLokasi(e.target.value)}
                                     placeholder="qissa@ristek.cs.ui.ac.id"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
@@ -107,13 +81,13 @@ function CreateProgramCard() {
                                 <input
                                     type="text"
                                     id="date"
-                                    value={date}
-                                    onChange={handleDate}
+                                    value={tgl}
+                                    onChange={e => setTgl(e.target.value)}
                                     placeholder="qissa@ristek.cs.ui.ac.id"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
-                            <div class="flex flex-col items-start gap-[3.75px]">
+                            {/* <div class="flex flex-col items-start gap-[3.75px]">
                                 <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Waktu</span>
                                 <input
                                     type="text"
@@ -123,19 +97,19 @@ function CreateProgramCard() {
                                     placeholder="qissa@ristek.cs.ui.ac.id"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
-                            </div>
+                            </div> */}
                             <div class="flex flex-col items-start gap-[3.75px]">
                                 <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Target Partisipasi</span>
                                 <input
                                     type="text"
                                     id="participant"
-                                    value={participant}
-                                    onChange={handleParticipant}
+                                    value={target}
+                                    onChange={e => setTarget(e.target.value)}
                                     placeholder="qissa@ristek.cs.ui.ac.id"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
-                            <div class="flex flex-col items-start gap-[3.75px]">
+                            {/* <div class="flex flex-col items-start gap-[3.75px]">
                                 <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Link Group WhatsApp</span>
                                 <input
                                     type="text"
@@ -145,7 +119,7 @@ function CreateProgramCard() {
                                     placeholder="qissa@ristek.cs.ui.ac.id"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                         <button onClick={submitButton}class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
                             <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">

@@ -13,8 +13,10 @@ function Navbar() {
         console.log('About Us')
     }
 
-    const SignOutButton = () => {
-        console.log('Sign Out')
+    //TODO: cek
+    const SignOutButton = async(e) => {
+        const response = await fetch("http://localhost:5000/users/logout");
+        console.log(response);
     }
 
     return (

@@ -1,60 +1,30 @@
 import React, { useState } from 'react';
 
-function RegisterCard() {
+const RegisterCard = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
-  const [phone, setPhone] = useState('');
-  const [instagram, setInstagram] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [birthdate, setBirthdate] = useState('');
-  const [city, setCity] = useState('');
+  const [nama, setNama] = useState('');
+  const [lokasi, setLokasi] = useState('');
+  const [notelp, setNotelp] = useState('');
+  const [ig, setIg] = useState('');
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-  };
-
-  const handleInstagram = (e) => {
-    setInstagram(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handlePasswordConfirmation = (e) => {
-    setPasswordConfirmation(e.target.value);
-  };
-
-  const handleBirthdate = (e) => {
-    setBirthdate(e.target.value);
-  };
-
-  const handleCity = (e) => {
-    setCity(e.target.value);
-  };
-
-  // TODO: Integrate this function with the backend
-  const signUpButton = () => {
-    console.log(email, username, phone, instagram, password, passwordConfirmation, birthdate, city);
-    setEmail('');
-    setUsername('');
-    setPhone('');
-    setInstagram('');
-    setPassword('');
-    setPasswordConfirmation('');
-    setBirthdate('');
-    setCity('');
+  // TODO: Integrate this function with the backend (DONE)
+  const signUpButton = async(e) => {
+    try {
+      const body = { email, username, password, nama, lokasi, notelp, ig };
+      const response = await fetch("http://localhost:5000/users/register", { //by default fetch itu methodnya get
+                method: "POST",  //diganti dari get ke post
+                headers: { "Content-Type": "application/json" },  //untuk mengatur header dalam permintaan fetch, membantu server dalam memahami jenis konten yang diterima.
+                body: JSON.stringify(body) //untuk mengubah objek body menjadi string JSON yang akan dikirimkan
+            });
+      console.log(response);
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
+  //ini gausa integrate ke BE, ini harusnya di FE nya redirect to Login Page
   // TODO: Integrate this function with the backend
   const ToLoginButton = () => {
     console.log('register');
@@ -75,7 +45,7 @@ function RegisterCard() {
               type="text"
               id="email"
               value={email}
-              onChange={handleEmail}
+              onChange={e => setEmail(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
@@ -88,7 +58,7 @@ function RegisterCard() {
               type="text"
               id="username"
               value={username}
-              onChange={handleUsername}
+              onChange={e => setUsername(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
@@ -100,8 +70,8 @@ function RegisterCard() {
             <input
               type="text"
               id="phone"
-              value={phone}
-              onChange={handlePhone}
+              value={notelp}
+              onChange={e => setNotelp(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
@@ -113,8 +83,8 @@ function RegisterCard() {
             <input
               type="text"
               id="instagram"
-              value={instagram}
-              onChange={handleInstagram}
+              value={ig}
+              onChange={e => setIg(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
@@ -127,7 +97,7 @@ function RegisterCard() {
               type="text"
               id="passwords"
               value={password}
-              onChange={handlePassword}
+              onChange={e => setPassword(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
@@ -147,13 +117,13 @@ function RegisterCard() {
           </div> */}
           <div class="flex flex-col items-start gap-[3.642px]">
             <span class="text-white font-dmsans text-[14.566px] font-bold leading-normal">
-              Birthdate
+              Nama
             </span>
             <input
               type="text"
               id="birthdate"
-              value={birthdate}
-              onChange={handleBirthdate}
+              value={nama}
+              onChange={e => setNama(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
@@ -165,15 +135,15 @@ function RegisterCard() {
             <input
               type="text"
               id="city"
-              value={city}
-              onChange={handleCity}
+              value={lokasi}
+              onChange={e => setLokasi(e.target.value)}
               placeholder="qissa@ristek.cs.ui.ac.id"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
           </div>
         </div>
 
-        <button onClick={''} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+        <button onClick={signUpButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
           <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
             Sign Up
           </div>
@@ -183,7 +153,7 @@ function RegisterCard() {
           <div className="text-[#FFFFFF]">
             Have an account?
           </div>
-          <button onClick={ToLoginButton} class="text-[#03B3D7]">
+          <button onClick={''} class="text-[#03B3D7]">
             Login
           </button>
         </div>
