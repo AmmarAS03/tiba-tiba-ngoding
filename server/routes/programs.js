@@ -33,9 +33,13 @@ route.post('/add-program', async(req, res) => {
 });
 
 //Read or get all programs
-route.get('/', async(req, res) => {
+route.get('/get-allprograms', async(req, res) => {
     try {
         const programs = await supabase.from('programs').select('*');
+        for(const program of programs.data){
+            const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
+            program["posted_by"] = posted_by.data;
+        }
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);

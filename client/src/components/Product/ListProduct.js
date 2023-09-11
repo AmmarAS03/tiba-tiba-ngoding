@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
+import { json } from "react-router-dom";
+import Product from "../Product";
 
-function List() {
+const ListProduct = () => {
+  const [products, setProducts] = useState([]);
+
+  //get all products
+  const getProducts = async() => {
+    try {
+        const data = await fetch("http://localhost:5000/programs/get-allprograms")
+        .then((response) => response.json())
+        .then((responseData) => {
+          setProducts(responseData);
+        });
+    } catch (error) {
+        console.error(error.message);
+    }
+  };
+
+  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+    getProducts();
+},[]); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render. 
+
   return (
     <div className="flex flex-col items-center gap-[30px] flex-1 bg-[#FFF]"
      style={{ paddingLeft: '300px', paddingRight: '100px', paddingTop: '100px', paddingBottom: '150px' }}>
@@ -35,26 +56,25 @@ function List() {
 
       <div class="flex flex-col items-center gap-[20px]">
 
-        <div class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
+        {products.map(product => (
+          <div key={product.id} class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
           <div class="flex p-[0px] flex-col justify-center items-start gap-[18px] flex-[1px]">
             <div class="flex flex-col justify-center items-center self-stretch">
               <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
-                Membersihkan Danau Kenanga
+                {product.title}
               </h4>
             </div>
 
             <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-semibold leading-[140%]">
-              <p>Target: 15 relawan</p>
-              <p>20 September 2023, 17:00 WIB</p>
-              <p>Depok, Jawa Barat</p>
+              <p>Target: {product.target_partisipan} relawan</p>
+              <p>{product.tanggal_program_mulai}, 17:00 WIB</p>
+              <p>{product.lokasi}</p>
             </div>
 
             <div class="flex flex-col justify-center items-center self-stretch">
               <div class="h-[38px] self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-normal leading-[160%]">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  ...
+                  {product.deskripsi}
                 </p>
               </div>
             </div>
@@ -62,7 +82,7 @@ function List() {
             <div class="flex items-center gap-[40px] self-stretch">
               <div class="flex flex-col justify-center items-center flex-1">
                 <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-normal leading-[160%]">
-                  <p>Diunggah oleh: Sarah Smith</p>
+                  <p>Diunggah oleh: {product.posted_by[0].nama} </p>
                 </div>
               </div>
 
@@ -77,11 +97,13 @@ function List() {
             <img src="assets/Sampah.png" alt="Sampah" class="w-full h-full" />
           </div>
         </div>
+        ))};
+        
 
 
 
 
-        <div class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
+        {/* <div class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
           <div class="flex p-[0px] flex-col justify-center items-start gap-[40px] flex-[1px]">
             <div class="flex flex-col justify-center items-center self-stretch">
               <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
@@ -169,11 +191,11 @@ function List() {
           <div class="w-[300px] h-[237px] rounded-[5px]">
             <img src="assets/Sampah.png" alt="Sampah" class="w-full h-full" />
           </div>
-        </div>
+        </div> */}
 
       </div>
     </div>
   );
 }
 
-export default List;
+export default ListProduct;
