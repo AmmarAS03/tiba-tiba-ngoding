@@ -35,11 +35,11 @@ route.post('/register', async(req, res) => {
 //login
 route.post('/login', async(req, res) => {
     try {
-        const username = req.body.username;
-        const foundName = await supabase.from('users').select('*').eq('username', username);
+        const email = req.body.email;
+        const foundName = await supabase.from('users').select('*').eq('email', email);
         //res.send(foundName.data[0]);
 
-        if(foundName.data[0] == null) {
+        if(foundName.data == null) {
             res.send("Cannot find user.")
         }
         else {

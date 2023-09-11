@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 
-function LoginCard() {
+const LoginCard = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
+    // TODO: Integrate this function with the backend (DONE)
+    const loginButton = async(e) => {
+        try {
+            const body = { email, password }
+            const response = await fetch("http://localhost:5000/users/login", {
+                method: "POST", 
+                headers: { "Content-Type": "application/json" }, 
+                body: JSON.stringify(body) 
+            });
+            console.log(response);
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
-    // TODO: Integrate this function with the backend
-    const loginButton = () => {
-        console.log(email, password);
-        setEmail('');
-        setPassword('');
-    }
-
+    //ini gausa integrate ke BE, ini harusnya di FE nya redirect to Register Page
      // TODO: Integrate this function with the backend
     const ToRegisterButton = () => {
         console.log('register');
@@ -39,7 +40,7 @@ function LoginCard() {
                             type="text"
                             id="email"
                             value={email}
-                            onChange={handleEmail}
+                            onChange={e => setEmail(e.target.value)}
                             placeholder="qissa@ristek.cs.ui.ac.id"
                             className="w-full h-[50px] px-3 text-[#4E5A6E] font-dm-sans text-[20px] font-normal rounded border border-[#404040] focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
                         />
@@ -52,7 +53,7 @@ function LoginCard() {
                             type="text"
                             id="password"
                             value={password}
-                            onChange={handlePassword}
+                            onChange={e => setPassword(e.target.value)}
                             placeholder="********"
                             className="w-full h-[50px] px-3 text-[#4E5A6E] font-dm-sans text-[20px] font-normal rounded border border-[#404040] focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
                         />
@@ -67,7 +68,7 @@ function LoginCard() {
                     <div className="text-[#FFFFFF]">
                         New to Gatherly?
                     </div>
-                    <button onClick={ToRegisterButton} class="text-[#03B3D7]">
+                    <button onClick={''} class="text-[#03B3D7]">
                         Register
                     </button>
                 </div>
