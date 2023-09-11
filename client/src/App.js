@@ -8,6 +8,7 @@ import CreateProgramPage from './pages/CreateProgram';
 import Navbar from './components/UI/Commons/Navbar';
 import RegisterPage from './pages/Register';
 import ProductPage from './pages/Product';
+import ProductDetailsPage from './pages/ProductDetailsPage';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
+          <Route path="/productdetails" element={<ProductDetailsPage />}></Route>
 
         </Routes>
       </BrowserRouter>
