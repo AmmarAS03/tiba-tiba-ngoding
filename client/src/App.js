@@ -9,6 +9,7 @@ import Navbar from './components/UI/Commons/Navbar';
 import RegisterPage from './pages/Register';
 import ProductPage from './pages/Product';
 import ProductDetailsPage from './pages/ProductDetailsPage';
+import Leaderboard from './components/Leaderboard';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
           <Route path="/productdetails" element={<ProductDetailsPage />}></Route>
+          <Route path="/leaderboard" element={<Leaderboard />}></Route>
 
         </Routes>
       </BrowserRouter>
