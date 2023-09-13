@@ -10,6 +10,7 @@ import RegisterPage from './pages/Register';
 import ProductPage from './pages/Product';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import Leaderboard from './components/Leaderboard';
+import MyActivity from './components/MyActivity';
 
 
 
@@ -29,6 +30,8 @@ function App() {
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
           <Route path="/productdetails" element={<ProductDetailsPage />}></Route>
           <Route path="/leaderboard" element={<Leaderboard />}></Route>
+          <Route path="/myactivity" element={<MyActivity />}></Route>
+          
 
         </Routes>
       </BrowserRouter>
