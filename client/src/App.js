@@ -11,6 +11,7 @@ import ProductPage from './pages/Product';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import Leaderboard from './components/Leaderboard';
 import MyActivity from './components/MyActivity';
+import Attendance from './components/Attendance';
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/productdetails" element={<ProductDetailsPage />}></Route>
           <Route path="/leaderboard" element={<Leaderboard />}></Route>
           <Route path="/myactivity" element={<MyActivity />}></Route>
+          <Route path="/attendance" element={<Attendance />}></Route>
           
 
         </Routes>
