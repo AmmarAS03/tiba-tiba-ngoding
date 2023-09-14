@@ -94,7 +94,7 @@ const ListProduct = () => {
           </div>
 
           <div class="w-[300px] h-[237px] rounded-[5px]">
-            <img src="assets/Sampah.png" alt="Sampah" class="w-full h-full" />
+          <img src={`http://localhost:5000/api/getImage/${product.id}`} alt="Foto" className="w-full h-full" />
           </div>
         </div>
         ))};

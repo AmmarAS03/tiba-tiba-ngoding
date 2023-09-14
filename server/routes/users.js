@@ -39,7 +39,7 @@ route.post('/login', async(req, res) => {
         const foundName = await supabase.from('users').select('*').eq('email', email);
         //res.send(foundName.data[0]);
 
-        if(foundName.data == null) {
+        if(foundName.data[0] == null) {
             res.send("Cannot find user.")
         }
         else {
