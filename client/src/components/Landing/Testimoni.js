@@ -33,7 +33,7 @@ function Testimoni() {
                             Jujur aku awalnya bukan orang yang suka kegiatan relawan gini, cuman temen-temen pada ngajakin aku dan sistem pointsnya itu loh yang bikin aku jadi rajin ikutan.
                         </div>
                         <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
-                            Faizarrazak Fadhillah
+                            Humaira Rinjani
                         </div>
                     </div>
                 </div>
