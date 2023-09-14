@@ -1,10 +1,12 @@
 import express from "express";
 import supabase from "../supabase.js";
+import multer from "multer";
 
 const route = express.Router();
+const upload = multer();
 
 //create a program
-route.post('/add-program', async(req, res) => {
+route.post('/add-program', upload.single('foto'), async(req, res) => {
     try {
         const title = req.body.title;
         const foundName = await supabase
@@ -19,12 +21,22 @@ route.post('/add-program', async(req, res) => {
             const lokasi = req.body.lokasi;
             const tgl = req.body.tgl;
             const target = req.body.target;
+            const waktu = req.body.waktu;
+            const linkwa = req.body.linkwa;
+            const imageBuffer = req.file ? req.file.buffer : null;
+
             await supabase.from('programs').insert([{ posted_by:req.session.userid,
                 title: title,
                 deskripsi: desc,
                 lokasi: lokasi,
                 tanggal_program_mulai: tgl,
-                target_partisipan: target }]).select();
+                target_partisipan: target,
+                waktu: waktu,
+                linkWA: linkwa,
+                foto: imageBuffer
+             }]).select();
+            //  console.log(target);
+            //console.log(imageBuffer);
             res.send(`Program ${title} has been added.`);
         }
     } catch (error) {
@@ -51,6 +63,36 @@ route.get('/get-programs', async(req, res) => {
     try {
         const userid = req.session.userid;
         const programs = await supabase.from('programs').select('*').eq('posted_by', userid);
+        res.send(programs.data);
+    } catch (error) {
+        console.error(error.message);
+    }
+});
+
+//Read or get programs by name
+route.get('/get-programs-byname', async(req, res) => {
+    try {
+        const name = req.body.name;
+        const programs = await supabase.from('programs').select('*').ilike('title', `%${name}%`);
+        for(const program of programs.data){
+            const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
+            program["posted_by"] = posted_by.data;
+        }
+        res.send(programs.data);
+    } catch (error) {
+        console.error(error.message);
+    }
+});
+
+//Read or get programs by location
+route.get('/get-programs-byloc', async(req, res) => {
+    try {
+        const lokasi = req.body.lokasi;
+        const programs = await supabase.from('programs').select('*').eq('lokasi', lokasi);
+        for(const program of programs.data){
+            const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
+            program["posted_by"] = posted_by.data;
+        }
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);

@@ -20,6 +20,9 @@ CREATE TABLE programs (
     lokasi VARCHAR(255),
     tanggal_program_mulai DATE,
     target_partisipan INT,
+    linkWA TEXT,
+    foto bytea,
+    waktu TIME,
     FOREIGN KEY (posted_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
