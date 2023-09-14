@@ -33,6 +33,11 @@ function Navbar() {
                         Activity
                     </div>
                 </button>
+                <button onClick={() => navigate("/leaderboard")} class="w-[172.5px] h-[56.25px] hover:rounded-[7px] hover:p-[10px] hover:bg-[#F5F3F3] hover:scale-110 duration-150 flex justify-center items-center gap-[7.5px] rounded-[5.25px]">
+                    <div class="text-[#71825E] font-dm-sans text-[26.25px] font-bold leading-normal">
+                        Leaderboard
+                    </div>
+                </button>
                 <button onClick={() => navigate("/aboutus")} class="w-[172.5px] h-[56.25px] hover:rounded-[7px] hover:p-[10px] hover:bg-[#F5F3F3] hover:scale-110 duration-150 flex justify-center items-center gap-[7.5px] rounded-[5.25px]">
                     <div class="text-[#71825E] font-dm-sans text-[26.25px] font-bold leading-normal">
                         About Us

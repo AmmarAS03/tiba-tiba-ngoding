@@ -2,7 +2,7 @@ import React from 'react'
 
 function Introduction() {
     return (
-        <div class="flex justify-center items-center gap-[100px] self-stretch">
+        <div class="flex justify-center items-center mt-[100px] gap-[100px] self-stretch">
             <div class="flex flex-col items-center gap-[20px]">
                 <img class="w-[170px] h-[143.846px]" src="assets/Logo.svg" alt="Deskripsi alternatif gambar"/>
                 <div class="text-[#71825E] font-Poppins text-[24px] font-bold leading-[140%]">
