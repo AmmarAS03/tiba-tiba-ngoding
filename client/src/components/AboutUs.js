@@ -7,9 +7,9 @@ import Ourvalues from './AboutUs/ourvalues'
 
 function AboutUs() {
     return (
-        <div class="flex w-[1440px] h-[1024px] items-start">
-            <div class="flex flex-col w-[333px] h-[1024px] py-[30px] px-0 justify-between items-center flex-shrink-0">
-                <Navbar />
+        <div class="flex w-screen h-screen items-start">
+            <div class="flex flex-col w-[333px] h-[1024px] justify-between items-center flex-shrink-0">
+                <Navbar/>
             </div>
             <div class="flex flex-col w-[1107px] p-[80px] flex-shrink-0 items-center gap-[75px]">
                 <Introduction/>
