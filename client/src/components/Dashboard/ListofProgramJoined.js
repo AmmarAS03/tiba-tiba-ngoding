@@ -2,7 +2,7 @@ import React from 'react'
 
 function ListofProgramJoined() {
     return (
-        <div class="flex flex-col pt-[20px] justify-center items-center gap-[20px]">
+        <div class="flex flex-col py-[20px] justify-center items-center gap-[20px]">
             <div class="flex flex-col items-center gap-[23px]">
                 <div class="flex flex-col w-[1190.25px] items-start gap-[30px] px-[50px]">
                     <div class="w-[993px] text-black font-poppins text-2xl font-bold leading-[28px]">
@@ -44,7 +44,7 @@ function ListofProgramJoined() {
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center items-end gap-[10px] self-stretch">
+                <div class="flex flex-col justify-center items-end gap-[10px] self-stretch px-[50px]">
                     <div class="w-[250px] h-[50px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                         <div class="w-[163px] h-[39px] flex flex-col justify-center items-center gap-[6px] text-white text-center">
                             <p class="font-poppins text-[14px] font-semibold leading-5">Lihat Kegiatan Lainnya</p>
