@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+
 
 const RegisterCard = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +20,7 @@ const RegisterCard = () => {
     setShowPassword(!showPassword);
   };
 
+
   // TODO: Integrate this function with the backend (DONE)
   const signUpButton = async (e) => {
     try {
@@ -32,6 +36,7 @@ const RegisterCard = () => {
       console.error(error.message);
     }
   };
+
 
   //ini gausa integrate ke BE, ini harusnya di FE nya redirect to Login Page
   // TODO: Integrate this function with the backend
@@ -183,9 +188,11 @@ const RegisterCard = () => {
         </button>
 
         <div class="flex flex-row w-[168px] h-[25px] items-center text-center justify-center font-poppins text-[12px] font-normal leading-[160%] gap-1">
+
           <div className="text-[#FFFFFF]">Have an account?</div>
           <button onClick={() => navigate("/login")} class="text-[#03B3D7]">
             Login
+
           </button>
         </div>
       </div>
