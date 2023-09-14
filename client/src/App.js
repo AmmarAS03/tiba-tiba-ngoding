@@ -12,6 +12,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage';
 import Leaderboard from './components/Leaderboard';
 import MyActivity from './components/MyActivity';
 import Attendance from './components/Attendance';
+import DashboardPage from './pages/Dashboard';
 
 
 
@@ -33,8 +34,8 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />}></Route>
           <Route path="/myactivity" element={<MyActivity />}></Route>
           <Route path="/attendance" element={<Attendance />}></Route>
-          
-
+          <Route path="/dashboard" element={<DashboardPage />}></Route>
+        
         </Routes>
       </BrowserRouter>
     </>
