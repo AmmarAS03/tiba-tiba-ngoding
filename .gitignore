@@ -3,3 +3,4 @@
 config.env
 /c/node_modules
 /client/public/.DS_Store
+.DS_Store
