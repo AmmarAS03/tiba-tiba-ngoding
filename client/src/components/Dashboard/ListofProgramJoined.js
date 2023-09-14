@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ListofProgramJoined() {
+    const navigate = useNavigate();
+
     return (
         <div class="flex flex-col py-[20px] justify-center items-center gap-[20px]">
             <div class="flex flex-col items-center gap-[23px]">
@@ -45,14 +48,14 @@ function ListofProgramJoined() {
                     </div>
                 </div>
                 <div class="flex flex-col justify-center items-end gap-[10px] self-stretch px-[50px]">
-                    <div class="w-[250px] h-[50px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
+                    <button onClick={() => navigate("/myactivity")} class="w-[250px] h-[50px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                         <div class="w-[163px] h-[39px] flex flex-col justify-center items-center gap-[6px] text-white text-center">
                             <p class="font-poppins text-[14px] font-semibold leading-5">Lihat Kegiatan Lainnya</p>
                         </div>
-                    </div>
+                    </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
