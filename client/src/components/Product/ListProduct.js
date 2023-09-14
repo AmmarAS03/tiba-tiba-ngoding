@@ -67,7 +67,7 @@ const ListProduct = () => {
 
             <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-semibold leading-[140%]">
               <p>Target: {product.target_partisipan} relawan</p>
-              <p>{product.tanggal_program_mulai}, 17:00 WIB</p>
+              <p>{product.tanggal_program_mulai}, {product.waktu} WIB</p>
               <p>{product.lokasi}</p>
             </div>
 

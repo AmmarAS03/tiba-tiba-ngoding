@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductCards from "./ProductCards";
 
-function Details() {
+const Details = () => {
+  const [products, setProducts] = useState([]);
+
+  //get details product
+  const getDetails = async() => {
+    try {
+        const data = await fetch("http://localhost:5000/programs/get-details-program/:id")
+        .then((response) => response.json())
+        .then((responseData) => {
+          setProducts(responseData[0]);
+        });
+        console.log(products);
+    } catch (error) {
+        console.error(error.message);
+    }
+  };
+
+  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+    getDetails();
+},[]); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render.
+
   return (
     <div
       className="flex flex-col items-center gap-[64px] flex-1 bg-[#FFF]"
@@ -14,7 +34,7 @@ function Details() {
     >
       <div class="flex flex-col items-center gap-[17px]">
         <h2 class="text-right text-[#71825E] font-poppins text-[40px] font-bold leading-[140%]">
-          Membersihkan Danau Kenanga
+        {products.title}
         </h2>
         <div class="flex flex-col items-center gap-[20px]">
           <div class="flex flex-col w-[835px] p-[30px] [10px] items-center gap-[0px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
@@ -52,19 +72,7 @@ function Details() {
                     <div class="flex flex-col w-[409px] h-[38px] justify-center items-center">
                       <div class="h-[235px] flex-shrink-[0px] self-stretch">
                         <p class="text-[var(--Primary, #545F71)] font-poppins text-[11px] font-normal leading-[160%]">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna At vero eos et accusamus et iusto odio
-                          dignissimos ducimus qui blanditiis praesentium
-                          voluptatum deleniti atque corrupti quos dolores et
-                          quas molestias excepturi sint occaecati cupiditate non
-                          provident, similique sunt in culpa qui officia
-                          deserunt mollitia animi, id est laborum et dolorum
-                          fuga. Et harum quidem rerum facilis est et expedita
-                          distinctio. Nam libero tempore, cum soluta nobis est
-                          eligendi optio cumque nihil impedit quo minus id quod
-                          maxime placeat facere possimus, omnis voluptas
-                          assumenda est, omnis dolor repellendus.
+                        {products.deskripsi}
                         </p>
                       </div>
                     </div>

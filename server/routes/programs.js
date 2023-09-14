@@ -59,7 +59,7 @@ route.get('/get-allprograms', async(req, res) => {
 });
 
 //Read or get programs that made by logged in user
-route.get('/get-programs', async(req, res) => {
+route.get('/get-madeprograms', async(req, res) => {
     try {
         const userid = req.session.userid;
         const programs = await supabase.from('programs').select('*').eq('posted_by', userid);
@@ -105,6 +105,17 @@ route.delete('/del-program/:id', async(req, res) => {
         const { id } = req.params;
         await supabase.from('programs').delete().eq('id', id);
         res.send("The program has been deleted.");
+    } catch (error) {
+        console.error(error.message);
+    }
+});
+
+//GET details of a program
+route.get('/get-details-program/:id', async(req, res) => {
+    try {
+        const { id } = req.params;
+        const details = await supabase.from('programs').select('*').eq('id', id);
+        res.send(details.data);
     } catch (error) {
         console.error(error.message);
     }
