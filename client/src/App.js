@@ -8,6 +8,10 @@ import CreateProgramPage from './pages/CreateProgram';
 import Navbar from './components/UI/Commons/Navbar';
 import RegisterPage from './pages/Register';
 import ProductPage from './pages/Product';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import Leaderboard from './components/Leaderboard';
+import MyActivity from './components/MyActivity';
+import Attendance from './components/Attendance';
 
 
 
@@ -25,6 +29,11 @@ function App() {
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
+          <Route path="/productdetails" element={<ProductDetailsPage />}></Route>
+          <Route path="/leaderboard" element={<Leaderboard />}></Route>
+          <Route path="/myactivity" element={<MyActivity />}></Route>
+          <Route path="/attendance" element={<Attendance />}></Route>
+          
 
         </Routes>
       </BrowserRouter>
