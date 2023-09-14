@@ -54,7 +54,7 @@ function Testimoni() {
                     <img src="assets/Nadine.png" alt="Your Image" class="w-[203.81px] h-[140px] flex-shrink-0 rounded-[5px]" />
                     <div class="flex w-[232px] h-[135px] flex-col justify-center items-center flex-shrink-0">
                         <div class="h-[100px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
-                            Gotong çRuang mengubah cara saya melihat kegiatan relawan. Terima kasih, GotongRuang, atas pengalaman yang menginspirasi ini!                        </div>
+                            Gotong Ruang mengubah cara saya melihat kegiatan relawan. Terima kasih, GotongRuang, atas pengalaman yang menginspirasi ini!                        </div>
                         <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
                             Nadine Kezia
                         </div>
