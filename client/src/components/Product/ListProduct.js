@@ -45,6 +45,7 @@ const ListProduct = () => {
   useEffect(() => {
     //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
     getProducts();
+
   }, []); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render.
 
   return (
@@ -59,6 +60,7 @@ const ListProduct = () => {
         Daftar Kegiatan
       </h2>
 
+
       <div
         class="flex justify-center items-start gap-[32px] self-stretch"
         style={{
@@ -72,6 +74,7 @@ const ListProduct = () => {
           }`}
           onClick={toggleDropdown}
         >
+
           <div class="flex w-[34.669px] h-[35px] flex-col justify-center items-center">
             <div class="w-[34.669px] h-[35px] flex-shrink-0">
               <img src="assets/Glass.svg" alt="Glass" class="w-full h-full" />
@@ -84,7 +87,7 @@ const ListProduct = () => {
             className="text-[#8E8E93] text-start w-[590px] font-poppins text-[25px] font-normal leading-[140%] border-none outline-none bg-transparent user-input"
           />
         </div>
-
+        
         <div class="relative inline-block">
           <div
             class={`flex w-[304px] h-[55px] p-[0px] [10px] justify-center items-center rounded-[10px] bg-[var(--Tertiary, #EEF1F4)] shadow-md cursor-pointer`}

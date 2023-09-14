@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+    const navigate = useNavigate();
+
     return (
         <div class="w-[1190px] h-[269px] py-[30px] px-[110px] justify-between flex flex-col items-center flex-shrink-0">
             <div class="w-[962.375px] flex justify-between items-center">
@@ -52,11 +55,11 @@ function Profile() {
                 </div>
             </div>
             <div class="flex flex-col h-[50px] justify-between items-end flex-shrink-0 self-stretch">
-                <div class="rounded-[10px] bg-[#71825E] w-[350px] h-[60px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] flex-shrink-0">
+                <button onClick={() => navigate("/createprogram")} class="rounded-[10px] bg-[#71825E] w-[350px] h-[60px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] flex-shrink-0">
                     <div class="flex flex-col justify-center flex-1 self-stretch text-white text-center font-poppins font-semibold text-lg leading-[33.6px]">
                         Buat Kegiatan Baru
                     </div>
-                </div>
+                </button>
             </div>
         </div>
     )
