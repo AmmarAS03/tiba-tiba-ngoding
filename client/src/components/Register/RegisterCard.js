@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const RegisterCard = () => {
   const [email, setEmail] = useState('');
@@ -9,25 +10,18 @@ const RegisterCard = () => {
   const [notelp, setNotelp] = useState('');
   const [ig, setIg] = useState('');
 
-  // TODO: Integrate this function with the backend (DONE)
-  const signUpButton = async(e) => {
+  const signUpButton = async (e) => {
     try {
       const body = { email, username, password, nama, lokasi, notelp, ig };
       const response = await fetch("http://localhost:5000/users/register", { //by default fetch itu methodnya get
-                method: "POST",  //diganti dari get ke post
-                headers: { "Content-Type": "application/json" },  //untuk mengatur header dalam permintaan fetch, membantu server dalam memahami jenis konten yang diterima.
-                body: JSON.stringify(body) //untuk mengubah objek body menjadi string JSON yang akan dikirimkan
-            });
+        method: "POST",  //diganti dari get ke post
+        headers: { "Content-Type": "application/json" },  //untuk mengatur header dalam permintaan fetch, membantu server dalam memahami jenis konten yang diterima.
+        body: JSON.stringify(body) //untuk mengubah objek body menjadi string JSON yang akan dikirimkan
+      });
       console.log(response);
     } catch (error) {
       console.error(error.message);
     }
-  }
-
-  //ini gausa integrate ke BE, ini harusnya di FE nya redirect to Login Page
-  // TODO: Integrate this function with the backend
-  const ToLoginButton = () => {
-    console.log('register');
   }
 
   return (
@@ -153,8 +147,8 @@ const RegisterCard = () => {
           <div className="text-[#FFFFFF]">
             Have an account?
           </div>
-          <button onClick={''} class="text-[#03B3D7]">
-            Login
+          <button class="text-[#03B3D7]">
+            <Link to='/login'>Login</Link>
           </button>
         </div>
       </div>

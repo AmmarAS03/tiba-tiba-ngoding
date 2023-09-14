@@ -16,10 +16,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Toaster />
+        <Toaster />
         <Routes>
-          <Route path="/aboutus" element={<AboutUsPage />}></Route>
           <Route index element={<LandingPage />}></Route>
+          <Route path="/aboutus" element={<AboutUsPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/tesnavbar" element={<Navbar />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
