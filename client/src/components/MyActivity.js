@@ -1,13 +1,13 @@
 import React from 'react'
-import Activity from './MyActivity/Activity'
 import Navbar from './UI/Commons/Navbar'
+import Activity from './MyActivity/Activity'
 
 function MyActivity() {
   return (
-    <div className="w-screen h-screen">
-        <Navbar/>
-        <Activity/>
-  </div>
+    <div class="flex w-screen h-screen justify-between items-start bg-white">
+      <Navbar />
+      <Activity />
+    </div>
   )
 }
 
