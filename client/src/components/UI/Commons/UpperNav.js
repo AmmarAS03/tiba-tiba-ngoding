@@ -6,10 +6,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 const NavLinks = () => {
     return (
         <>
-            <NavLink to="/product" class="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Activity</NavLink>
-            <NavLink to="/leaderboard" class="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Leaderboard</NavLink>
-            <NavLink to="/aboutus" class="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">About Us</NavLink>
-            <NavLink to="/login" class="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Login</NavLink>
+            <NavLink to="/product" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Activity</NavLink>
+            <NavLink to="/leaderboard" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Leaderboard</NavLink>
+            <NavLink to="/aboutus" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">About Us</NavLink>
+            <NavLink to="/login" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Login</NavLink>
         </>
     );
 };
@@ -44,16 +44,16 @@ function UpperNav() {
                     <button onClick={() => navigate("/dashboard")} class="flex w-[141.75px] flex-col justify-center items-center gap-[7.5px]">
                         <img src="assets/Logo.svg" alt="Your Image" class="w-[62.871px] h-[52.907px]" />
                     </button>
-                    <div class="w-[0.563px] h-[52.907px] bg-blue-800" />
-                    <div class="hidden md:flex w-full justify-end gap-[30px]">
+                    <div class="w-[0.563px] h-[52.907px] bg-[#71825E]" />
+                    <div className="hidden md:flex w-full justify-end gap-[30px]">
                         <NavLinks />
                     </div>
                     <div class="flex md:hidden w-full justify-end gap-[30px]">
-                            <button onClick={toggleNavbar} class="hover:scale-110 w-[50px] h-[50px]">{isOpen ? <X /> : <Menu />}</button>
+                        <button onClick={toggleNavbar} class="hover:scale-110 w-[50px] h-[50px]">{isOpen ? <X /> : <Menu />}</button>
                     </div>
                 </div>
                 {isOpen && (
-                    <div class="flex basis-full flex-col items-center">
+                    <div class="flex basis-full flex-col items-center gap-[5px] pt-[5px] mt-[5px]">
                         <NavLinks />
                     </div>
                 )}
