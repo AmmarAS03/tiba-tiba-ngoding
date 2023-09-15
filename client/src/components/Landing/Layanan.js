@@ -2,18 +2,18 @@ import React from 'react'
 
 function Layanan() {
     return (
-        <div class="inline-flex flex-col items-center gap-[18px]">
-            <div class="flex flex-col items-center gap-[18px]">
-                <div class="text-black font-poppins text-[30px] font-bold leading-[140%] tracking-[1.5px]">
+        <div class="inline-flex flex-col items-center md:gap-[10px] lg:gap-[18px]">
+            <div class="flex flex-col items-center md:gap-[10px] gap-[18px]">
+                <div class="text-black font-poppins md:text-[14px] lg:text-[30px] font-bold leading-[140%] tracking-[1.5px]">
                     Layanan Kami
                 </div>
-                <div class="text-black text-center font-poppins text-[14px] font-normal leading-[160%] w-[760px]">
+                <div class="text-black text-center font-poppins md:text-[10px] lg:text-[14px] font-normal leading-[160%] w-[760px]">
                     At Gotong Royong, our mission is to unite the hearts and hands of people from all walks of life, forging a
                     powerful alliance dedicated to fostering positive change in our communities and beyond. We firmly believe
                     that when compassionate hearts join skilled hands, they have the power to transform lives and create a better world.
                 </div>
             </div>
-            <div class="flex w-[947px] justify-between items-start">
+            <div class="flex flex-col w-full lg:w-[947px] justify-between items-center lg:gap-0 gap-4 lg:flex-row">
                 <div class="flex flex-col items-center justify-center w-[300px] h-[185px] py-[10px] px-[20px] gap-[10px] flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-md">
                     <img src="assets/Relawan.png" alt="Your Image" class="w-[47px] h-[47px] flex-shrink-0" />
                     <div class="flex flex-row gap-1 justify-center self-stretch text-center font-poppins text-[12px] font-semibold leading-[140%]">

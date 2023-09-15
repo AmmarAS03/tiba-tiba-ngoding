@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
 const ListofProgramJoined = () => {
     const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
   //get products that user joined
   const getProducts = async() => {
@@ -29,53 +28,57 @@ const ListofProgramJoined = () => {
     }
   };
 
-  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
-    getProducts();
-},[]); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render. 
+    useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+        getProducts();
+    }, []); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render. 
 
     return (
-        <div class="flex flex-col py-[20px] justify-center items-center gap-[20px]">
-            <div class="flex flex-col items-center gap-[23px]">
-                <div class="flex flex-col w-[1190.25px] items-start gap-[30px] px-[50px]">
-                    <div class="w-[993px] text-black font-poppins text-2xl font-bold leading-[28px]">
+        <div class="w-full flex flex-col py-[20px] px-[110px] justify-center items-center gap-[20px]">
+            <div class="w-full flex flex-col items-center gap-[23px]">
+                <div class="w-full flex flex-col items-start gap-[30px] px-[50px]">
+                    <div class="w-full text-black font-poppins text-2xl font-bold leading-[28px]">
                         Kegiatan yang kamu ikuti
                     </div>
                     <div class="flex items-center content-center gap-[30px] flex-wrap">
 
                         {products.map(product => (
                             <div key={product.id} class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                            <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
-                                <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
-                                    <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
-                                    <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
-                                        <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
-                                        {product.programs[0].title}
-                                        </div>
-                                        <div class="flex flex-col justify-center items-center self-stretch">
-                                            <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                            {product.programs[0].tanggal_program_mulai}, {product.programs[0].waktu} WIB
-                                            </div>
-                                            <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                            {product.programs[0].lokasi}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-[40px] self-stretch">
-                                <div class="flex flex-col justify-center items-center flex-[1_1_0]">
-                                    <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
-                                        Diunggah oleh:
-                                    </div>
-                                </div>
-                                <div class="flex flex-col justify-center items-center flex-[1_1_0]">
-                                    <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
-                                        {product.postedby_nama}
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
+                                <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
+                                    <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
+                                        <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
+                                        <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
+                                            <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
+                                                {product.title}
+                                            </div>
+                                            <div class="flex flex-col justify-center items-center self-stretch">
+                                                <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
+                                                    {product.tanggal_program_mulai}, {product.waktu} WIB
+                                                </div>
+                                                <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
+                                                    {product.lokasi}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-[40px] self-stretch">
+                                    <div class="flex flex-col justify-center items-center flex-[1_1_0]">
+                                        <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                                            Diunggah oleh:
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col justify-center items-center flex-[1_1_0]">
+                                        <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                                            {product.posted_by}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
                         ))}
 
                     </div>
