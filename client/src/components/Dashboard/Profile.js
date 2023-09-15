@@ -7,7 +7,7 @@ const Profile = () => {
     const [nama, setNama] = useState("");
     const [notelp, setNotelp] = useState("");
     const [point, setPoint] = useState("");
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
   //get profile
   const getUser = async() => {

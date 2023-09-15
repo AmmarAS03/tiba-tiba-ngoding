@@ -6,18 +6,18 @@ function Footer() {
 
   const navigate = useNavigate();
   return (
-    <div class="flex justify-center items-center w-screen md:h-screen pt-[5px] pb-[50px] bg-[#71825E] mt-[200px]">
+    <div class="flex justify-center items-center w-screen h-[700px] pt-[103px] pb-[50px] bg-[#71825E] mt-[200px]">
       <div class="flex flex-col items-center justify-between w-screen h-[550px] p-[30px] flex-shrink-[0px]">
-        <div class="flex flex-col md:flex-row px-[100px] justify-between items-center self-stretch">
+        <div class="flex flex-col md:flex-row pl-[120px] pr-[100px] justify-between items-center self-stretch">
           <div class="flex flex-col items-start gap-[30px] md:gap-[40px]">
-            <p class="text-white font-dm-sans text-[20px] md:text-[25px] font-bold">
+            <p class="text-white font-dm-sans text-[20px] md:text-[30px] font-bold">
               Explore our pages
             </p>
             <div class="flex flex-col items-start gap-[10px] md:gap-[20px]">
 
               <button class="flex items-center w-[190px] h-[35px] p-[6px] gap-[10px] rounded-[5px]  hover:rounded-[7px] hover:p-[10px] hover:bg-[#47523A] hover:scale-110 duration-150">
                 <div class="flex justify-center items-center">
-                  <p class="text-white font-dmsans text-[20px] font-bold">
+                  <p class="text-white font-dmsans text-[25px] font-bold">
                     Dashboard
                   </p>
                 </div>
@@ -25,7 +25,7 @@ function Footer() {
 
               <button onClick={() => navigate("/product")} class="flex items-center w-[190px] h-[35px] p-[6px] gap-[10px] rounded-[5px]  hover:rounded-[7px] hover:p-[10px] hover:bg-[#47523A] hover:scale-110 duration-150">
                 <div class="flex justify-center items-center">
-                  <p class="text-white font-dmsans text-[20px] font-bold">
+                  <p class="text-white font-dmsans text-[25px] font-bold">
                    Activity
                   </p>
                 </div>
@@ -33,7 +33,7 @@ function Footer() {
 
               <button  onClick={() => navigate("/leaderboard")} class="flex items-center w-[190px] h-[35px] p-[6px] gap-[10px] rounded-[5px]  hover:rounded-[7px] hover:p-[10px] hover:bg-[#47523A] hover:scale-110 duration-150">
                 <div class="flex justify-center items-center">
-                  <p class="text-white font-dmsans text-[20px] font-bold">
+                  <p class="text-white font-dmsans text-[25px] font-bold">
                     Leaderboard
                   </p>
                 </div>
@@ -41,7 +41,7 @@ function Footer() {
 
               <button onClick={() => navigate("/aboutus")} class="flex items-center w-[190px] h-[35px] p-[6px] gap-[10px] rounded-[5px]  hover:rounded-[7px] hover:p-[10px] hover:bg-[#47523A] hover:scale-110 duration-150">
                 <div class="flex justify-center items-center">
-                  <p class="text-white font-dmsans text-[20px] font-bold">
+                  <p class="text-white font-dmsans text-[25px] font-bold">
                     About Us
                   </p>
                 </div>
