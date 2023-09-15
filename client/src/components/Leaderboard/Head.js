@@ -1,21 +1,33 @@
 import React from "react";
 import Board from "./Board";
+import Footer from "../UI/Commons/Footer";
 function Head() {
   return (
     <div
       className="flex flex-col items-center gap-[64px] flex-1 bg-[#FFF]"
       style={{
-        paddingLeft: "250px",
-        paddingBottom: "150px",
+        paddingTop: "90px",
+
       }}
     >
-      <div class="inline-flex flex-col items-center gap-y-[46px]">
-        <div
-          class="flex w-[1190px] h-[350px] p-[10px] flex-col justify-center items-center gap-[10px]"
-          style={{ background: 'url("assets/Anak.png") lightgray 50% / cover no-repeat' }}
-        ></div>
+      <div class="flex flex-col items-center">
+        <div class="relative w-screen h-[200px] flex flex-col justify-center items-center">
+          <img
+            src="assets/Anak.png"
+            alt="Anak"
+            class="w-full h-auto object-cover"
+          />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <p class="text-white text-[40px] md:text-[64px] font-bold">Leaderboard</p>
+          </div>
+        </div>
       </div>
-      <Board/>
+      <Board />
+      
+      <div>
+        <Footer />
+      </div>
+
     </div>
   );
 }

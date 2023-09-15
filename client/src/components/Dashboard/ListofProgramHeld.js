@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 
 const ListofProgramHeld = () => {
@@ -29,8 +30,9 @@ const ListofProgramHeld = () => {
 },[]); 
 
 
+
     return (
-        <div class="flex flex-col pt-[20px] justify-center items-center gap-[20px]">
+        <div class="flex flex-col py-[20px] justify-center items-center gap-[20px]">
             <div class="flex flex-col items-center gap-[23px]">
                 <div class="flex flex-col w-[1190.25px] items-start gap-[30px] px-[50px]">
                     <div class="w-[993px] text-black font-poppins text-2xl font-bold leading-[28px]">
@@ -76,6 +78,7 @@ const ListofProgramHeld = () => {
                  </div>
              </div>
          </div>
+
     )
 }
 
