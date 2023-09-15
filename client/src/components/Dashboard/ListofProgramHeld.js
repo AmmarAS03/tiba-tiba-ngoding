@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react'
+import Axios from 'axios';
 
 const ListofProgramHeld = () => {
     const [products, setProducts] = useState([]);
-    // console.log('Test-1')
-  //get all products
-  const getProducts = async() => {
-    // console.log('Test-2')
-    try {
-        const data = await fetch("http://localhost:5000/programs/get-madeprograms")
-        .then((response) => response.json())
-        .then((responseData) => {
-          setProducts(responseData);
-        });
-        // console.log(products);
-    } catch (error) {
-        console.error(error.message);
-    }
-  };
+    
+    Axios.defaults.withCredentials = true;
 
-  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
-    getProducts();
-},[]); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render. 
+    //get product that made by the user
+    const getMadeProducts = async() => {
+        try {
+            // const data = await fetch("http://localhost:5000/programs/get-madeprograms", {method: 'GET', credentials: 'include'})
+            // .then((response) => response.json())
+            // .then((responseData) => {
+            //   setProducts(responseData);
+            // });
+            Axios.get("http://localhost:5000/programs/get-madeprograms")
+            .then((response) => response.json())
+            .then((responseData) => {
+                setProducts(responseData);
+            });
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
+  useEffect(() => {      
+    getMadeProducts();
+},[]); 
 
 
     return (
@@ -71,6 +78,6 @@ const ListofProgramHeld = () => {
              </div>
          </div>
     )
-};
+}
 
-export default ListofProgramHeld
+export default ListofProgramHeld;

@@ -52,6 +52,7 @@ route.get('/get-allprograms', async(req, res) => {
             const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
             program["posted_by"] = posted_by.data;
         }
+        //console.log(req.session.userid);
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);
@@ -62,7 +63,8 @@ route.get('/get-allprograms', async(req, res) => {
 route.get('/get-madeprograms', async(req, res) => {
     try {
         const userid = req.session.userid;
-        const programs = await supabase.from('programs').select('*').eq('posted_by', userid);
+        console.log(req.session.userid);
+        const programs = await supabase.from('programs').select('title').eq('posted_by', userid);
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);

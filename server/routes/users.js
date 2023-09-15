@@ -47,7 +47,9 @@ route.post('/login', async(req, res) => {
             if(valid == true) {
                 //save user account to session
                 req.session.userid = foundName.data[0].id; 
-                res.send("Login successful.")
+                console.log(req.session.id);
+                res.send(`Login successful with id.`)
+                // res.send(foundName.data[0].id);
             }
             else{
                 res.send("Password incorrect.")
@@ -67,7 +69,11 @@ route.get('/logout', (req, res) => {
 //get user's infos
 route.get('/', async(req, res) => {
     try {
+        console.log("masuk1");
         const userid = req.session.userid;
+        console.log(req.session.id);
+        console.log(userid);
+        console.log("masuk2");
         const infos = await supabase
         .from('users')
         .select('*')
