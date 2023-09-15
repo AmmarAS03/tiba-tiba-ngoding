@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-    const DashboardButton = () => {
-        console.log('Dashboard')
-    }
 
     const navigate = useNavigate();
 
-    const ActivityButton = () => {
-        console.log('Activity')
-    }
-
     //TODO: cek
     const SignOutButton = async(e) => {
-        const response = await fetch("http://localhost:5000/users/logout");
-        console.log(response);
+        localStorage.setItem("token", null);
+        navigate("/login")
     }
 
     return (
@@ -39,7 +32,7 @@ function Navbar() {
                     </div>
                 </button>
             </div>
-            <button onClick={() => navigate("/login")} class="w-[120px] h-[39px] hover:text-[#F65C51] hover:scale-110 hover:font-medium text-[#71825E] font-normal duration-150 flex justify-center items-center gap-[7.5px] flex-shrink-0">
+            <button onClick={SignOutButton} class="w-[120px] h-[39px] hover:text-[#F65C51] hover:scale-110 hover:font-medium text-[#71825E] font-normal duration-150 flex justify-center items-center gap-[7.5px] flex-shrink-0">
                 <div class="text-center font-dm-sans text-[30px] leading-normal">
                     Sign Out
                 </div>
