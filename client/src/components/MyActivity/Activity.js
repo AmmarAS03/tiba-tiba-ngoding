@@ -8,7 +8,7 @@ function Activity() {
   //get all products
   const getProducts = async () => {
     try {
-      const data = await fetch("http://localhost:5000/programs/get-allprograms")
+      const data = await fetch("http://localhost:5371/programs/get-allprograms")
         .then((response) => response.json())
         .then((responseData) => {
           setProducts(responseData);
