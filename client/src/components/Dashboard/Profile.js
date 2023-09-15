@@ -12,7 +12,7 @@ const Profile = () => {
   //get profile
   const getUser = async() => {
     try {
-        const data = await fetch("http://localhost:5000/users", {
+        const data = await fetch("http://localhost:5371/users", {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

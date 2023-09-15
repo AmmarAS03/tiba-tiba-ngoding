@@ -15,7 +15,7 @@ const Details = () => {
   //get details product
   const getDetails = async(e) => {
     try {
-        const data = await fetch(`http://localhost:5000/programs/get-details-program/${id}`);
+        const data = await fetch(`http://localhost:5371/programs/get-details-program/${id}`);
         const dataJson = await data.json();
         setTitle(dataJson[0].title);
         setDeskripsi(dataJson[0].deskripsi);
