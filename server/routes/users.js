@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import bcrypt from "bcrypt";
 import supabase from "../supabase.js";
 import jwt from "jsonwebtoken";
@@ -96,6 +96,18 @@ route.get('/', authenticateToken, async(req, res) => {
         console.error(error.message);
     }
 });
+
+route.get('/leaderboard', async (req, res) => {
+    const leaderboard = await supabase
+        .from('users')
+        .select('nama, lokasi, total_point')
+        .order('total_point', { ascending: false })
+        .limit(10); 
+
+
+    res.send(leaderboard.data); // Send the data as JSON response
+});
+
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
