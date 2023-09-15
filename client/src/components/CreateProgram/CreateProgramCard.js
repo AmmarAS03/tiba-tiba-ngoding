@@ -26,20 +26,19 @@ const CreateProgramCard = () => {
 
 
     return (
-        <div class="flex ml-[249.75px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
-            <div class="flex w-[774px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
+        <div class="flex w-full mt-[82.5px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
+            <div class="flex w-full p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
                 <div class="flex h-[60px] px-[18.75px] justify-between items-center flex-shrink-0 self-stretch">
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
-                    <div class="flex w-[316.5px] h-[38.25px] flex-col justify-center text-white text-center font-poppins font-bold text-[30px]">
+                    <div class="flex w-full h-[38.25px] flex-col justify-center text-white text-center font-poppins font-bold text-[30px]">
                         Laporkan Kegiatan
                     </div>
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px] opacity-0" alt="Your Image" />
                 </div>
-                <div class="flex px-[60px] justify-between items-center self-stretch">
+                <div class="flex flex-col md:flex-row px-[60px] gap-[10px] justify-between items-center self-stretch">
                     <div class="flex flex-col justify-center items-center gap-[15px] flex-1 flex-shrink-0 self-stretch">
                         <span class="text-white font-poppins text-[15px] font-bold leading-[21px]">Masukan Gambar</span>
                         <div class="flex flex-col justify-center items-center w-[225px] h-[300px] gap-[15px] rounded-[3.75px] bg-white"></div>
-
                     </div>
                     <div class="flex flex-col justify-center items-center gap-[15px] flex-1 flex-shrink-0 self-stretch">
                         <div class="flex flex-col items-start gap-[15px]">

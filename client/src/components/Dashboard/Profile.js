@@ -1,10 +1,13 @@
+
 import React, { useState, useEffect } from 'react' 
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const [lokasi, setLokasi] = useState("");
     const [nama, setNama] = useState("");
     const [notelp, setNotelp] = useState("");
     const [point, setPoint] = useState("");
+  const navigate = useNavigate();
 
   //get profile
   const getUser = async() => {
@@ -84,11 +87,11 @@ const Profile = () => {
                 </div>
             </div>
             <div class="flex flex-col h-[50px] justify-between items-end flex-shrink-0 self-stretch">
-                <div class="rounded-[10px] bg-[#71825E] w-[350px] h-[60px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] flex-shrink-0">
+                <button onClick={() => navigate("/createprogram")} class="rounded-[10px] bg-[#71825E] w-[350px] h-[60px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] flex-shrink-0">
                     <div class="flex flex-col justify-center flex-1 self-stretch text-white text-center font-poppins font-semibold text-lg leading-[33.6px]">
                         Buat Kegiatan Baru
                     </div>
-                </div>
+                </button>
             </div>
         </div>
     )

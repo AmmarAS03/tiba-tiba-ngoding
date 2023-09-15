@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+/* Default style for the input field */
+.user-input {
+  color: #8E8E93; /* Placeholder text color */
+}
+
+/* Style for the input field when it's not empty */
+.user-input:not(:placeholder-shown) {
+  color: black; /* User input text color */
+}
+

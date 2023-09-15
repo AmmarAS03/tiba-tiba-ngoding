@@ -9,6 +9,7 @@ function Dashboard() {
             <Profile />
             <div class="w-[1120px] h-[1.25px] bg-[#71825E] flex-shrink-0"></div>
             <ListofProgramHeld />
+            <div class="w-[1120px] h-[1.25px] bg-[#71825E] mt-[50px] flex-shrink-0"></div>
             <ListofProgramJoined />
         </div>
     )

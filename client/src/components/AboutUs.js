@@ -1,25 +1,25 @@
-import React from 'react'
-import Navbar from './UI/Commons/Navbar'
-import Introduction from './AboutUs/introduction'
-import OurMission from './AboutUs/ourmission'
-import JoinUs from './AboutUs/joinus'
-import Ourvalues from './AboutUs/ourvalues'
+import React from "react";
+import Introduction from "./AboutUs/introduction";
+import OurMission from "./AboutUs/ourmission";
+import JoinUs from "./AboutUs/joinus";
+import Ourvalues from "./AboutUs/ourvalues";
+import UpperNav from "./UI/Commons/UpperNav";
+import Footer from "./UI/Commons/Footer";
 
 function AboutUs() {
-    return (
-        <div class="flex w-screen h-screen items-start">
-            <div class="flex flex-col w-[333px] h-[1024px] justify-between items-center flex-shrink-0">
-                <Navbar/>
-            </div>
-            <div class="flex flex-col w-[1107px] p-[80px] flex-shrink-0 items-center gap-[75px]">
-                <Introduction/>
-                <OurMission/>
-                <JoinUs/>
-                <Ourvalues/>
-            </div>
-        </div>
-
-    )
+  return (
+    <div class="flex w-screen h-screen items-start">
+      <UpperNav />
+      <div
+        class="flex p-[30px] md:p-[0px] md:pt-[100px] flex-col w-full flex-shrink-0 items-center gap-[25px] md:gap-[50px]"
+      >
+        <Introduction />
+        <OurMission />
+        <JoinUs />
+        <Ourvalues />
+      </div>
+    </div>
+  );
 }
 
-export default AboutUs
+export default AboutUs;
