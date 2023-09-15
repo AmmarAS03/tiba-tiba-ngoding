@@ -25,7 +25,7 @@ function Kegiatan() {
         <div class="inline-flex flex-col items-center gap-[30px]">
             <div class="flex flex-col items-center gap-[19px]">
                 <div class="flex flex-col items-center gap-[12px]">
-                    <div class="text-black font-poppins text-[30px] font-bold leading-[140%] tracking-[1.5px]">
+                    <div class="text-black font-poppins md:text-[15px] lg:text-[30px] font-bold leading-[140%] tracking-[1.5px]">
                         Lihat Kegiatan saat ini
                     </div>
                     <div class="text-black text-center font-poppins font-normal text-[14px] leading-[160%] w-[760px]">
