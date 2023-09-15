@@ -15,7 +15,7 @@ import partiRouter from "./routes/participants.js";
 
 //setup express server
 const app = express();
-const PORT = 5000; 
+const PORT = 5371; 
 
 //dotenv.config({path:'./config.env'});
 
