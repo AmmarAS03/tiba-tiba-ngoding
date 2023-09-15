@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { json } from "react-router-dom";
 import Product from "../Product";
@@ -18,7 +17,6 @@ const ListProduct = () => {
         .then((responseData) => {
           setProducts(responseData);
         });
-        console.log(products);
     } catch (error) {
       console.error(error.message);
     }
@@ -89,25 +87,6 @@ const ListProduct = () => {
             className="text-[#8E8E93] text-start w-[590px] font-poppins text-[25px] font-normal leading-[140%] border-none outline-none bg-transparent user-input"
           />
         </div>
-
-      </div>
-
-      <div class="flex flex-col items-center gap-[20px]">
-
-        {products.map(product => (
-          <div key={product.id} onClick={()=> `product/${product.id}`} class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
-          <div class="flex p-[0px] flex-col justify-center items-start gap-[18px] flex-[1px]">
-            <div class="flex flex-col justify-center items-center self-stretch">
-              <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
-                {product.title}
-              </h4>
-            </div>
-
-            <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-semibold leading-[140%]">
-              <p>Target: {product.target_partisipan} relawan</p>
-              <p>{product.tanggal_program_mulai}, {product.waktu} WIB</p>
-              <p>{product.lokasi}</p>
-
         
         <div class="relative inline-block">
           <div
@@ -117,7 +96,6 @@ const ListProduct = () => {
           >
             <div class="w-[258px] flex-shrink-[0px] text-black font-dmsans text-[20px] font-normal leading-normal">
               <span id="selectedOption">{selectedOption}</span>
-
             </div>
             <img
               class={`w-[26px] h-[26px] flex-shrink-[0px] text-[#8E8E93] transform transition-transform duration-200 ${
@@ -152,7 +130,6 @@ const ListProduct = () => {
               >
                 Jawa Barat
               </div>
-
               <div
                 className="py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Jawa Tengah")}
@@ -230,17 +207,11 @@ const ListProduct = () => {
           </div>
         ))}
         ;
-
       </div>
 
       <Footer />
     </div>
-
-  )
-}
-
   );
 };
-
 
 export default ListProduct;

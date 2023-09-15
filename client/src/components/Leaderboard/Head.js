@@ -11,7 +11,11 @@ function Head() {
       }}
     >
       <div class="flex flex-col items-center">
-        <div class="relative w-screen h-[200px] flex flex-col justify-center items-center">
+        <div class="relative w-screen h-[200px] flex flex-col justify-center items-center" style={{
+          backgroundImage: 'url("assets/Anak.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}>
           <img
             src="assets/Anak.png"
             alt="Anak"
