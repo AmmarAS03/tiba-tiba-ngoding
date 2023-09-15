@@ -26,7 +26,7 @@ const CreateProgramCard = () => {
 
 
     return (
-        <div class="flex ml-[249.75px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
+        <div class="flex mt-[82.5px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
             <div class="flex w-[774px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
                 <div class="flex h-[60px] px-[18.75px] justify-between items-center flex-shrink-0 self-stretch">
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
