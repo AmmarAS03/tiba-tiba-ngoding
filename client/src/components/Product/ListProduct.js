@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { createBrowserRouter, RouterProvider, Route, json } from "react-router-dom";
+import { BrowserRouter, RouterProvider, Route, Router, json ,Link } from "react-router-dom";
 import Product from "../Product";
 import Footer from "../UI/Commons/Footer";
 
@@ -7,6 +7,7 @@ const ListProduct = () => {
   const [products, setProducts] = useState([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Pilih Daerah");
+  const [searchInput, setSearchInput] = useState("");
   const inputRef = useRef(null);
 
   //get all products
@@ -81,10 +82,12 @@ const ListProduct = () => {
             </div>
           </div>
           <input
-            ref={inputRef}
-            type="text"
-            placeholder="Search"
-            className="text-[#8E8E93] text-start w-[590px] font-poppins text-[25px] font-normal leading-[140%] border-none outline-none bg-transparent user-input"
+             ref={inputRef}
+             type="text"
+             placeholder="Search"
+             className="text-[#8E8E93] text-start w-[590px] font-poppins text-[25px] font-normal leading-[140%] border-none outline-none bg-transparent user-input"
+             value={searchInput}
+             onChange={(e) => setSearchInput(e.target.value)}
           />
         </div>
         
@@ -160,11 +163,16 @@ const ListProduct = () => {
       </div>
 
       <div class="flex flex-col items-center gap-[20px]">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]"
-          >
+  {products
+    .filter((product) =>
+      product.title.toLowerCase().includes(searchInput.toLowerCase())
+    )
+    .map((product) => (
+      <Link to={`/product/${product.id}`} key={product.id}>
+        <div
+          class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]"
+        >
+           
             <div class="flex p-[0px] flex-col justify-center items-start gap-[18px] flex-[1px]">
               <div class="flex flex-col justify-center items-center self-stretch">
                 <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
@@ -204,7 +212,10 @@ const ListProduct = () => {
                 className="w-full h-full"
               />
             </div>
+            
+
           </div>
+          </Link>
         ))}
         ;
       </div>

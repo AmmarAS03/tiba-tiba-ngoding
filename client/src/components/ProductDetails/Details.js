@@ -41,10 +41,10 @@ const Details = () => {
     <div
       className="flex flex-col items-center gap-[64px] flex-1 bg-[#FFF]"
       style={{
-        paddingLeft: "300px",
-        paddingRight: "100px",
-        paddingTop: "100px",
-        paddingBottom: "150px",
+
+
+        paddingTop: "180px",
+       
       }}
     >
       <div class="flex flex-col items-center gap-[17px]">
