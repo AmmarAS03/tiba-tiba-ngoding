@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function List() {
+  const [isChecked, setIsChecked] = useState(false);
+  const [volunteers, setVolunteer] = useState([]);
+  const { id } = useParams();
+
+  const checkedBox = async(userid) => async(e) => {
+    try {
+      console.log(userid);
+      setIsChecked(e.target.checked);
+      if(isChecked){
+        const response = await fetch(`http://localhost:5000/participants/addpoint/${userid}`);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const listVolunteers = async() => {
+    try {
+      const data = await fetch(`http://localhost:5000/participants/get-volunteers/${id}`);
+      const dataJson = data.json();
+      
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+    listVolunteers();
+},[]);
+
   return (
     <div
       className="flex flex-col items-center gap-[64px] flex-1 bg-[#FFF]"
@@ -51,7 +82,7 @@ function List() {
                       'url("assets/Anak.png") lightgray 50% / cover no-repeat',
                   }}
                 ></div> */}
-                  <input type="checkbox" />
+                  <input type="checkbox" checked={isChecked} onChange={checkedBox}/>
                 </div>
               </div>
             </div>
@@ -85,7 +116,7 @@ function List() {
                       'url("assets/Anak.png") lightgray 50% / cover no-repeat',
                   }}
                 ></div> */}
-                  <input type="checkbox" />
+                  <input type="checkbox"/>
                 </div>
               </div>
             </div>

@@ -60,10 +60,12 @@ route.get('/get-allprograms', async(req, res) => {
 });
 
 //Read or get programs that made by logged in user
-route.get('/get-madeprograms', async(req, res) => {
+route.get('/get-madeprograms', authenticateToken, async(req, res) => {
     try {
-        const userid = req.session.userid;
-        console.log(req.session.userid);
+        const userid = req.user.id;
+        console.log("masuk1");
+        console.log(userid);
+        console.log("masuk2");
         const programs = await supabase.from('programs').select('title').eq('posted_by', userid);
         res.send(programs.data);
     } catch (error) {
@@ -179,5 +181,24 @@ route.get('/api/getImage/:productId', async(req, res) => {
         console.error(error.message);
     }
   });
+
+  function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) {
+        return res.send("Token tidak valid.")
+    }
+    else {
+        jwt.verify(token, secretKey, (error, user) => {
+            if (error){
+                return res.send("Token sudah expired.")
+            }
+            else{
+                req.user = user
+                next()
+            }
+        })
+    }
+};
 
 export default route;

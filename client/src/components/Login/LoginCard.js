@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginCard = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
 
     const loginButton = async (e) => {
         try {
@@ -13,7 +16,11 @@ const LoginCard = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
-            console.log(response);
+            const dataToken = await response.json();
+            localStorage.setItem("token", dataToken.token);
+            console.log(dataToken.token);
+            navigate('/dashboard');
+
         } catch (error) {
             console.error(error.message);
         }
@@ -70,5 +77,4 @@ const LoginCard = () => {
         </div>
     )
 }
-
-export default LoginCard
+export default LoginCard;

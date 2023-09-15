@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import Axios from 'axios';
 
 const ListofProgramHeld = () => {
     const [products, setProducts] = useState([]);
-    
-    Axios.defaults.withCredentials = true;
 
     //get product that made by the user
     const getMadeProducts = async() => {
         try {
-            // const data = await fetch("http://localhost:5000/programs/get-madeprograms", {method: 'GET', credentials: 'include'})
+            const data = await fetch("http://localhost:5000/programs/get-madeprograms", {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            const dataJson = await data.json()
+            setProducts(dataJson);
+            // console.log("masuk1");
+            // console.log(dataJson);
+            // console.log(products);
+            // console.log("masuk2");
+            // Axios.get("http://localhost:5000/programs/get-madeprograms")
             // .then((response) => response.json())
             // .then((responseData) => {
-            //   setProducts(responseData);
+            //     setProducts(responseData);
             // });
-            Axios.get("http://localhost:5000/programs/get-madeprograms")
-            .then((response) => response.json())
-            .then((responseData) => {
-                setProducts(responseData);
-            });
 
         } catch (error) {
             console.error(error.message);
@@ -60,7 +63,7 @@ const ListofProgramHeld = () => {
                                 </div>
                             </div>
                             <div class="self-stretch flex justify-end items-center gap-[20px]">
-                                <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
+                                <img src="assets/Trash.svg" alt="Your Image" onClick={()=> `attendance/${product.id}`} class="w-[18px] h-[20px]" />
                                 <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
                                 <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
                             </div>

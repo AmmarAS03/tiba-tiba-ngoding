@@ -30,10 +30,10 @@ function App() {
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
-          <Route path="/productdetails" element={<ProductDetailsPage />}></Route>
+          <Route path="/product/:id" element={<ProductDetailsPage />}></Route>
           <Route path="/leaderboard" element={<Leaderboard />}></Route>
           <Route path="/myactivity" element={<MyActivity />}></Route>
-          <Route path="/attendance" element={<Attendance />}></Route>
+          <Route path="/attendance/:id" element={<Attendance />}></Route>
           <Route path="/dashboard" element={<DashboardPage />}></Route>
         
         </Routes>
