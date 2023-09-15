@@ -1,6 +1,8 @@
 import express from "express";
 import supabase from "../supabase.js";
+import jwt from "jsonwebtoken";
 
+const secretKey = 'mysecretkey';
 const route = express.Router();
 
 //Create a participant (when user join a program)
@@ -29,6 +31,11 @@ route.get('/get-joinedprog', authenticateToken, async(req, res) => {
             .eq('id', program.progid);
             program['programs'] = participants.data;
         }
+        // console.log(programs.data);
+        // for(const prog of programs.data){
+        //     const posted_by = await supabase.from('users').select('nama').eq('id', prog.programs[0].posted_by);
+        //     prog["postedby_nama"] = posted_by.data;
+        // }
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);
@@ -52,7 +59,7 @@ route.get('/addpoint/:userid', async(req, res) => {
     try {
         const { userid } = req.params;
         const oldPoin = await supabase.from('users').select('total_point').eq('id', userid);
-        await supabase.from('users').update({total_point: oldPoin.data[0].total_point + 5}).eq('id', userid).select();
+        await supabase.from('users').update({total_point: oldPoin.data[0].total_point + 280}).eq('id', userid).select();
         res.send("point berhasil ditambahkan");
     } catch (error) {
         console.error(error.message);
@@ -64,6 +71,11 @@ route.get('/get-volunteers/:id', async(req, res) => {
     try {
         const { id } = req.params;
         const volunteers = await supabase.from('participants').select('userid').eq('progid', id);
+        for(const volunteer of volunteers.data){
+            const data = await supabase.from('users').select('*').eq('id', volunteer.userid);
+            volunteers['data'] = data.data;
+        }
+        res.send(volunteers.data);
     } catch (error) {
         console.error(error.message);
     }

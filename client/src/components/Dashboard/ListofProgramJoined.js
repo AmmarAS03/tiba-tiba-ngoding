@@ -5,28 +5,28 @@ const ListofProgramJoined = () => {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
 
-    //get products that user joined
-    const getProducts = async () => {
-        try {
-            const data = await fetch("http://localhost:5371/participants/get-joinedprog", {
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`
-                }
-            });
-            const dataJson = await data.json()
-            setProducts(dataJson);
-            // console.log("masuk3");
-            // console.log(products);
-            // console.log("masuk4");
-            // .then((response) => response.json())
-            // .then((responseData) => {
-            //   setProducts(responseData);
-            // });
-            // console.log(products);
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
+  //get products that user joined
+  const getProducts = async() => {
+    try {
+        const data = await fetch("http://localhost:5371/participants/get-joinedprog", {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        const dataJson = await data.json()
+        setProducts(dataJson);
+        // console.log("masuk3");
+        // console.log(products);
+        // console.log("masuk4");
+        // .then((response) => response.json())
+        // .then((responseData) => {
+        //   setProducts(responseData);
+        // });
+        // console.log(products);
+    } catch (error) {
+        console.error(error.message);
+    }
+  };
 
     useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
         getProducts();
@@ -43,6 +43,7 @@ const ListofProgramJoined = () => {
 
                         {products.map(product => (
                             <div key={product.id} class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+
                                 <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
                                     <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
                                         <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
@@ -57,6 +58,7 @@ const ListofProgramJoined = () => {
                                                 <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
                                                     {product.lokasi}
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -67,10 +69,12 @@ const ListofProgramJoined = () => {
                                             Diunggah oleh:
                                         </div>
                                     </div>
+
                                     <div class="flex flex-col justify-center items-center flex-[1_1_0]">
                                         <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
                                             {product.posted_by}
                                         </div>
+
                                     </div>
                                 </div>
 

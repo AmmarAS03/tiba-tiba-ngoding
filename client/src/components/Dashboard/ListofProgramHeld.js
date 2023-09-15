@@ -15,10 +15,6 @@ const ListofProgramHeld = () => {
             });
             const dataJson = await data.json()
             setProducts(dataJson);
-            // console.log("masuk1");
-            // console.log(dataJson);
-            // console.log(products);
-            // console.log("masuk2");
             // Axios.get("http://localhost:5000/programs/get-madeprograms")
             // .then((response) => response.json())
             // .then((responseData) => {
