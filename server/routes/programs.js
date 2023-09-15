@@ -1,7 +1,9 @@
 import express from "express";
 import supabase from "../supabase.js";
 import multer from "multer";
+import jwt from "jsonwebtoken";
 
+const secretKey = 'mysecretkey';
 const route = express.Router();
 const upload = multer();
 
@@ -63,10 +65,7 @@ route.get('/get-allprograms', async(req, res) => {
 route.get('/get-madeprograms', authenticateToken, async(req, res) => {
     try {
         const userid = req.user.id;
-        console.log("masuk1");
-        console.log(userid);
-        console.log("masuk2");
-        const programs = await supabase.from('programs').select('title').eq('posted_by', userid);
+        const programs = await supabase.from('programs').select('*').eq('posted_by', userid);
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);
@@ -118,8 +117,12 @@ route.delete('/del-program/:id', async(req, res) => {
 route.get('/get-details-program/:id', async(req, res) => {
     try {
         const { id } = req.params;
-        const details = await supabase.from('programs').select('*').eq('id', id);
-        res.send(details.data);
+        const programs = await supabase.from('programs').select('title, posted_by').eq('id', id);
+        for(const program of programs.data){
+            const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
+            program['postedby_nama'] = posted_by.data;
+        }
+        res.send(programs.data);
     } catch (error) {
         console.error(error.message);
     }

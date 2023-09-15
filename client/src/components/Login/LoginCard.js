@@ -15,7 +15,7 @@ const LoginCard = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
-            });
+            });;
             const dataToken = await response.json();
             localStorage.setItem("token", dataToken.token);
             console.log(dataToken.token);

@@ -11,6 +11,7 @@ const Details = () => {
   const [tanggal_program_mulai, setTanggal] = useState("");
   const [target_partisipan, setTarget] = useState("");
   const [linkwa, setLink] = useState("");
+  const [posted_by, setPosted] = useState("");
 
   //get details product
   const getDetails = async(e) => {
@@ -24,6 +25,7 @@ const Details = () => {
         setTanggal(dataJson[0].tanggal_program_mulai);
         setTarget(dataJson[0].target_partisipan);
         setLink(dataJson[0].linkwa);
+        setPosted(dataJson[0].postedby_nama[0].nama);
         console.log(dataJson);
         //console.log(products);
     } catch (error) {
@@ -94,7 +96,7 @@ const Details = () => {
                       <div class="flex flex-col justify-center items-center flex-[1px]">
                         <div class="self-stretch">
                           <p class="text-[var(--Primary, #545F71)] font-poppins text-[14px] font-normal leading-[160%]">
-                            Diunggah oleh: Sarah Smith
+                            Diunggah oleh: {posted_by}
                           </p>
                         </div>
                       </div>

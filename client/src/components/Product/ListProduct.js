@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { json } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Route, json } from "react-router-dom";
 import Product from "../Product";
 import Footer from "../UI/Commons/Footer";
 
@@ -12,7 +12,7 @@ const ListProduct = () => {
   //get all products
   const getProducts = async () => {
     try {
-      const data = await fetch("http://localhost:5000/programs/get-allprograms")
+      const data = await fetch("http://localhost:5371/programs/get-allprograms")
         .then((response) => response.json())
         .then((responseData) => {
           setProducts(responseData);
@@ -52,8 +52,8 @@ const ListProduct = () => {
     <div
       class="flex flex-col items-center gap-[30px] flex-[1px] bg-[#FFF]"
       style={{
-        paddingLeft: "250px",
-        paddingTop: "100px",
+      
+        paddingTop: "170px",
       }}
     >
       <h2 class="text-black text-right font-poppins text-[32px] font-bold leading-[140%]">
@@ -214,4 +214,6 @@ const ListProduct = () => {
   );
 };
 
+
 export default ListProduct;
+
