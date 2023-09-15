@@ -1,8 +1,40 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from 'react' 
 import { useNavigate } from "react-router-dom";
 
-function Profile() {
-    const navigate = useNavigate();
+const Profile = () => {
+    const [lokasi, setLokasi] = useState("");
+    const [nama, setNama] = useState("");
+    const [notelp, setNotelp] = useState("");
+    const [point, setPoint] = useState("");
+  const navigate = useNavigate();
+
+  //get profile
+  const getUser = async() => {
+    try {
+        const data = await fetch("http://localhost:5000/users", {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        const dataJson = await data.json()
+        setNama(dataJson.nama);
+        setLokasi(dataJson.lokasi);
+        setNotelp(dataJson.notelp);
+        setPoint(dataJson.total_point);
+        // .then((response) => response.json())
+        // .then((responseData) => {
+        //   setUser(responseData);
+        // });
+    } catch (error) {
+        console.error(error.message);
+    }
+  };
+
+  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+    getUser();
+},[]);
+
 
     return (
         <div class="w-[1190px] h-[269px] py-[30px] px-[110px] justify-between flex flex-col items-center flex-shrink-0">
@@ -14,16 +46,16 @@ function Profile() {
                     <div class="flex flex-col justify-center items-center gap-[6.5px]">
                         <div class="flex flex-col justify-center items-center gap-[7.5px]">
                             <div class="text-[#000] text-center font-roboto text-base font-normal leading-5 tracking-tighter">
-                                youremail@domain.com
+                                {nama}
                             </div>
                             <div class="text-[#000] text-center font-roboto text-base font-normal leading-[22.5px] tracking-[0.281px]">
-                                +628111103857
+                                {notelp}
                             </div>
                         </div>
                         <div class="flex justify-center items-center gap-[3px]">
                             <img src="assets/Location.svg" alt="Your Image" class="w-[20.25px] h-[20.25px]" />
                             <div class="text-gray-500 font-inter text-[9.75px] font-medium leading-[8.533px]">
-                                DKI Jakarta
+                                {lokasi}
                             </div>
                         </div>
                     </div>
@@ -34,7 +66,7 @@ function Profile() {
                         <img src="assets/Points.svg" alt="Your Image" class="w-[39.995px] h-[39.951px]" />
                         <div class="flex flex-col items-start">
                             <div class="text-black font-poppins text-xl font-semibold leading-[37.8px]">
-                                55
+                                {point}
                             </div>
                             <div class="text-gray-500 font-inter font-semibold text-sm font-variant-normal leading-normal tracking-[0.029px]">
                                 Points

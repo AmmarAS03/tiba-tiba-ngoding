@@ -1,8 +1,10 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import supabase from "../supabase.js";
+import jwt from "jsonwebtoken";
 
 const route = express.Router();
+const secretKey = 'mysecretkey';
 
 //create user (register)
 route.post('/register', async(req, res) => {
@@ -43,11 +45,15 @@ route.post('/login', async(req, res) => {
             res.send("Cannot find user.")
         }
         else {
-            const valid = await bcrypt.compare(req.body.password, foundName.data[0].password)
+            const valid = await bcrypt.compare(req.body.password, foundName.data[0].password);
             if(valid == true) {
                 //save user account to session
-                req.session.userid = foundName.data[0].id; 
-                res.send("Login successful.")
+                const token = jwt.sign(foundName.data[0], secretKey);
+                res.json({ token: token});
+                // req.session.userid = foundName.data[0].id; 
+                // console.log(req.session.id);
+                //console.log(token);
+                // res.send(foundName.data[0].id);
             }
             else{
                 res.send("Password incorrect.")
@@ -65,9 +71,13 @@ route.get('/logout', (req, res) => {
 });
 
 //get user's infos
-route.get('/', async(req, res) => {
+route.get('/', authenticateToken, async(req, res) => {
     try {
-        const userid = req.session.userid;
+        //console.log("masuk1");
+        const userid = req.user.id;
+        // console.log(req.session.id);
+        // console.log(userid);
+        // console.log("masuk2");
         const infos = await supabase
         .from('users')
         .select('*')
@@ -87,5 +97,24 @@ route.get('/', async(req, res) => {
         console.error(error.message);
     }
 });
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) {
+        return res.send("Token tidak valid.")
+    }
+    else {
+        jwt.verify(token, secretKey, (error, user) => {
+            if (error){
+                return res.send("Token sudah expired.")
+            }
+            else{
+                req.user = user
+                next()
+            }
+        })
+    }
+};
 
 export default route;

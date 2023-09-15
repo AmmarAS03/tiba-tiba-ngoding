@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductCards from "./ProductCards";
+import { useParams } from "react-router-dom";
 
-function Details() {
+const Details = () => {
+  const { id } = useParams();
+  const [title, setTitle] = useState("");
+  const [deskripsi, setDeskripsi] = useState("");
+  const [lokasi, setLokasi] = useState("");
+  const [waktu, setWaktu] = useState("");
+  const [tanggal_program_mulai, setTanggal] = useState("");
+  const [target_partisipan, setTarget] = useState("");
+  const [linkwa, setLink] = useState("");
+
+  //get details product
+  const getDetails = async(e) => {
+    try {
+        const data = await fetch(`http://localhost:5000/programs/get-details-program/${id}`);
+        const dataJson = await data.json();
+        setTitle(dataJson[0].title);
+        setDeskripsi(dataJson[0].deskripsi);
+        setLokasi(dataJson[0].lokasi);
+        setWaktu(dataJson[0].waktu);
+        setTanggal(dataJson[0].tanggal_program_mulai);
+        setTarget(dataJson[0].target_partisipan);
+        setLink(dataJson[0].linkwa);
+        console.log(dataJson);
+        //console.log(products);
+    } catch (error) {
+        console.error(error.message);
+    }
+  };
+
+  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+    getDetails();
+},[]); //[], Anda memberitahu React bahwa efek ini hanya perlu dijalankan sekali saat komponen "ListProduct" pertama kali di-render.
+
   return (
     <div
       className="flex flex-col items-center gap-[64px] flex-1 bg-[#FFF]"
@@ -14,7 +47,7 @@ function Details() {
     >
       <div class="flex flex-col items-center gap-[17px]">
         <h2 class="text-right text-[#71825E] font-poppins text-[40px] font-bold leading-[140%]">
-          Membersihkan Danau Kenanga
+          {title}
         </h2>
         <div class="flex flex-col items-center gap-[20px]">
           <div class="flex flex-col w-[835px] p-[30px] [10px] items-center gap-[0px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
@@ -32,17 +65,17 @@ function Details() {
                     <div class="flex flex-col w-[409px] h-[89px] justify-center items-center gap-[5px]">
                       <div class="self-stretch">
                         <p class="text-black font-poppins text-[24px] font-bold leading-[140%]">
-                          Depok, Jawa Barat
+                          {lokasi}
                         </p>
                       </div>
                       <div class="self-stretch">
                         <p class="text-[#305C7D] font-poppins text-20 font-bold leading-[140%]">
-                          20 September 2023, 17:00
+                          {tanggal_program_mulai}, {waktu}   WIB
                         </p>
                       </div>
                       <div class="self-stretch">
                         <p class="text-[var(--Primary, #545F71)] font-poppins text-[12px] font-bold leading-[140%]">
-                          Target: 15 relawan
+                          Target: {target_partisipan} relawan
                         </p>
                       </div>
                     </div>
@@ -52,19 +85,7 @@ function Details() {
                     <div class="flex flex-col w-[409px] h-[38px] justify-center items-center">
                       <div class="h-[235px] flex-shrink-[0px] self-stretch">
                         <p class="text-[var(--Primary, #545F71)] font-poppins text-[11px] font-normal leading-[160%]">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna At vero eos et accusamus et iusto odio
-                          dignissimos ducimus qui blanditiis praesentium
-                          voluptatum deleniti atque corrupti quos dolores et
-                          quas molestias excepturi sint occaecati cupiditate non
-                          provident, similique sunt in culpa qui officia
-                          deserunt mollitia animi, id est laborum et dolorum
-                          fuga. Et harum quidem rerum facilis est et expedita
-                          distinctio. Nam libero tempore, cum soluta nobis est
-                          eligendi optio cumque nihil impedit quo minus id quod
-                          maxime placeat facere possimus, omnis voluptas
-                          assumenda est, omnis dolor repellendus.
+                        {deskripsi}
                         </p>
                       </div>
                     </div>

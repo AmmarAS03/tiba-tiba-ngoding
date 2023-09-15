@@ -52,6 +52,7 @@ route.get('/get-allprograms', async(req, res) => {
             const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
             program["posted_by"] = posted_by.data;
         }
+        //console.log(req.session.userid);
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);
@@ -59,10 +60,13 @@ route.get('/get-allprograms', async(req, res) => {
 });
 
 //Read or get programs that made by logged in user
-route.get('/get-programs', async(req, res) => {
+route.get('/get-madeprograms', authenticateToken, async(req, res) => {
     try {
-        const userid = req.session.userid;
-        const programs = await supabase.from('programs').select('*').eq('posted_by', userid);
+        const userid = req.user.id;
+        console.log("masuk1");
+        console.log(userid);
+        console.log("masuk2");
+        const programs = await supabase.from('programs').select('title').eq('posted_by', userid);
         res.send(programs.data);
     } catch (error) {
         console.error(error.message);
@@ -105,6 +109,17 @@ route.delete('/del-program/:id', async(req, res) => {
         const { id } = req.params;
         await supabase.from('programs').delete().eq('id', id);
         res.send("The program has been deleted.");
+    } catch (error) {
+        console.error(error.message);
+    }
+});
+
+//GET details of a program
+route.get('/get-details-program/:id', async(req, res) => {
+    try {
+        const { id } = req.params;
+        const details = await supabase.from('programs').select('*').eq('id', id);
+        res.send(details.data);
     } catch (error) {
         console.error(error.message);
     }
@@ -166,5 +181,24 @@ route.get('/api/getImage/:productId', async(req, res) => {
         console.error(error.message);
     }
   });
+
+  function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) {
+        return res.send("Token tidak valid.")
+    }
+    else {
+        jwt.verify(token, secretKey, (error, user) => {
+            if (error){
+                return res.send("Token sudah expired.")
+            }
+            else{
+                req.user = user
+                next()
+            }
+        })
+    }
+};
 
 export default route;
