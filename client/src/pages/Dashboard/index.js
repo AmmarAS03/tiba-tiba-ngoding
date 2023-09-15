@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../../components/UI/Commons/Navbar'
+import UpperNav from '../../components/UI/Commons/UpperNav'
 import Dashboard from '../../components/Dashboard'
 
 function DashboardPage() {
   return (
     <div>
-        <Navbar />
+        <UpperNav />
         <Dashboard />
     </div>
   )
