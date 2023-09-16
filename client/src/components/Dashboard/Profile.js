@@ -29,6 +29,8 @@ const Profile = () => {
             // .then((responseData) => {
             //   setUser(responseData);
             // });
+            console.log("masuk3");
+            console.log(dataJson);
         } catch (error) {
             console.error(error.message);
         }

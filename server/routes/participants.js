@@ -27,7 +27,7 @@ route.get('/get-joinedprog', authenticateToken, async(req, res) => {
         for(const program of programs.data){
             const participants = await supabase
             .from('programs')
-            .select('posted_by, title, deskripsi, lokasi, tanggal_program_mulai, target_partisipan, linkWA, waktu')
+            .select('posted_by, title, deskripsi, lokasi, tanggal_program_mulai, target_partisipan, linkWA')
             .eq('id', program.progid);
             program['programs'] = participants.data;
         }

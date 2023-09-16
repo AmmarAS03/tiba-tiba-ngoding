@@ -22,8 +22,9 @@ const ListofProgramJoined = () => {
             // .then((responseData) => {
             //   setProducts(responseData);
             // });
+            console.log("masuk2");
             console.log(dataJson);
-            console.log(products);
+            //console.log(products);
         } catch (error) {
             console.error(error.message);
         }
