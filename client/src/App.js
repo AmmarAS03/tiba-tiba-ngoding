@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import AboutUsPage from './pages/AboutUs';
 import LandingPage from './pages/Landing';
@@ -17,6 +17,7 @@ import DashboardPage from './pages/Dashboard';
 import EditProgramPage from './components/EditProgram';
 import EnrolledProgramPage from './pages/EnrolledProgram';
 import AboutUsNotLoginPage from './pages/AboutUsNotLogin';
+import ProductByID from './components/ProductByID';
 
 
 
@@ -26,11 +27,12 @@ function App() {
     <>
       <BrowserRouter>
         <Toaster />
+        <Link path="/tesnavbar" element={<Navbar />}></Link>
         <Routes>
           <Route index element={<LandingPage />}></Route>
           <Route path="/aboutus" element={<AboutUsPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/tesnavbar" element={<Navbar />}></Route>
+         
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/createprogram" element={<CreateProgramPage />}></Route>
@@ -43,6 +45,7 @@ function App() {
           <Route path="/editprogram/:id" element={<EditProgramPage />}></Route>
           <Route path="/enrolledprogram" element={<EnrolledProgramPage />}></Route>
           <Route path="/about" element={<AboutUsNotLoginPage />}></Route>
+
         
         </Routes>
       </BrowserRouter>
