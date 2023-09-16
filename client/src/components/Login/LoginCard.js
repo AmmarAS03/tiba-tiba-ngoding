@@ -6,7 +6,7 @@ const LoginCard = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    const [loginFailed, setLoginFailed] = useState(false);
 
     const loginButton = async (e) => {
         try {
@@ -16,13 +16,24 @@ const LoginCard = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });;
-            const dataToken = await response.json();
-            localStorage.setItem("token", dataToken.token);
-            console.log(dataToken.token);
-            navigate('/dashboard');
+
+            if (response.status == 200) {
+                const dataToken = await response.json();
+                localStorage.setItem("token", dataToken.token);
+                console.log(response);
+                console.log(dataToken)
+
+                navigate('/dashboard');
+
+
+            } else {
+                setLoginFailed(true);
+            }
 
         } catch (error) {
+            setLoginFailed(true);
             console.error(error.message);
+            // Handle other errors here
         }
     }
 
@@ -74,11 +85,19 @@ const LoginCard = () => {
                         />
                     </div> */}
                 </div>
-                <button onClick={loginButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D] `custom-button ${isClicked ? 'clicked' : ''}`">
+                <button
+                    onClick={loginButton}
+                    class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D] custom-button relative transform transition-transform hover:scale-105 active:scale-95"
+                >
                     <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                         LOGIN
                     </div>
                 </button>
+                {loginFailed && (
+                    <div class="justify-center items-center text-[#B30000] font-dm-sans text-sm mt-2">
+                        Login failed. Please check your email and password.
+                    </div>
+                )}
                 <div class="flex flex-row w-[168px] h-[25px] items-center text-center justify-center font-poppins text-[12px] font-normal leading-[160%] gap-[1px]">
                     <div className="text-[#FFFFFF]">
                         New to Gatherly?

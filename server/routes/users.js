@@ -38,17 +38,21 @@ route.post('/register', async(req, res) => {
 route.post('/login', async(req, res) => {
     try {
         const email = req.body.email;
+        
         const foundName = await supabase.from('users').select('*').eq('email', email);
 
         if(foundName.data[0] == null) {
             res.send("Cannot find user.")
+            return res.status(401).json({ error: "User not found." });
         }
         else {
-            const valid = await bcrypt.compare(req.body.password, foundName.data[0].password);
+            if (email !== '' || req.body.password !== ''){
+                const valid = await bcrypt.compare(req.body.password, foundName.data[0].password);
             if(valid == true) {
                 //save user account to session
                 const token = jwt.sign(foundName.data[0], secretKey);
                 res.json({ token: token});
+                return res.status(200).json({ token: token });
                 // req.session.userid = foundName.data[0].id; 
                 // console.log(req.session.id);
                 //console.log(token);
@@ -56,10 +60,15 @@ route.post('/login', async(req, res) => {
             }
             else{
                 res.send("Password incorrect.")
+                // return res.status(401).json({ error: "Password incorrect." });
             }
+
+            }
+            
         }
     } catch (error) {
         console.error(error.message);
+        // return res.status(500).json({ error: "Internal server error." });
     }
 });
 

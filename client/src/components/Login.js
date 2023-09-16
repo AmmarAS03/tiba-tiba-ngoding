@@ -11,8 +11,6 @@ function Login() {
                     <div class="mt-[16px]">
                     <LoginCard /> 
                     </div>
-
-
                 </div>
             </div>
         </div>

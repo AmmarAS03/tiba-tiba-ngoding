@@ -8,7 +8,7 @@ import CreateProgramPage from './pages/CreateProgram';
 import Navbar from './components/UI/Commons/Navbar';
 import RegisterPage from './pages/Register';
 import ProductPage from './pages/Product';
-import ProductDetailsPage from './pages/ProductDetailsPage';
+import ProductDetailsPage from './pages/ProductDetailsPage'
 import Leaderboard from './components/Leaderboard';
 import MyActivity from './components/MyActivity';
 import Attendance from './components/Attendance';

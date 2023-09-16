@@ -6,8 +6,8 @@ import UpperNav from "./UI/Commons/UpperNav";
 function ProductDetails() {
   return (
     <div class="flex w-screen h-screen justify-between items-start bg-white">
-      <UpperNav/>
-      <Details/>
+      <UpperNav />
+      <Details />
     </div>
   );
 }
