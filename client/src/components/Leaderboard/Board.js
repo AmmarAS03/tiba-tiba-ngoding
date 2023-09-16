@@ -19,7 +19,7 @@ const Board = () => {
 
   const getLeaderboard = async() => {
     try {
-      const data = await fetch("http://localhost:5371/users/leaderboard");
+      const data = await fetch("https://tiba-tiba-ngoding.vercel.app/users/leaderboard");
       const dataJson = await data.json()
   
       setFirstPlace(dataJson[0]);

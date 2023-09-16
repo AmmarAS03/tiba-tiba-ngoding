@@ -8,7 +8,7 @@ const ListofProgramHeld = () => {
     //get product that made by the user
     const getMadeProducts = async () => {
         try {
-            const data = await fetch("http://localhost:5371/programs/get-madeprograms", {
+            const data = await fetch("https://tiba-tiba-ngoding.vercel.app/programs/get-madeprograms", {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }
@@ -29,7 +29,7 @@ const ListofProgramHeld = () => {
     };
 
     const delProgram = async(id) => {
-        await fetch(`http://localhost:5371/programs/del-program/${id}`,{
+        await fetch(`https://tiba-tiba-ngoding.vercel.app/programs/del-program/${id}`,{
             method: "DELETE"
         });
         navigate('/dashboard');

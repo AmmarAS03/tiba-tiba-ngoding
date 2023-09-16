@@ -18,7 +18,7 @@ const EditProgramCard = () => {
     const submitButton = async (e) => {
         try {
             const body = { title, deskripsi, lokasi, tgl, target, linkGroup }
-            const response = await fetch(`http://localhost:5371/programs/edit-prog/${id}`, {
+            const response = await fetch(`https://tiba-tiba-ngoding.vercel.app/programs/edit-prog/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
@@ -31,7 +31,7 @@ const EditProgramCard = () => {
 
     const getProduct = async(e) => {
         try {
-            const detail = await fetch(`http://localhost:5371/programs/get-details-program/${id}`);
+            const detail = await fetch(`https://tiba-tiba-ngoding.vercel.app/programs/get-details-program/${id}`);
             const detailJson = await detail.json();
             setTitle(detailJson[0].title);
             setDeskripsi(detailJson[0].deskripsi);

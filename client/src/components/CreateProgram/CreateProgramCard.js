@@ -17,7 +17,7 @@ const CreateProgramCard = () => {
     const submitButton = async () => {
         try {
             const body = { title, deskripsi, lokasi, tgl, target, linkGroup }
-            const response = await fetch("http://localhost:5371/programs/add-program", {
+            const response = await fetch("https://tiba-tiba-ngoding.vercel.app/programs/add-program", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`,
