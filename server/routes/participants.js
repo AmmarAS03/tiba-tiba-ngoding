@@ -6,10 +6,10 @@ const secretKey = 'mysecretkey';
 const route = express.Router();
 
 //Create a participant (when user join a program)
-route.post('/join-program/:progid', async(req, res) => {
+route.post('/join-program/:progid', authenticateToken, async(req, res) => {
     try {
         const { progid } = req.params;
-        const userid = req.session.userid;
+        const userid = req.user.id;
         await supabase.from('participants').insert([{ userid: userid,
             progid: progid,
             status: false }]).select();

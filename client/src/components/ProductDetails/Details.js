@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import ProductCards from "./ProductCards";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Details = () => {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
   const [lokasi, setLokasi] = useState("");
-  const [waktu, setWaktu] = useState("");
+  //const [waktu, setWaktu] = useState("");
   const [tanggal_program_mulai, setTanggal] = useState("");
   const [target_partisipan, setTarget] = useState("");
   const [linkwa, setLink] = useState("");
   const [posted_by, setPosted] = useState("");
+
+  const navigate = useNavigate();
 
   //get details product
   const getDetails = async(e) => {
@@ -21,7 +23,7 @@ const Details = () => {
         setTitle(dataJson[0].title);
         setDeskripsi(dataJson[0].deskripsi);
         setLokasi(dataJson[0].lokasi);
-        setWaktu(dataJson[0].waktu);
+        //setWaktu(dataJson[0].waktu);
         setTanggal(dataJson[0].tanggal_program_mulai);
         setTarget(dataJson[0].target_partisipan);
         setLink(dataJson[0].linkwa);
@@ -32,6 +34,20 @@ const Details = () => {
         console.error(error.message);
     }
   };
+
+  const joinProgram = async() => {
+    try {
+      await fetch(`http://localhost:5371/participants/join-program/${id}`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      navigate('/dashboard');
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 
   useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
     getDetails();
@@ -72,7 +88,7 @@ const Details = () => {
                       </div>
                       <div class="self-stretch">
                         <p class="text-[#305C7D] font-poppins text-20 font-bold leading-[140%]">
-                          {tanggal_program_mulai}, {waktu}   WIB
+                          {tanggal_program_mulai}
                         </p>
                       </div>
                       <div class="self-stretch">
@@ -107,7 +123,7 @@ const Details = () => {
             </div>
 
             <div class="flex w-[786px] items-center gap-[20px] pl-[10px]">
-              <button class="flex w-[130px] h-[40px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+              <button onClick={joinProgram} class="flex w-[130px] h-[40px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
                 <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                   Ikut Kegiatan
                 </div>

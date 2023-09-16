@@ -26,10 +26,8 @@ const CreateProgramCard = () => {
                 body: JSON.stringify(body)
             });
             if (response.status == 200) {
-                console.log("Abby")
-                console.log(response);
+                navigate('/dashboard');
             } else {
-                console.log(response);
                 setCreateFailed(true);
             }
         } catch (error) {
