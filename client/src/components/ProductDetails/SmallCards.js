@@ -8,11 +8,11 @@ function SmallCards() {
 
   const getProducts = async () => {
     try {
-      const data = await fetch("http://localhost:5371/programs/get-allprograms")
-        .then((response) => response.json())
-        .then((responseData) => {
-          setProducts(responseData);
-        });
+      const data = await fetch("http://localhost:5371/programs/get-allprograms");
+      const dataJson = await data.json();
+      setProducts(dataJson);
+      console.log(dataJson[0]);
+      // console.log(products);
     } catch (error) {
       console.error(error.message);
     }
@@ -27,6 +27,7 @@ function SmallCards() {
   return (
 
       <div class="flex justify-center items-start gap-[20px]">
+        {products.slice(0,3).map(product => (
         <div class="flex flex-col items-center justify-center w-[247px] h-[322px] p-[30px] border-[0.3px] border-solid border-black rounded-[10px] bg-[#FFF] shadow-[0px 4px 4px 0px rgba(0, 0, 0, 0.25)] gap-[37px]">
           <div class="flex flex-col justify-center items-start gap-[11px] self-stretch">
             <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
@@ -41,19 +42,19 @@ function SmallCards() {
                 <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
                   <div class="flex flex-col self-stretch">
                     <p class="text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
-                      Membersihkan Danau Kenanga
+                      {product.title}
                     </p>
                   </div>
 
                   <div class="flex flex-col justify-center items-center self-stretch">
                     <div class="self-stretch">
                       <p class="text-[#545F71] font-poppins text-[12px] font-semibold leading-[140%]">
-                        20 September 2023
+                      {product.tanggal_program_mulai}
                       </p>
                     </div>
                     <div class="self-stretch">
                       <p class="text-[#10436A] font-poppins text-[12px] font-semibold leading-[140%]">
-                        Depok, Jawa Barat
+                      {product.lokasi}
                       </p>
                     </div>
                   </div>
@@ -73,7 +74,7 @@ function SmallCards() {
                 <div class="flex flex-col justify-center items-center flex-[1px]">
                   <div class="flex self-stretch items-center gap-[1px]">
                     <p class="text-right text-[#545F71] font-Poppins text-xs font-normal leading-[19.2px]">
-                      Sarah Smith
+                    {product.posted_by[0].nama}
                     </p>
                   </div>
                 </div>
@@ -81,8 +82,8 @@ function SmallCards() {
             </div>
           </div>
         </div>
+         ))}
       </div>
-
   );
 }
 

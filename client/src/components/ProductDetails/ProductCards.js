@@ -15,14 +15,6 @@ function ProductCards() {
 
         <div class="flex justify-center items-start gap-[23px]">
           <SmallCards />
-          <SmallCards />
-          <SmallCards />
-        </div>
-
-        <div class="flex justify-center items-start gap-[23px]">
-          <SmallCards />
-          <SmallCards />
-          <SmallCards />
         </div>
 
         <div class="flex justify-center items-center gap-x-[312px]">
