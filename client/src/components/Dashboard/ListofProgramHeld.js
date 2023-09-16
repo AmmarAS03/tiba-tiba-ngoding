@@ -71,7 +71,7 @@ const ListofProgramHeld = () => {
                                     </div>
                                     <div class="self-stretch flex justify-end items-center gap-[20px]">
 
-                                        <Link to={`/del-program/${product.id}`} key={product.id}>
+                                        <Link to={`/attendance/${product.id}`} key={product.id}>
                                             <img src="assets/SeeList.svg" alt="Your Image" class="w-[18px] h-[20px]" />
                                         </Link>
                                         <Link to={`/editprogram/${product.id}`} key={product.id}>

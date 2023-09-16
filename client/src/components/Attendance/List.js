@@ -2,27 +2,53 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function List() {
-  const [isChecked, setIsChecked] = useState(false);
+  const [submitClicked, setSubmitClicked] = useState(false);
   const [volunteers, setVolunteers] = useState([]);
+  const [checkedVolunteers, setCheckedVolunteers] = useState([]);
   const { id } = useParams();
 
-  const checkedBox = async(userid) => async(e) => {
+  const checkedBox = async () => {
     try {
-      console.log(userid);
-      setIsChecked(e.target.checked);
-      if(isChecked){
-        const response = await fetch(`http://localhost:5371/participants/addpoint/${userid}`);
-      }
+      // Kirim permintaan ke server dengan daftar checkedVolunteers
+      const response = await fetch(
+        "http://localhost:5371/participants/addpoints",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ checkedVolunteers }),
+        }
+      );
+  
+      setSubmitClicked(true);
     } catch (error) {
       console.error(error.message);
     }
   };
+  
+
+  const handleCheckboxChange = (e, userid) => {
+    if (!submitClicked) {
+      const isChecked = e.target.checked;
+    
+      if (isChecked) {
+        // Tambahkan userid ke daftar yang dicentang
+        setCheckedVolunteers([...checkedVolunteers, userid]);
+      } else {
+        // Hapus userid dari daftar yang dicentang
+        setCheckedVolunteers(checkedVolunteers.filter((id) => id !== userid));
+      }
+    }
+  };
+  
 
   const listVolunteers = async() => {
     try {
       const data = await fetch(`http://localhost:5371/participants/get-volunteers/${id}`);
       const dataJson = await data.json();
       setVolunteers(dataJson);
+      console.log(dataJson);
     } catch (error) {
       console.error(error.message);
     }
@@ -61,18 +87,12 @@ function List() {
                 <div class="flex justify-center items-center self-stretch">
                   <div class="flex-[1px]">
                     <p class="text-black font-Poppins text-[20px] font-bold leading-[140%]">
-                      {volunteer.data.nama}
+                      {volunteer.data[0].nama}
                     </p>
                   </div>
                   <div class="flex-[1px]">
                     <p class="text-[#545F71] font-Poppins text-[16px] font-semibold leading-[140%]">
-                    {volunteer.data.lokasi}
-                    </p>
-                  </div>
-
-                  <div class="flex-[1px]">
-                    <p class="text-[#545F71] font-Poppins text-[16px] font-semibold leading-[140%]">
-                    {volunteer.data.tanggal_program_mulai}
+                    {volunteer.data[0].lokasi}
                     </p>
                   </div>
 
@@ -83,7 +103,7 @@ function List() {
                       'url("assets/Anak.png") lightgray 50% / cover no-repeat',
                   }}
                 ></div> */}
-                  <input type="checkbox" value={isChecked} onChange={e => setIsChecked(true)}/>
+                  <input type="checkbox" value={checkedVolunteers.includes(volunteer.userid)} onChange={(e) => handleCheckboxChange(e, volunteer.userid)} />
                 </div>
               </div>
             </div>
@@ -91,7 +111,7 @@ function List() {
           ))};
         </div>
 
-        <button onClick={checkedBox} class="flex w-[90.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+        <button onClick={checkedBox} disabled={checkedVolunteers.length === 0 || submitClicked} class="flex w-[90.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
           <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
             Submit
           </div>
