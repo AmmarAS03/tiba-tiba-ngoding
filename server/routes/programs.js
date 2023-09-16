@@ -8,9 +8,10 @@ const route = express.Router();
 const upload = multer();
 
 //create a program
-route.post('/add-program', authenticateToken, upload.single('foto'), async(req, res) => {
+route.post('/add-program', authenticateToken, async(req, res) => {
     try {
         const title = req.body.title;
+        console.log(title);
         const foundName = await supabase
         .from('programs')
         .select('title')
@@ -23,10 +24,10 @@ route.post('/add-program', authenticateToken, upload.single('foto'), async(req, 
             const lokasi = req.body.lokasi;
             const tgl = req.body.tgl;
             const target = req.body.target;
-            const waktu = req.body.waktu;
-            const linkwa = req.body.linkwa;
+            //const waktu = req.body.waktu;
+            const linkwa = req.body.linkGroup;
             const imageBuffer = req.file ? req.file.buffer : null;
-            const imageBase64 = imageBuffer ? imageBuffer.toString("base64") : null;
+            //const imageBase64 = imageBuffer ? imageBuffer.toString("base64") : null;
 
             await supabase.from('programs').insert([{ posted_by: req.user.id,
                 title: title,
@@ -34,14 +35,14 @@ route.post('/add-program', authenticateToken, upload.single('foto'), async(req, 
                 lokasi: lokasi,
                 tanggal_program_mulai: tgl,
                 target_partisipan: target,
-                waktu: waktu,
+                //waktu: waktu,
                 linkWA: linkwa,
-                foto: imageBase64
+                //foto: imageBase64
              }]).select();
             //  console.log(target);
             //console.log(imageBuffer);
             res.send(`Program ${title} has been added.`);
-            console.log(foto)
+            ///console.log(foto)
         }
     } catch (error) {
         console.error(error.message);
@@ -119,7 +120,7 @@ route.delete('/del-program/:id', async(req, res) => {
 route.get('/get-details-program/:id', async(req, res) => {
     try {
         const { id } = req.params;
-        const programs = await supabase.from('programs').select('title, posted_by').eq('id', id);
+        const programs = await supabase.from('programs').select('*').eq('id', id);
         for(const program of programs.data){
             const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
             program['postedby_nama'] = posted_by.data;
@@ -202,8 +203,8 @@ route.get('/api/getImage/:productId', async(req, res) => {
                 req.user = user
                 next()
             }
-        })
-    }
+        });
+    };
 };
 
 export default route;

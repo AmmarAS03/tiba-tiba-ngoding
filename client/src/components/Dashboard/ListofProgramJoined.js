@@ -22,7 +22,8 @@ const ListofProgramJoined = () => {
             // .then((responseData) => {
             //   setProducts(responseData);
             // });
-            // console.log(products);
+            console.log(products);
+            console.log(dataJson);
         } catch (error) {
             console.error(error.message);
         }
