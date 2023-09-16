@@ -74,12 +74,12 @@ const CreateProgramCard = () => {
                                     id="region"
                                     value={lokasi}
                                     onChange={e => setLokasi(e.target.value)}
-                                    placeholder="qissa@ristek.cs.ui.ac.id"
+                                    placeholder="DKI Jakarta"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
                             <div class="flex flex-col items-start gap-[3.75px]">
-                                <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Tanggal</span>
+                                <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Tanggal dd/mm/yyyy</span>
                                 <input
                                     type="text"
                                     id="date"
