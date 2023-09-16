@@ -1,39 +1,64 @@
 
-import React, { useState, useEffect } from 'react' 
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const [lokasi, setLokasi] = useState("");
     const [nama, setNama] = useState("");
+    const [id, setId] = useState("");
     const [notelp, setNotelp] = useState("");
     const [point, setPoint] = useState("");
+    const [userPosition, setUserPosition] = useState(''); // To store the user's position
     const navigate = useNavigate();
 
-  //get profile
-  const getUser = async() => {
-    try {
-        const data = await fetch("http://localhost:5371/users", {
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
-            }
-        });
-        const dataJson = await data.json()
-        setNama(dataJson.nama);
-        setLokasi(dataJson.lokasi);
-        setNotelp(dataJson.notelp);
-        setPoint(dataJson.total_point);
-        // .then((response) => response.json())
-        // .then((responseData) => {
-        //   setUser(responseData);
-        // });
-    } catch (error) {
-        console.error(error.message);
-    }
-  };
+    const getUser = async () => {
+        try {
+            const data = await fetch("http://localhost:5371/users", {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            const dataJson = await data.json()
+            setNama(dataJson.nama);
+            setLokasi(dataJson.lokasi);
+            setId(dataJson.id);
+            setNotelp(dataJson.notelp);
+            setPoint(dataJson.total_point);
+            getUserPositionInLeaderboard(dataJson);
+            // .then((response) => response.json())
+            // .then((responseData) => {
+            //   setUser(responseData);
+            // });
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
 
-  useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
-    getUser();
-},[]);
+    const getUserPositionInLeaderboard = async (curr) => {
+        try {
+            const response = await fetch('http://localhost:5371/users/leaderboard');
+            if (!response.ok) {
+                throw new Error('Failed to fetch leaderboard data');
+            }
+            const leaderboardData = await response.json();
+
+            // Find the user's position in the leaderboard using the user's name (nama)
+            const userIndex = leaderboardData.findIndex(
+                (user) => user.nama === curr.nama || user.total_point === curr.total_point
+            );
+
+            if (userIndex !== -1) {
+                setUserPosition(userIndex + 1); // Adding 1 to convert from index (0-based) to position (1-based)
+            }
+        } catch (error) {
+            console.error('Error fetching user position:', error.message);
+        }
+    };
+
+
+    useEffect(() => {      //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+        getUser();
+    }, []);
 
 
     return (
@@ -45,16 +70,16 @@ const Profile = () => {
                     </div>
                     <div class="flex flex-col justify-center items-center gap-[6.5px]">
                         <div class="flex flex-col justify-center items-center gap-[7.5px]">
-                            <div class="text-[#000] text-center font-roboto text-base font-normal leading-5 tracking-tighter">
+                            <div class="text-[#000] text-left w-full font-roboto text-base font-normal leading-5 tracking-tighter">
                                 {nama}
                             </div>
-                            <div class="text-[#000] text-center font-roboto text-base font-normal leading-[22.5px] tracking-[0.281px]">
+                            <div class="text-[#000] text-left w-full font-roboto text-base font-normal leading-[22.5px] tracking-[0.281px]">
                                 {notelp}
                             </div>
                         </div>
-                        <div class="flex justify-center items-center gap-[3px]">
+                        <div class="flex w-full justify-start items-center">
                             <img src="assets/Location.svg" alt="Your Image" class="w-[20.25px] h-[20.25px]" />
-                            <div class="text-gray-500 font-inter text-[9.75px] font-medium leading-[8.533px]">
+                            <div class="text-gray-500 font-inter text-[15px] font-medium leading-[8.533px]">
                                 {lokasi}
                             </div>
                         </div>
@@ -77,7 +102,7 @@ const Profile = () => {
                         <img src="assets/Points.svg" alt="Your Image" class="w-[39.995px] h-[39.951px]" />
                         <div class="flex flex-col items-start">
                             <div class="text-black font-poppins text-xl font-semibold leading-[37.8px]">
-                                #2
+                                #{userPosition}
                             </div>
                             <div class="text-gray-500 font-inter font-semibold text-sm font-variant-normal leading-normal tracking-[0.029px]">
                                 Leaderboard

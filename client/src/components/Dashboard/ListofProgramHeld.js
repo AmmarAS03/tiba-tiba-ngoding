@@ -81,7 +81,7 @@ const ListofProgramHeld = () => {
                                     </div>
                                 </div>
                             </Link>
-                        ))};
+                        ))}
                     </div>
                 </div>
 

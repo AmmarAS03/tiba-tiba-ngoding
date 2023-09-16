@@ -7,7 +7,6 @@ import {
   json,
   Link,
 } from "react-router-dom";
-import Product from "../Product";
 import Footer from "../UI/Commons/Footer";
 
 const ListEnrolledProgram = () => {
@@ -18,15 +17,24 @@ const ListEnrolledProgram = () => {
   const inputRef = useRef(null);
   const [selectedLocation, setSelectedLocation] = useState("");
 
-  //get all products
+  //get products that user joined
   const getProducts = async () => {
     try {
-      const data = await fetch("http://localhost:5371/programs/get-allprograms")
-        .then((response) => response.json())
-        .then((responseData) => {
-          setProducts(responseData);
-          console.log(responseData.foto);
-        });
+      const data = await fetch("http://localhost:5371/participants/get-joinedprog", {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      const dataJson = await data.json()
+      setProducts(dataJson);
+      // console.log("masuk3");
+      // console.log(products);
+      // console.log("masuk4");
+      // .then((response) => response.json())
+      // .then((responseData) => {
+      //   setProducts(responseData);
+      // });
+      console.log(dataJson);
     } catch (error) {
       console.error(error.message);
     }
@@ -68,7 +76,6 @@ const ListEnrolledProgram = () => {
       <h2 class="text-black text-right font-poppins text-[32px] font-bold leading-[140%]">
         Daftar Kegiatan yang Diikuti
       </h2>
-
       <div
         class="flex justify-center flex-col lg:flex-row items-center gap-[32px] self-stretch"
         style={{
@@ -95,7 +102,6 @@ const ListEnrolledProgram = () => {
             onChange={(e) => setSearchInput(e.target.value)}
           />
         </div>
-
         <div class="relative inline-block">
           <div
             class={`flex w-[304px] h-[55px] p-[0px] [10px] justify-center items-center rounded-[10px] bg-[var(--Tertiary, #EEF1F4)] shadow-md cursor-pointer`}
@@ -113,7 +119,6 @@ const ListEnrolledProgram = () => {
               id="dropdownIcon"
             />
           </div>
-
           {isDropdownOpen && (
             <div
               class="absolute top-[60px] left-[0px] z-[10px] w-[304px] bg-[var(--Tertiary, #EEF1F4)] shadow-md border-none outline-none bg-transparent rounded-b-[10px]"
@@ -172,59 +177,44 @@ const ListEnrolledProgram = () => {
           )}
         </div>
       </div>
-
-      <div class="flex flex-wrap items-center gap-[20px]"
-        style={{
-          paddingLeft: "100px",
-          paddingRight: "50px",
-        }}
-      >
-        {products
-          .filter(
-            (product) =>
-              product.title.toLowerCase().includes(searchInput.toLowerCase()) &&
-              (selectedLocation === "" || product.lokasi === selectedLocation)
-          )
-          .map(product => (
-            <Link to={`/product/${product.id}`} key={product.id}>
-              <div class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
-                  <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
-                    <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
-                    <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
-                      <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
-                        {product.title}
+      <div class="flex items-center content-center gap-[30px] flex-wrap">
+        {products.map(product => (
+          <Link to={`/product/${product.id}`} key={product.id}>
+            <div class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+              <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
+                <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
+                  <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
+                  <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
+                    <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
+                      {product.programs[0].title}
+                    </div>
+                    <div class="flex flex-col justify-center items-center self-stretch">
+                      <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
+                        {product.programs[0].tanggal_program_mulai}
                       </div>
-                      <div class="flex flex-col justify-center items-center self-stretch">
-                        <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
-                          {product.tanggal_program_mulai}, {product.waktu} WIB
-                        </div>
-                        <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
-                          {product.lokasi}
-                        </div>
+                      <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
+                        {product.programs[0].lokasi}
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="flex justify-between items-center self-stretch px-[5px]">
-                  <div class="flex flex-col w-full justify-center items-center flex-[1_1_0]">
-                    <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
-                      Target Partisipan:
-                    </div>
-                  </div>
-
-                  <div class="flex flex-col justify-center items-center flex-[1_1_0]">
-                    <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
-                      {product.target_partisipan}
-                    </div>
-
                   </div>
                 </div>
               </div>
-            </Link>
-          ))};
+              <div class="flex justify-between items-center self-stretch px-[5px]">
+                <div class="flex flex-col w-full justify-center items-center flex-[1_1_0]">
+                  <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                    Target Partisipan:
+                  </div>
+                </div>
+                <div class="flex flex-col justify-center items-center flex-[1_1_0]">
+                  <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                    {product.programs[0].target_partisipan}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
-
       <Footer />
     </div>
   );
