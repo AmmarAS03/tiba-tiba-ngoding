@@ -67,7 +67,7 @@ route.post('/login', async (req, res) => {
                     return res.status(200).json({ token: token });
                     // req.session.userid = foundName.data[0].id; 
                     // console.log(req.session.id);
-                    //console.log(token);
+                    console.log(token);
                     // res.send(foundName.data[0].id);
                 }
                 else {

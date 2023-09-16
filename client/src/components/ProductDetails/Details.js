@@ -69,11 +69,11 @@ const Details = () => {
           <div class="flex flex-col w-[835px] p-[30px] [10px] items-center gap-[0px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
             <div class="flex h-[390px] p-[0px] [47px] justify-between items-center self-stretch">
               <div class="w-[305px] h-[305px] rounded-5 bg-[url('<path-to-image>') lightgray] bg-center bg-cover bg-no-repeat">
-                <img
-                  src="assets/Trash.png"
-                  alt="Trash"
-                  class="w-full h-full rounded-[5px]"
-                />
+              <img
+                    src='assets/Trash.png'
+                    alt="Trash"
+                    className="w-full h-full rounded-[5px]"
+                  />
               </div>
               <div class="flex flex-col w-[409px] h-[377px] justify-center items-start gap-[190px]">
                 <div class="flex flex-col justify-center items-start gap-[78px]">

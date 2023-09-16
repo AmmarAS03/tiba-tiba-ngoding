@@ -30,6 +30,7 @@ const CreateProgramCard = () => {
             } else {
                 setCreateFailed(true);
             }
+            console.log(body);
         } catch (error) {
             console.error(error.message);
             setCreateFailed(true);
@@ -80,25 +81,14 @@ const CreateProgramCard = () => {
                             <div class="flex flex-col items-start gap-[3.75px]">
                                 <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Tanggal</span>
                                 <input
-                                    type="date"
+                                    type="text"
                                     id="date"
                                     value={tgl}
                                     onChange={e => setTgl(e.target.value)}
                                     placeholder="Select Activity Date"
-                                    className="flex flex-col justify-center items-start w-[270px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400"
-                                />
-                            </div>
-                            {/* <div class="flex flex-col items-start gap-[3.75px]">
-                                <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Waktu</span>
-                                <input
-                                    type="text"
-                                    id="time"
-                                    value={time}
-                                    onChange={handleTime}
-                                    placeholder="qissa@ristek.cs.ui.ac.id"
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
-                            </div> */}
+                            </div>
                             <div class="flex flex-col items-start gap-[3.75px]">
                                 <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Target Partisipasi</span>
                                 <input
