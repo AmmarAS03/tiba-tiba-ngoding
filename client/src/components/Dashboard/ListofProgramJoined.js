@@ -23,6 +23,7 @@ const ListofProgramJoined = () => {
             //   setProducts(responseData);
             // });
             console.log(dataJson);
+            console.log(products);
         } catch (error) {
             console.error(error.message);
         }
@@ -41,7 +42,7 @@ const ListofProgramJoined = () => {
                     </div>
                     <div class="flex items-center content-center gap-[30px] flex-wrap">
                         {products.map(product => (
-                            <Link to={`/product/${product.id}`} key={product.id}>
+                            <Link to={`/product/${product.progid}`} key={product.progid}>
                                 <div class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
                                     <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
                                         <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">

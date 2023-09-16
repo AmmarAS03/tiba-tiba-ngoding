@@ -194,7 +194,7 @@ const ListProduct = () => {
 
                   <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-semibold leading-[140%]">
                     <p>Target: {product.target_partisipan} relawan</p>
-                    <p>{product.tanggal_program_mulai}, 17:00 WIB</p>
+                    <p>{product.tanggal_program_mulai}</p>
                     <p>{product.lokasi}</p>
                   </div>
 
@@ -221,9 +221,9 @@ const ListProduct = () => {
 
                 <div class="w-[300px] h-[237px] rounded-[5px]">
                   <img
-                    src={`data:image/jpeg;base64,${product.foto}`}
+                    src='assets/Trash.png'
                     alt={`Foto ${product.title}`}
-                    className="w-full h-full"
+                    className="w-full h-full rounded-[5px]"
                   />
                 </div>
               </div>
