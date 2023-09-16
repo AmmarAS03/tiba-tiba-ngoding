@@ -35,36 +35,38 @@ route.post('/register', async(req, res) => {
 });
 
 //login
-route.post('/login', async(req, res) => {
+route.post('/login', async (req, res) => {
     try {
         const email = req.body.email;
-        
+
         const foundName = await supabase.from('users').select('*').eq('email', email);
 
-        if(foundName.data[0] == null) {
+        if (foundName.data[0] == null) {
             res.send("Cannot find user.")
             return res.status(401).json({ error: "User not found." });
         }
         else {
-            if (email !== '' || req.body.password !== ''){
+            if (email !== '' || req.body.password !== '') {
                 const valid = await bcrypt.compare(req.body.password, foundName.data[0].password);
-            if(valid == true) {
-                //save user account to session
-                const token = jwt.sign(foundName.data[0], secretKey);
-                res.json({ token: token});
-                return res.status(200).json({ token: token });
-                // req.session.userid = foundName.data[0].id; 
-                // console.log(req.session.id);
-                //console.log(token);
-                // res.send(foundName.data[0].id);
-            }
-            else{
+                if (valid == true) {
+                    //save user account to session
+                    const token = jwt.sign(foundName.data[0], secretKey);
+                    res.json({ token: token });
+                    return res.status(200).json({ token: token });
+                    // req.session.userid = foundName.data[0].id; 
+                    // console.log(req.session.id);
+                    //console.log(token);
+                    // res.send(foundName.data[0].id);
+                }
+                else {
+                    res.send("Password incorrect.")
+                    // return res.status(401).json({ error: "Password incorrect." });
+                }
+
+            } else {
                 res.send("Password incorrect.")
-                // return res.status(401).json({ error: "Password incorrect." });
             }
 
-            }
-            
         }
     } catch (error) {
         console.error(error.message);
@@ -79,7 +81,7 @@ route.get('/logout', (req, res) => {
 });
 
 //get user's infos
-route.get('/', authenticateToken, async(req, res) => {
+route.get('/', authenticateToken, async (req, res) => {
     try {
         //console.log("masuk1");
         const userid = req.user.id;
@@ -87,13 +89,13 @@ route.get('/', authenticateToken, async(req, res) => {
         // console.log(userid);
         // console.log("masuk2");
         const infos = await supabase
-        .from('users')
-        .select('*')
-        .eq('id', userid);
+            .from('users')
+            .select('*')
+            .eq('id', userid);
         const total_program = await supabase
-        .from('program')
-        .select('title')
-        .eq('posted_by', userid);
+            .from('program')
+            .select('title')
+            .eq('posted_by', userid);
         if (total_program.data == null) {
             infos.data[0]['total_program'] = 0;
         }
@@ -111,7 +113,7 @@ route.get('/leaderboard', async (req, res) => {
         .from('users')
         .select('nama, lokasi, total_point')
         .order('total_point', { ascending: false })
-        .limit(10); 
+        .limit(10);
 
 
     res.send(leaderboard.data); // Send the data as JSON response
@@ -126,10 +128,10 @@ function authenticateToken(req, res, next) {
     }
     else {
         jwt.verify(token, secretKey, (error, user) => {
-            if (error){
+            if (error) {
                 return res.send("Token sudah expired.")
             }
-            else{
+            else {
                 req.user = user
                 next()
             }

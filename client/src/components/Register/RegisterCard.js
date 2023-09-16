@@ -34,11 +34,9 @@ const RegisterCard = () => {
       });
       if (response.status !== 200) {
         setRegisterFailed(true);
-      } else {
-        console.log(response);
-        navigate('/dashboard');
       }
-
+      console.log(response);
+      navigate('/dashboard');
     } catch (error) {
       setRegisterFailed(true);
       console.error(error.message);

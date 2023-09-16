@@ -22,11 +22,9 @@ const LoginCard = () => {
                 localStorage.setItem("token", dataToken.token);
                 console.log(response);
                 console.log(dataToken)
-
                 navigate('/dashboard');
-
-
             } else {
+                console.log(response);
                 setLoginFailed(true);
             }
 
