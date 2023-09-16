@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ListofProgramHeld = () => {
     const [products, setProducts] = useState([]);
@@ -42,31 +42,36 @@ const ListofProgramHeld = () => {
                     <div class="flex items-center content-center gap-[30px] flex-wrap ">
 
                         {products.map(product => (
-                            <div key={product.id} class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                                <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
-                                    <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
-                                        <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
-                                        <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
-                                            <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
-                                                {product.title}
-                                            </div>
-                                            <div class="flex flex-col justify-center items-center self-stretch">
-                                                <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                                    {product.tanggal_program_mulai}, {product.waktu} WIB
+                            <Link to={`/product/${product.id}`} key={product.id}>
+                                <div class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+                                    <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
+                                        <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
+                                            <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
+                                            <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
+                                                <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
+                                                    {product.title}
                                                 </div>
-                                                <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                                    {product.lokasi}
+                                                <div class="flex flex-col justify-center items-center self-stretch">
+                                                    <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
+                                                        {product.tanggal_program_mulai}, {product.waktu} WIB
+                                                    </div>
+                                                    <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
+                                                        {product.lokasi}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="self-stretch flex justify-end items-center gap-[20px]">
+
+                                        <img src="assets/SeeList.svg" alt="Your Image" class="w-[18px] h-[20px]" />
+                                        <img src="assets/Edit.svg" alt="Your Image" class="w-[18px] h-[20px]" />
+                                        <Link to={`/del-program/:${product.id}`} key={product.id}>
+                                            <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div class="self-stretch flex justify-end items-center gap-[20px]">
-                                    <img src="assets/Trash.svg" alt="Your Image" onClick={() => `attendance/${product.id}`} class="w-[18px] h-[20px]" />
-                                    <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
-                                    <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
-                                </div>
-                            </div>
+                            </Link>
                         ))};
                     </div>
                 </div>
@@ -78,7 +83,7 @@ const ListofProgramHeld = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
 
     )
 }

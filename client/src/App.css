@@ -47,3 +47,6 @@
   color: black; /* User input text color */
 }
 
+.clicked {
+  transform: scale(0.7); /* Apply the scaling animation on click */
+}

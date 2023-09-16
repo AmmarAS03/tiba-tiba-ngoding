@@ -1,7 +1,9 @@
 import React, { useState, useEffect }from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Kegiatan() {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
 
   //get all products
   const getProducts = async() => {
@@ -66,11 +68,11 @@ function Kegiatan() {
                 </div>
             </div>
             <div class="flex justify-end items-center self-stretch">
-                <div class="flex w-[250px] h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
+                <button onClick={() => navigate("/product")} class="flex w-[250px] h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                     <div class="flex w-[163px] flex-col justify-center flex-shrink-0 self-stretch text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                         Lihat Kegiatan Lainnya
                     </div>
-                </div>
+                </button>
             </div>
         </div>
     )

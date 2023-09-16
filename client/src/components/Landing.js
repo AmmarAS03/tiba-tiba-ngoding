@@ -5,6 +5,7 @@ import Layanan from './Landing/Layanan'
 import Kegiatan from './Landing/Kegiatan'
 import Testimoni from './Landing/Testimoni'
 import JoinUs from './Landing/JoinUs'
+import Footer from './UI/Commons/Footer'
 
 function Landing() {
     return (
@@ -16,6 +17,7 @@ function Landing() {
                 <Kegiatan />
                 <Testimoni />
                 <JoinUs />
+                <Footer />
             </div>
         </div>
     )
