@@ -29,6 +29,7 @@ const Details = () => {
         setLink(dataJson[0].linkwa);
         setPosted(dataJson[0].postedby_nama[0].nama);
         console.log(dataJson);
+        console.log(linkwa);
         //console.log(products);
     } catch (error) {
         console.error(error.message);
