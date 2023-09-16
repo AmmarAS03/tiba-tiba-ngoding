@@ -26,11 +26,8 @@ const Details = () => {
         //setWaktu(dataJson[0].waktu);
         setTanggal(dataJson[0].tanggal_program_mulai);
         setTarget(dataJson[0].target_partisipan);
-        setLink(dataJson[0].linkwa);
+        setLink(dataJson[0].linkWA);
         setPosted(dataJson[0].postedby_nama[0].nama);
-        console.log(dataJson);
-        console.log(linkwa);
-        //console.log(products);
     } catch (error) {
         console.error(error.message);
     }
@@ -133,6 +130,9 @@ const Details = () => {
 
               
               <button class="flex w-[245px] h-[40px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#25D366]">
+                <a
+                href={linkwa}
+                >
               <div class="flex items-center gap-[10px]">
                 <div class="w-[151px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                   Join Group WhatsApp
@@ -145,6 +145,7 @@ const Details = () => {
                   />
                 </div>
                 </div>
+                </a>
               </button>
         
             </div>
