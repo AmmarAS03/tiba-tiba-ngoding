@@ -11,7 +11,7 @@ function List() {
       console.log(userid);
       setIsChecked(e.target.checked);
       if(isChecked){
-        const response = await fetch(`http://localhost:5000/participants/addpoint/${userid}`);
+        const response = await fetch(`http://localhost:5371/participants/addpoint/${userid}`);
       }
     } catch (error) {
       console.error(error.message);
@@ -20,7 +20,7 @@ function List() {
 
   const listVolunteers = async() => {
     try {
-      const data = await fetch(`http://localhost:5000/participants/get-volunteers/${id}`);
+      const data = await fetch(`http://localhost:5371/participants/get-volunteers/${id}`);
       const dataJson = await data.json();
       setVolunteers(dataJson);
     } catch (error) {

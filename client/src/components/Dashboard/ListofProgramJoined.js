@@ -9,7 +9,7 @@ const ListofProgramJoined = () => {
   //get products that user joined
   const getProducts = async() => {
     try {
-        const data = await fetch("http://localhost:5000/participants/get-joinedprog", {
+        const data = await fetch("http://localhost:5371/participants/get-joinedprog", {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

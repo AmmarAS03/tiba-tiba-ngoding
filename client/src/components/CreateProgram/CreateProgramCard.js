@@ -13,7 +13,10 @@ const CreateProgramCard = () => {
     const submitButton = async (e) => {
         try {
             const body = { title, deskripsi, lokasi, tgl, target }
-            const response = await fetch("http://localhost:5000/programs/add-program", {
+            const response = await fetch("http://localhost:5371/programs/add-program", {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                },
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
