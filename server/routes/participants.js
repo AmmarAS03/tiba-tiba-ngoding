@@ -55,11 +55,26 @@ route.delete('/unenroll/:progid', async(req, res) => {
 });
 
 //add poin to volunteers
-route.get('/addpoint/:userid', async(req, res) => {
+// route.get('/addpoint/:userid', async(req, res) => {
+//     try {
+//         const { userid } = req.params;
+//         const oldPoin = await supabase.from('users').select('total_point').eq('id', userid);
+//         await supabase.from('users').update({total_point: oldPoin.data[0].total_point + 10}).eq('id', userid).select();
+//         res.send("point berhasil ditambahkan");
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// });
+
+//add poin to volunteers
+route.post('/addpoints/', async(req, res) => {
     try {
-        const { userid } = req.params;
-        const oldPoin = await supabase.from('users').select('total_point').eq('id', userid);
-        await supabase.from('users').update({total_point: oldPoin.data[0].total_point + 280}).eq('id', userid).select();
+        const list = req.body.checkedVolunteers;
+        //console.log(list);
+        for(const userid of list) {
+            const oldPoin = await supabase.from('users').select('total_point').eq('id', userid);
+            await supabase.from('users').update({total_point: oldPoin.data[0].total_point + 10}).eq('id', userid).select();
+        }
         res.send("point berhasil ditambahkan");
     } catch (error) {
         console.error(error.message);
@@ -73,7 +88,7 @@ route.get('/get-volunteers/:id', async(req, res) => {
         const volunteers = await supabase.from('participants').select('userid').eq('progid', id);
         for(const volunteer of volunteers.data){
             const data = await supabase.from('users').select('*').eq('id', volunteer.userid);
-            volunteers['data'] = data.data;
+            volunteer['data'] = data.data;
         }
         res.send(volunteers.data);
     } catch (error) {
