@@ -30,19 +30,18 @@ route.post('/add-program', authenticateToken, async (req, res) => {
                 await supabase.from('programs').insert([{
                     posted_by: req.user.id,
                     title: title,
-                    deskripsi: desc,
+                    deskripsi: deskripsi,
                     lokasi: lokasi,
                     tanggal_program_mulai: tgl,
                     target_partisipan: target,
                     //waktu: waktu,
-                    linkWA: linkwa,
+                    linkWA: linkGroup,
                     //foto: imageBase64
                 }]).select();
                 //  console.log(target);
                 //console.log(imageBuffer);
                 res.send(`Program ${title} has been added.`);
             } else {
-                console.log("ERROROO")
                 return res.status(401).json({ error: "Create program failed." });
             }
         }
