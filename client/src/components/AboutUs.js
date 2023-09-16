@@ -17,7 +17,9 @@ function AboutUs() {
         <OurMission />
         <JoinUs />
         <Ourvalues />
+        <Footer/>
       </div>
+      
     </div>
   );
 }

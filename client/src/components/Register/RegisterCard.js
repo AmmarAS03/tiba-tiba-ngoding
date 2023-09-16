@@ -15,6 +15,7 @@ const RegisterCard = () => {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [registerFailed, setRegisterFailed] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -31,8 +32,15 @@ const RegisterCard = () => {
         headers: { "Content-Type": "application/json" }, //untuk mengatur header dalam permintaan fetch, membantu server dalam memahami jenis konten yang diterima.
         body: JSON.stringify(body), //untuk mengubah objek body menjadi string JSON yang akan dikirimkan
       });
-      console.log(response);
+      if (response.status == 200) {
+        console.log(response);
+        navigate('/login');
+      } else{
+        console.log(response);
+        setRegisterFailed(true);
+      }
     } catch (error) {
+      setRegisterFailed(true);
       console.error(error.message);
     }
   };
@@ -60,7 +68,7 @@ const RegisterCard = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="GotongR"
+              placeholder="Gotong"
               className="w-[252.461px] h-[37.819px] px-[7.283px] text-[#4E5A6E] font-dm-sans text-[14.566px] font-normal rounded border-[0.728px] border-gray-400 focus:outline-none focus:border-[#3182CE] focus:ring focus:ring-[#3182CE]"
             />
           </div>
@@ -180,19 +188,22 @@ const RegisterCard = () => {
 
         <button
           onClick={signUpButton}
-          class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]"
+          class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D] custom-button relative transform transition-transform hover:scale-105 active:scale-95"
         >
           <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
-            Sign Up
+            REGISTER
           </div>
         </button>
-
+        {registerFailed && (
+          <div class="justify-center text-center items-center text-[#B30000] font-dm-sans text-sm mt-2">
+            Register failed.<br/>
+            Please check your form.
+          </div>
+        )}
         <div class="flex flex-row w-[168px] h-[25px] items-center text-center justify-center font-poppins text-[12px] font-normal leading-[160%] gap-1">
-
           <div className="text-[#FFFFFF]">Have an account?</div>
           <button onClick={() => navigate("/login")} class="text-[#03B3D7]">
             Login
-
           </button>
         </div>
       </div>

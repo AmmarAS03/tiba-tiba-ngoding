@@ -1,5 +1,5 @@
 import React, { useState, useEffect }from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Kegiatan() {
     const [products, setProducts] = useState([]);
@@ -37,7 +37,8 @@ function Kegiatan() {
                 <div class="flex justify-center items-start gap-[20px]">
                     
                     {products.slice(0,3).map(product => (
-                        <div class="flex flex-col items-center w-[289px] p-[30px] gap-[5px] rounded-[10px] border-[0.3px] border-{#000} bg-[#FFF] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+                         <Link to={`/product/${product.id}`} key={product.id}>
+                        <div class="flex flex-col items-center w-[289px] p-[30px] gap-[5px] rounded-[10px] border-[0.3px] border-{#000} bg-[#FFF] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] hover:scale-105 hover:shadow-lg">
                         <div class="flex flex-col justify-center items-start gap-[11px] self-stretch">
                             <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
                                 <div class="flex flex-col justify-center items-center gap-[11px] self-stretch">
@@ -54,7 +55,9 @@ function Kegiatan() {
                             </div>
                             <div class="flex flex-col justify-center items-center self-stretch">
                                 <div class="self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
-                                    {product.deskripsi}
+                                {product.deskripsi.length > 100
+                        ? `${product.deskripsi.substring(0, 100)}...`
+                        : product.deskripsi}
                                 </div>
                             </div>
                         </div>
@@ -64,6 +67,7 @@ function Kegiatan() {
                             </div>
                         </div>
                     </div>
+                    </Link>
                     ))};
                 </div>
             </div>

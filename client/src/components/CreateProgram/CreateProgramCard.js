@@ -9,6 +9,7 @@ const CreateProgramCard = () => {
     const [target, setTarget] = useState('');
     const [linkGroup, setLink] = useState('');
     const navigate = useNavigate();
+    const [createFailed, setCreateFailed] = useState(false);
 
 
 
@@ -24,23 +25,31 @@ const CreateProgramCard = () => {
                 },
                 body: JSON.stringify(body)
             });
+            if (response.status == 200) {
+                console.log("Abby")
+                console.log(response);
+            } else {
+                console.log(response);
+                setCreateFailed(true);
+            }
         } catch (error) {
             console.error(error.message);
+            setCreateFailed(true);
         }
     }
 
 
     return (
         <div class="flex w-full mt-[82.5px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
-            <div class="flex w-full md:w-[700px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
+            <div class="flex w-full md:w-[700px] gap-[10px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
                 <div class="flex h-[60px] px-[18.75px] justify-between items-center flex-shrink-0 self-stretch">
-                <button onClick={() => navigate("/dashboard")}>
-                    <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
+                    <button onClick={() => navigate("/dashboard")}>
+                        <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
                     </button>
                     <div class="flex w-full h-[38.25px] flex-col justify-center text-white text-center font-poppins font-bold text-[30px]">
                         Membuat Kegiatan
                     </div>
-                
+
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px] opacity-0" alt="Your Image" />
 
 
@@ -115,11 +124,6 @@ const CreateProgramCard = () => {
                                 />
                             </div>
                         </div>
-                        <button onClick={submitButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
-                            <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
-                                Submit
-                            </div>
-                        </button>
                     </div>
                     <div class="flex flex-col h-full justify-start items-center gap-[15px] flex-1 flex-shrink-0 self-stretch">
                         <div class="flex flex-col items-start gap-[3.75px]">
@@ -146,6 +150,21 @@ const CreateProgramCard = () => {
                             />
                         </div>
                     </div>
+                </div>
+                <div class="flex h-[60px] px-[18.75px] justify-center items-center flex-shrink-0 self-stretch">
+                    <button
+                        onClick={submitButton}
+                        class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D] custom-button relative transform transition-transform hover:scale-105 active:scale-95"
+                    >
+                        <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
+                            Submit
+                        </div>
+                    </button>
+                    {createFailed && (
+                    <div class="justify-center items-center text-[#B30000] font-dm-sans text-sm mt-2">
+                        Create program failed. Please check your program form.
+                    </div>
+                )}
                 </div>
 
             </div>
