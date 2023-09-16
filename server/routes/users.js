@@ -7,32 +7,44 @@ const route = express.Router();
 const secretKey = 'mysecretkey';
 
 //create user (register)
-route.post('/register', async(req, res) => {
+route.post('/register', async (req, res) => {
     try {
         const username = req.body.username;
         const foundName = await supabase.from('users').select('username').eq('username', username);
-        //res.send(foundName.data[0]);
 
         if (foundName.data[0] != null) {
-            res.send("Username already taken.");
-        }
-        else {
+            // Username already taken
+            return res.status(401).json({ error: "Username already taken." });
+        } else {
+            const email = req.body.email;
             const password = req.body.password;
-            const salt = await bcrypt.genSalt();
-            const finalPass = await bcrypt.hash(password, salt);
-            await supabase.from('users').insert([{ email: req.body.email, 
-                username: username, 
-                password: finalPass,
-                nama: req.body.nama, 
-                lokasi: req.body.lokasi, 
-                notelp: req.body.notelp, 
-                instagram: req.body.ig}]).select();
-            res.send("Register successed.");
+
+            if (email !== '' && password !== '') {
+                const salt = await bcrypt.genSalt();
+                const finalPass = await bcrypt.hash(password, salt);
+
+                await supabase.from('users').insert([{
+                    email: email,
+                    username: username,
+                    password: finalPass,
+                    nama: req.body.nama,
+                    lokasi: req.body.lokasi,
+                    notelp: req.body.notelp,
+                    instagram: req.body.ig
+                }]).select();
+
+                return res.status(200).send("Registration successful.");
+            } else {
+                // Email or password is empty
+                return res.status(401).json({ error: "Email or password is empty." });
+            }
         }
     } catch (error) {
         console.error(error.message);
+        return res.status(500).json({ error: "Internal server error." });
     }
 });
+
 
 //login
 route.post('/login', async (req, res) => {
