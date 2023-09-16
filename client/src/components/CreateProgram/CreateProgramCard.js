@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const CreateProgramCard = () => {
     const [title, setTitle] = useState('');
@@ -6,6 +7,7 @@ const CreateProgramCard = () => {
     const [lokasi, setLokasi] = useState('');
     const [tgl, setTgl] = useState('');
     const [target, setTarget] = useState('');
+    const navigate = useNavigate();
 
 
 
@@ -29,11 +31,16 @@ const CreateProgramCard = () => {
         <div class="flex w-full mt-[82.5px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
             <div class="flex w-full md:w-[700px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
                 <div class="flex h-[60px] px-[18.75px] justify-between items-center flex-shrink-0 self-stretch">
+                <button onClick={() => navigate("/dashboard")}>
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
+                    </button>
                     <div class="flex w-full h-[38.25px] flex-col justify-center text-white text-center font-poppins font-bold text-[30px]">
                         Laporkan Kegiatan
                     </div>
+                
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px] opacity-0" alt="Your Image" />
+
+
                 </div>
                 <div class="flex flex-col md:flex-row px-[60px] gap-[15px] justify-between items-center self-stretch">
                     <div class="flex flex-col justify-center items-center gap-[15px] flex-1 flex-shrink-0 self-stretch">
