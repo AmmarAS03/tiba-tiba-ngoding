@@ -21,7 +21,7 @@ function Testimoni() {
                         <div class="h-[100px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%] text-justify">
                             Suka banget sama komunitas yang dibangun sama GotongRuang. Thankzz GotongRuang...sukses terus yaa
                         </div>
-                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
+                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-semibold leading-[160%]">
                             Faizarrazak Fadhillah
                         </div>
                     </div>
@@ -32,7 +32,7 @@ function Testimoni() {
                         <div class="h-[100px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%] text-justify">
                             Jujur aku awalnya bukan orang yang suka kegiatan relawan gini, cuman temen-temen pada ngajakin aku dan sistem pointsnya itu loh yang bikin aku jadi rajin ikutan.
                         </div>
-                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
+                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-semibold leading-[160%]">
                             Humaira Rinjani
                         </div>
                     </div>
@@ -45,7 +45,7 @@ function Testimoni() {
                         <div class="h-[100px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%] text-justify">
                             Aplikasi ini mengubah segala-galanya! Dulu hanya mencoba karena ajakan teman, tapi sekarang waktu luangku jadi lebih berarti berkat Gotong Ruang.
                         </div>
-                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
+                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-semibold leading-[160%]">
                             Carissa Almira
                         </div>
                     </div>
@@ -55,7 +55,7 @@ function Testimoni() {
                     <div class="flex w-[232px] h-[135px] flex-col justify-center items-center flex-shrink-0">
                         <div class="h-[100px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
                             Gotong Ruang mengubah cara saya melihat kegiatan relawan. Terima kasih, GotongRuang, atas pengalaman yang menginspirasi ini!                        </div>
-                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-normal leading-[160%]">
+                        <div class="h-[20px] flex-shrink-0 self-stretch text-[#545F71] font-poppins text-[12px] font-semibold leading-[160%]">
                             Nadine Kezia
                         </div>
                     </div>
