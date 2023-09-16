@@ -32,13 +32,13 @@ const RegisterCard = () => {
         headers: { "Content-Type": "application/json" }, //untuk mengatur header dalam permintaan fetch, membantu server dalam memahami jenis konten yang diterima.
         body: JSON.stringify(body), //untuk mengubah objek body menjadi string JSON yang akan dikirimkan
       });
-      if (response.status !== 200) {
-        setRegisterFailed(true);
-      } else {
+      if (response.status == 200) {
         console.log(response);
-        navigate('/dashboard');
+        navigate('/login');
+      } else{
+        console.log(response);
+        setRegisterFailed(true);
       }
-
     } catch (error) {
       setRegisterFailed(true);
       console.error(error.message);
@@ -195,8 +195,9 @@ const RegisterCard = () => {
           </div>
         </button>
         {registerFailed && (
-          <div class="justify-center items-center text-[#B30000] font-dm-sans text-sm mt-2">
-            Register failed. Please check your form.
+          <div class="justify-center text-center items-center text-[#B30000] font-dm-sans text-sm mt-2">
+            Register failed.<br/>
+            Please check your form.
           </div>
         )}
         <div class="flex flex-row w-[168px] h-[25px] items-center text-center justify-center font-poppins text-[12px] font-normal leading-[160%] gap-1">
