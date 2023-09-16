@@ -1,0 +1,27 @@
+import React from "react";
+import Introduction from "./AboutUs/introduction";
+import OurMission from "./AboutUs/ourmission";
+import JoinUs from "./AboutUs/joinus";
+import Ourvalues from "./AboutUs/ourvalues";
+import Navbar from "./Landing/Navbar";
+import Footer from "./UI/Commons/Footer";
+
+function AboutUsNotLogin() {
+  return (
+    <div class="flex w-screen h-screen items-start">
+      <Navbar />
+      <div
+        class="flex p-[30px] md:p-[0px] md:pt-[100px] flex-col w-full flex-shrink-0 items-center gap-[25px] md:gap-[50px]"
+      >
+        <Introduction />
+        <OurMission />
+        <JoinUs />
+        <Ourvalues />
+        <Footer/>
+      </div>
+      
+    </div>
+  );
+}
+
+export default AboutUsNotLogin;

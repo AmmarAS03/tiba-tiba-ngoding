@@ -16,6 +16,7 @@ import Footer from './components/UI/Commons/Footer';
 import DashboardPage from './pages/Dashboard';
 import EditProgramPage from './components/EditProgram';
 import EnrolledProgramPage from './pages/EnrolledProgram';
+import AboutUsNotLoginPage from './pages/AboutUsNotLogin';
 
 
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />}></Route>
           <Route path="/editprogram/:id" element={<EditProgramPage />}></Route>
           <Route path="/enrolledprogram" element={<EnrolledProgramPage />}></Route>
+          <Route path="/about" element={<AboutUsNotLoginPage />}></Route>
         
         </Routes>
       </BrowserRouter>

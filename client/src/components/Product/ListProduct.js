@@ -77,9 +77,8 @@ const ListProduct = () => {
         }}
       >
         <div
-          class={`flex p-[10px] [20px] items-center gap-[30px] flex-[1px] rounded-[10px] bg-var(--Tertiary, #EEF1F4) shadow-md cursor-pointer ${
-            isDropdownOpen ? "rounded-b-none" : ""
-          }`}
+          class={`flex p-[10px] [20px] items-center gap-[30px] flex-[1px] rounded-[10px] bg-var(--Tertiary, #EEF1F4) shadow-md cursor-pointer ${isDropdownOpen ? "rounded-b-none" : ""
+            }`}
           onClick={toggleDropdown}
         >
           <div class="flex w-[34.669px] h-[35px] flex-col justify-center items-center">
@@ -107,9 +106,8 @@ const ListProduct = () => {
               <span id="selectedLocation">{selectedOption}</span>
             </div>
             <img
-              class={`w-[26px] h-[26px] flex-shrink-[0px] text-[#8E8E93] transform transition-transform duration-200 ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
+              class={`w-[26px] h-[26px] flex-shrink-[0px] text-[#8E8E93] transform transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                }`}
               src="assets/Cheveron.svg"
               alt="Dropdown"
               id="dropdownIcon"
@@ -121,7 +119,7 @@ const ListProduct = () => {
               class="absolute top-[60px] left-[0px] z-[10px] w-[304px] bg-[var(--Tertiary, #EEF1F4)] shadow-md border-none outline-none bg-transparent rounded-b-[10px]"
               id="dropdownOptions "
             >
-              
+
               <div
                 class=" py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("DKI Jakarta")}
@@ -174,8 +172,7 @@ const ListProduct = () => {
           )}
         </div>
       </div>
-
-      <div class="flex flex-col items-center gap-[20px]">
+      <div class="flex items-center content-center lg:px-[100px] gap-[30px] flex-wrap">
         {products
           .filter(
             (product) =>
@@ -184,54 +181,40 @@ const ListProduct = () => {
           )
           .map((product) => (
             <Link to={`/product/${product.id}`} key={product.id}>
-              <div class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
-                <div class="flex p-[0px] flex-col justify-center items-start gap-[18px] flex-[1px]">
-                  <div class="flex flex-col justify-center items-center self-stretch">
-                    <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
-                      {product.title}
-                    </h4>
-                  </div>
-
-                  <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-semibold leading-[140%]">
-                    <p>Target: {product.target_partisipan} relawan</p>
-                    <p>{product.tanggal_program_mulai}, 17:00 WIB</p>
-                    <p>{product.lokasi}</p>
-                  </div>
-
-                  <div class="flex flex-col justify-center items-center self-stretch">
-                    <div class="h-[38px] self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-normal leading-[160%]">
-                      {product.deskripsi.length > 150
-                        ? `${product.deskripsi.substring(0, 150)}...`
-                        : product.deskripsi}
-                    </div>
-                  </div>
-
-                  <div class="flex items-center gap-[40px] self-stretch">
-                    <div class="flex flex-col justify-center items-center flex-1">
-                      <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-normal leading-[160%]">
-                        <p>Diunggah oleh: {product.posted_by[0].nama} </p>
+              <div class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+                <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
+                  <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
+                    <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
+                    <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
+                      <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
+                        {product.title}
                       </div>
-                    </div>
-
-                    <div class="flex flex-col justify-center items-center flex-1">
-                      <div class="self-stretch text-[var(--Primary, #545F71)] text-right font-poppins text-12 font-normal leading-[160%]"></div>
+                      <div class="flex flex-col justify-center items-center self-stretch">
+                        <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
+                          {product.tanggal_program_mulai}                      </div>
+                        <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
+                          <p>{product.lokasi}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div class="w-[300px] h-[237px] rounded-[5px]">
-                  <img
-                    src={`data:image/jpeg;base64,${product.foto}`}
-                    alt={`Foto ${product.title}`}
-                    className="w-full h-full"
-                  />
+                <div class="flex justify-between items-center self-stretch px-[5px]">
+                  <div class="flex flex-col w-full justify-center items-center flex-[1_1_0]">
+                    <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                      Target Partisipan:
+                    </div>
+                  </div>
+                  <div class="flex flex-col justify-center items-center flex-[1_1_0]">
+                    <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                      {product.target_partisipan}
+                    </div>
+                  </div>
                 </div>
               </div>
             </Link>
           ))}
-        ;
       </div>
-
       <Footer />
     </div>
   );

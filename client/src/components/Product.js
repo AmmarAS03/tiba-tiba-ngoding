@@ -9,7 +9,6 @@ function Product() {
     <div class="flex w-screen h-screen justify-between items-start bg-white">
         <UpperNav/>
         <ListProduct/>
-
     </div>
 
   )
