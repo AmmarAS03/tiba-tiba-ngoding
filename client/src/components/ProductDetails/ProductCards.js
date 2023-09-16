@@ -1,7 +1,9 @@
 import React from "react";
 import SmallCards from "./SmallCards";
+import { useNavigate } from "react-router-dom";
 
 function ProductCards() {
+  const navigate = useNavigate();
   return (
     <div class="flex flex-col items-center gap-[23px]">
       <div class="flex flex-col items-center gap-[30px]">
@@ -26,7 +28,7 @@ function ProductCards() {
         <div class="flex justify-center items-center gap-x-[312px]">
           <div class="flex flex-col w-[250px] h-[49px] justify-center items-center gap-[10px]"></div>
           <div class="flex justify-center items-center gap-x-[-11px]">
-            <button class="flex w-[229px] h-[40px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+            <button onClick={() => navigate("/product")} class="flex w-[229px] h-[40px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
               <div class="w-[202px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                 Lihat Kegiatan Lainnya
               </div>

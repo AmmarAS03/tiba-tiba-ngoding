@@ -26,6 +26,7 @@ route.post('/add-program', authenticateToken, upload.single('foto'), async(req, 
             const waktu = req.body.waktu;
             const linkwa = req.body.linkwa;
             const imageBuffer = req.file ? req.file.buffer : null;
+            const imageBase64 = imageBuffer ? imageBuffer.toString("base64") : null;
 
             await supabase.from('programs').insert([{ posted_by: req.user.id,
                 title: title,
@@ -35,11 +36,12 @@ route.post('/add-program', authenticateToken, upload.single('foto'), async(req, 
                 target_partisipan: target,
                 waktu: waktu,
                 linkWA: linkwa,
-                foto: imageBuffer
+                foto: imageBase64
              }]).select();
             //  console.log(target);
             //console.log(imageBuffer);
             res.send(`Program ${title} has been added.`);
+            console.log(foto)
         }
     } catch (error) {
         console.error(error.message);
