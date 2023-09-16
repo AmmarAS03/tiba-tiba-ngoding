@@ -62,8 +62,8 @@ const ListofProgramJoined = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex items-center gap-[40px] self-stretch">
-                                        <div class="flex flex-col justify-center items-center flex-[1_1_0]">
+                                    <div class="flex justify-between items-center self-stretch px-[5px]">
+                                        <div class="flex flex-col w-full justify-center items-center flex-[1_1_0]">
                                             <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
                                                 Target Partisipan:
                                             </div>
@@ -84,7 +84,7 @@ const ListofProgramJoined = () => {
                     </div>
                 </div>
                 <div class="flex flex-col justify-center items-end gap-[10px] self-stretch px-[50px]">
-                    <button onClick={() => navigate("/myactivity")} class="w-[250px] h-[50px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
+                    <button onClick={() => navigate("/enrolledprogram")} class="w-[250px] h-[50px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                         <div class="w-[163px] h-[39px] flex flex-col justify-center items-center gap-[6px] text-white text-center">
                             <p class="font-poppins text-[14px] font-semibold leading-5">Lihat Kegiatan Lainnya</p>
                         </div>
