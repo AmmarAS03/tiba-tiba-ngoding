@@ -77,9 +77,8 @@ const ListProduct = () => {
         }}
       >
         <div
-          class={`flex p-[10px] [20px] items-center gap-[30px] flex-[1px] rounded-[10px] bg-var(--Tertiary, #EEF1F4) shadow-md cursor-pointer ${
-            isDropdownOpen ? "rounded-b-none" : ""
-          }`}
+          class={`flex p-[10px] [20px] items-center gap-[30px] flex-[1px] rounded-[10px] bg-var(--Tertiary, #EEF1F4) shadow-md cursor-pointer ${isDropdownOpen ? "rounded-b-none" : ""
+            }`}
           onClick={toggleDropdown}
         >
           <div class="flex w-[34.669px] h-[35px] flex-col justify-center items-center">
@@ -107,9 +106,8 @@ const ListProduct = () => {
               <span id="selectedLocation">{selectedOption}</span>
             </div>
             <img
-              class={`w-[26px] h-[26px] flex-shrink-[0px] text-[#8E8E93] transform transition-transform duration-200 ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
+              class={`w-[26px] h-[26px] flex-shrink-[0px] text-[#8E8E93] transform transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                }`}
               src="assets/Cheveron.svg"
               alt="Dropdown"
               id="dropdownIcon"
@@ -121,7 +119,7 @@ const ListProduct = () => {
               class="absolute top-[60px] left-[0px] z-[10px] w-[304px] bg-[var(--Tertiary, #EEF1F4)] shadow-md border-none outline-none bg-transparent rounded-b-[10px]"
               id="dropdownOptions "
             >
-              
+
               <div
                 class=" py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("DKI Jakarta")}
@@ -174,8 +172,7 @@ const ListProduct = () => {
           )}
         </div>
       </div>
-
-      <div class="flex flex-col items-center gap-[20px]">
+      <div class="flex items-center content-center lg:px-[100px] gap-[30px] flex-wrap">
         {products
           .filter(
             (product) =>
@@ -205,16 +202,16 @@ const ListProduct = () => {
                         : product.deskripsi}
                     </div>
                   </div>
-
-                  <div class="flex items-center gap-[40px] self-stretch">
-                    <div class="flex flex-col justify-center items-center flex-1">
-                      <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-normal leading-[160%]">
-                        <p>Diunggah oleh: {product.posted_by[0].nama} </p>
-                      </div>
+                </div>
+                <div class="flex justify-between items-center self-stretch px-[5px]">
+                  <div class="flex flex-col w-full justify-center items-center flex-[1_1_0]">
+                    <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                      Target Partisipan:
                     </div>
-
-                    <div class="flex flex-col justify-center items-center flex-1">
-                      <div class="self-stretch text-[var(--Primary, #545F71)] text-right font-poppins text-12 font-normal leading-[160%]"></div>
+                  </div>
+                  <div class="flex flex-col justify-center items-center flex-[1_1_0]">
+                    <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
+                      {product.target_partisipan}
                     </div>
                   </div>
                 </div>
@@ -229,9 +226,7 @@ const ListProduct = () => {
               </div>
             </Link>
           ))}
-        ;
       </div>
-
       <Footer />
     </div>
   );

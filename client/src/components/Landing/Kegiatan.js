@@ -37,7 +37,7 @@ function Kegiatan() {
                 <div class="flex justify-center items-start gap-[20px]">
                     
                     {products.slice(0,3).map(product => (
-                         <Link to={`/product/${product.id}`} key={product.id}>
+                         <Link to={`/login`}>
                         <div class="flex flex-col items-center w-[289px] p-[30px] gap-[5px] rounded-[10px] border-[0.3px] border-{#000} bg-[#FFF] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] hover:scale-105 hover:shadow-lg">
                         <div class="flex flex-col justify-center items-start gap-[11px] self-stretch">
                             <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
@@ -72,7 +72,7 @@ function Kegiatan() {
                 </div>
             </div>
             <div class="flex justify-end items-center self-stretch">
-                <button onClick={() => navigate("/product")} class="flex w-[250px] h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
+                <button onClick={() => navigate("/login")} class="flex w-[250px] h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                     <div class="flex w-[163px] flex-col justify-center flex-shrink-0 self-stretch text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                         Lihat Kegiatan Lainnya
                     </div>

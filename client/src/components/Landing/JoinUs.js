@@ -16,7 +16,7 @@ function JoinUs() {
                     </p>
                 </div>
             </div>
-            <button onClick={() => navigate("/product")} class="flex md:w-[200px] lg:w-[250px] md:h-[45px] lg:h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
+            <button onClick={() => navigate("/login")} class="flex md:w-[200px] lg:w-[250px] md:h-[45px] lg:h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                 <div class="flex w-full flex-col justify-center flex-shrink-0 self-stretch text-white text-center font-poppins md:text[7px] lg:text-[14px] font-semibold leading-[140%]">
                     Lihat Kegiatan Lainnya
                 </div>
