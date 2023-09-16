@@ -22,7 +22,6 @@ const ListofProgramJoined = () => {
             // .then((responseData) => {
             //   setProducts(responseData);
             // });
-            console.log(products);
             console.log(dataJson);
         } catch (error) {
             console.error(error.message);
@@ -49,14 +48,14 @@ const ListofProgramJoined = () => {
                                             <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
                                             <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
                                                 <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
-                                                    {product.title}
+                                                    {product.programs[0].title}
                                                 </div>
                                                 <div class="flex flex-col justify-center items-center self-stretch">
                                                     <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                                        {product.tanggal_program_mulai}, {product.waktu} WIB
+                                                        {product.programs[0].tanggal_program_mulai}
                                                     </div>
                                                     <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                                        {product.lokasi}
+                                                        {product.programs[0].lokasi}
                                                     </div>
 
                                                 </div>
@@ -66,13 +65,13 @@ const ListofProgramJoined = () => {
                                     <div class="flex items-center gap-[40px] self-stretch">
                                         <div class="flex flex-col justify-center items-center flex-[1_1_0]">
                                             <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
-                                                Diunggah oleh:
+                                                Target Partisipan:
                                             </div>
                                         </div>
 
                                         <div class="flex flex-col justify-center items-center flex-[1_1_0]">
                                             <div class="self-stretch text-right text-[#545F71] font-Poppins text-[12px] font-normal leading-[19.2px]">
-                                                {product.posted_by}
+                                                {product.programs[0].target_partisipan}
                                             </div>
 
                                         </div>

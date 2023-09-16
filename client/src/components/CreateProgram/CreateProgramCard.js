@@ -17,15 +17,13 @@ const CreateProgramCard = () => {
         try {
             const body = { title, deskripsi, lokasi, tgl, target, linkGroup }
             const response = await fetch("http://localhost:5371/programs/add-program", {
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`
-                },
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(body)
             });
-            console.log(response)
-            console.log(body);
         } catch (error) {
             console.error(error.message);
         }
