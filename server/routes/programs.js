@@ -8,7 +8,7 @@ const route = express.Router();
 const upload = multer();
 
 //create a program
-route.post('/add-program', authenticateToken, upload.single('foto'), async (req, res) => {
+route.post('/add-program', authenticateToken, async (req, res) => {
     console.log('HALOOOOO')
     try {
         const title = req.body.title;
