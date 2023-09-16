@@ -70,6 +70,7 @@ const ListofProgramHeld = () => {
                         ))};
                     </div>
                 </div>
+
                 <div class="flex flex-col justify-center items-end gap-[10px] self-stretch px-[50px]">
                     <button onClick={() => navigate("/myactivity")} class="w-[250px] h-[50px] py-[8px] px-[22px] flex justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                         <div class="w-[163px] h-[39px] flex flex-col justify-center items-center gap-[6px] text-white text-center">

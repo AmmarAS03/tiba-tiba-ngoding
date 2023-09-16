@@ -14,7 +14,7 @@ function Navbar() {
 
   //TODO: cek
   const SignOutButton = async (e) => {
-    const response = await fetch("http://localhost:5000/users/logout");
+    const response = await fetch("http://localhost:5371/users/logout");
     console.log(response);
   };
 
