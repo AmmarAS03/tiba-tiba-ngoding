@@ -181,21 +181,25 @@ const ListProduct = () => {
           )
           .map((product) => (
             <Link to={`/product/${product.id}`} key={product.id}>
-              <div class="flex flex-col w-[247px] h-[322px] py-[20px] px-[15px] justify-between items-center flex-shrink-0 rounded-[10px] border-[0.3px] border-black bg-[#FFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                <div class="flex flex-col justify-center items-center gap-[1px] self-stretch">
-                  <div class="flex flex-col justify-center items-center gap-[10px] self-stretch">
-                    <img class="h-[133px] w-auto self-stretch rounded-[5px]" src="assets/Sampah.png" alt="Your Image Description" />
-                    <div class="flex flex-col justify-center items-center gap-[15px] self-stretch">
-                      <div class="self-stretch text-[#71825E] font-Poppins text-[18px] font-bold leading-[140%]">
-                        {product.title}
-                      </div>
-                      <div class="flex flex-col justify-center items-center self-stretch">
-                        <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
-                          {product.tanggal_program_mulai}                      </div>
-                        <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
-                          <p>{product.lokasi}</p>
-                        </div>
-                      </div>
+              <div class="flex w-[900px] p-[30px] [10px] flex-row items-center gap-[20px] rounded-[10px] border border-[0.3px] border-black bg-[var(--Primary---White, #FFF)]">
+                <div class="flex p-[0px] flex-col justify-center items-start gap-[18px] flex-[1px]">
+                  <div class="flex flex-col justify-center items-center self-stretch">
+                    <h4 class="self-stretch text-black font-poppins text-[20px] font-bold leading-[140%]">
+                      {product.title}
+                    </h4>
+                  </div>
+
+                  <div class="self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-semibold leading-[140%]">
+                    <p>Target: {product.target_partisipan} relawan</p>
+                    <p>{product.tanggal_program_mulai}</p>
+                    <p>{product.lokasi}</p>
+                  </div>
+
+                  <div class="flex flex-col justify-center items-center self-stretch">
+                    <div class="h-[38px] self-stretch text-[var(--Primary, #545F71)] font-poppins text-[12px] font-normal leading-[160%]">
+                      {product.deskripsi.length > 150
+                        ? `${product.deskripsi.substring(0, 150)}...`
+                        : product.deskripsi}
                     </div>
                   </div>
                 </div>
@@ -210,6 +214,14 @@ const ListProduct = () => {
                       {product.target_partisipan}
                     </div>
                   </div>
+                </div>
+
+                <div class="w-[300px] h-[237px] rounded-[5px]">
+                  <img
+                    src='assets/Trash.png'
+                    alt={`Foto ${product.title}`}
+                    className="w-full h-full rounded-[5px]"
+                  />
                 </div>
               </div>
             </Link>
