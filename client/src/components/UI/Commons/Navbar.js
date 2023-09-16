@@ -14,7 +14,7 @@ function Navbar() {
 
   //TODO: cek
   const SignOutButton = async (e) => {
-    const response = await fetch("http://localhost:5371/users/logout");
+    const response = await fetch("https://tiba-tiba-ngoding.vercel.app/users/logout");
     console.log(response);
   };
 

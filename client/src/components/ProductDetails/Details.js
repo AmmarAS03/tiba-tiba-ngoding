@@ -18,7 +18,7 @@ const Details = () => {
   //get details product
   const getDetails = async(e) => {
     try {
-        const data = await fetch(`http://localhost:5371/programs/get-details-program/${id}`);
+        const data = await fetch(`https://tiba-tiba-ngoding.vercel.app/programs/get-details-program/${id}`);
         const dataJson = await data.json();
         setTitle(dataJson[0].title);
         setDeskripsi(dataJson[0].deskripsi);
@@ -35,7 +35,7 @@ const Details = () => {
 
   const joinProgram = async() => {
     try {
-      await fetch(`http://localhost:5371/participants/join-program/${id}`, {
+      await fetch(`https://tiba-tiba-ngoding.vercel.app/participants/join-program/${id}`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`

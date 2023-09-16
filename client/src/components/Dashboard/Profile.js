@@ -13,7 +13,7 @@ const Profile = () => {
 
     const getUser = async () => {
         try {
-            const data = await fetch("http://localhost:5371/users", {
+            const data = await fetch("https://tiba-tiba-ngoding.vercel.app/users", {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }
@@ -38,7 +38,7 @@ const Profile = () => {
 
     const getUserPositionInLeaderboard = async (curr) => {
         try {
-            const response = await fetch('http://localhost:5371/users/leaderboard');
+            const response = await fetch('https://tiba-tiba-ngoding.vercel.app/users/leaderboard');
             if (!response.ok) {
                 throw new Error('Failed to fetch leaderboard data');
             }

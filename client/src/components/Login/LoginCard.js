@@ -11,7 +11,7 @@ const LoginCard = () => {
     const loginButton = async (e) => {
         try {
             const body = { email, password }
-            const response = await fetch("http://localhost:5371/users/login", {
+            const response = await fetch("https://tiba-tiba-ngoding.vercel.app/users/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)

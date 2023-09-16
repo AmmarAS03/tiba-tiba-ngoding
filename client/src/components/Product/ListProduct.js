@@ -21,7 +21,7 @@ const ListProduct = () => {
   //get all products
   const getProducts = async () => {
     try {
-      const data = await fetch("http://localhost:5371/programs/get-allprograms")
+      const data = await fetch("https://tiba-tiba-ngoding.vercel.app/programs/get-allprograms")
         .then((response) => response.json())
         .then((responseData) => {
           setProducts(responseData);

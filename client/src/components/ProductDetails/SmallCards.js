@@ -8,7 +8,7 @@ function SmallCards() {
 
   const getProducts = async () => {
     try {
-      const data = await fetch("http://localhost:5371/programs/get-allprograms");
+      const data = await fetch("https://tiba-tiba-ngoding.vercel.app/programs/get-allprograms");
       const dataJson = await data.json();
       setProducts(dataJson);
       console.log(dataJson[0]);

@@ -26,7 +26,7 @@ const RegisterCard = () => {
   const signUpButton = async (e) => {
     try {
       const body = { email, username, password, nama, lokasi, notelp, ig };
-      const response = await fetch("http://localhost:5371/users/register", {
+      const response = await fetch("https://tiba-tiba-ngoding.vercel.app/users/register", {
         //by default fetch itu methodnya get
         method: "POST", //diganti dari get ke post
         headers: { "Content-Type": "application/json" }, //untuk mengatur header dalam permintaan fetch, membantu server dalam memahami jenis konten yang diterima.

@@ -11,7 +11,7 @@ function List() {
     try {
       // Kirim permintaan ke server dengan daftar checkedVolunteers
       const response = await fetch(
-        "http://localhost:5371/participants/addpoints",
+        "https://tiba-tiba-ngoding.vercel.app/participants/addpoints",
         {
           method: "POST",
           headers: {
@@ -45,7 +45,7 @@ function List() {
 
   const listVolunteers = async() => {
     try {
-      const data = await fetch(`http://localhost:5371/participants/get-volunteers/${id}`);
+      const data = await fetch(`https://tiba-tiba-ngoding.vercel.app/participants/get-volunteers/${id}`);
       const dataJson = await data.json();
       setVolunteers(dataJson);
       console.log(dataJson);
