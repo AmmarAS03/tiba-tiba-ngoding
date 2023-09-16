@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 function JoinUs() {
+    const navigate = useNavigate();
+
     return (
         <div class="w-[800px] flex flex-col justify-center items-center gap-[30px]">
             <div class="h-[70px] flex flex-col items-center md:gap[6px] lg:gap-[12px] self-stretch">
@@ -13,11 +16,11 @@ function JoinUs() {
                     </p>
                 </div>
             </div>
-            <div class="flex md:w-[200px] lg:w-[250px] md:h-[45px] lg:h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
+            <button onClick={() => navigate("/product")} class="flex md:w-[200px] lg:w-[250px] md:h-[45px] lg:h-[50px] p-[8px] justify-center items-center gap-[10px] rounded-[10px] bg-[#71825E]">
                 <div class="flex w-full flex-col justify-center flex-shrink-0 self-stretch text-white text-center font-poppins md:text[7px] lg:text-[14px] font-semibold leading-[140%]">
                     Lihat Kegiatan Lainnya
                 </div>
-            </div>
+            </button>
             <div class="h-126 flex flex-col items-center gap-[12px] self-stretch">
                 <div class="flex flex-col justify-center flex-1 self-stretch text-black text-center font-poppins md:text-[23px] lg:text-[30px] font-bold leading-[140%] tracking-[1.5px]">
                     <p>

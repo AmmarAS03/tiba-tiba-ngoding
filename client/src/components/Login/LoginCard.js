@@ -74,7 +74,7 @@ const LoginCard = () => {
                         />
                     </div> */}
                 </div>
-                <button onClick={loginButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+                <button onClick={loginButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D] `custom-button ${isClicked ? 'clicked' : ''}`">
                     <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
                         LOGIN
                     </div>
