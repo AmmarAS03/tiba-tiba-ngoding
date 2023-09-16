@@ -8,7 +8,7 @@ const route = express.Router();
 const upload = multer();
 
 //create a program
-route.post('/add-program', upload.single('foto'), async(req, res) => {
+route.post('/add-program', authenticateToken, upload.single('foto'), async(req, res) => {
     try {
         const title = req.body.title;
         const foundName = await supabase
@@ -28,7 +28,7 @@ route.post('/add-program', upload.single('foto'), async(req, res) => {
             const imageBuffer = req.file ? req.file.buffer : null;
             const imageBase64 = imageBuffer ? imageBuffer.toString("base64") : null;
 
-            await supabase.from('programs').insert([{ posted_by:req.session.userid,
+            await supabase.from('programs').insert([{ posted_by: req.user.id,
                 title: title,
                 deskripsi: desc,
                 lokasi: lokasi,
