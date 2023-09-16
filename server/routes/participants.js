@@ -92,7 +92,7 @@ function authenticateToken(req, res, next) {
             if (error){
                 return res.send("Token sudah expired.")
             }
-            else{
+            else {
                 req.user = user
                 next()
             }

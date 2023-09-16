@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const CreateProgramCard = () => {
+const EditProgramCard = () => {
+    const { id } = useParams();
     const [title, setTitle] = useState('');
     const [deskripsi, setDeskripsi] = useState('');
     const [lokasi, setLokasi] = useState('');
@@ -9,47 +11,54 @@ const CreateProgramCard = () => {
     const [target, setTarget] = useState('');
     const [linkGroup, setLink] = useState('');
     const navigate = useNavigate();
-    const [createFailed, setCreateFailed] = useState(false);
 
 
 
     // TODO: Integrate this function with the backend (DONE)
-    const submitButton = async () => {
+    const submitButton = async (e) => {
         try {
             const body = { title, deskripsi, lokasi, tgl, target, linkGroup }
-            const response = await fetch("http://localhost:5371/programs/add-program", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
-                    "Content-Type": "application/json"
-                },
+            const response = await fetch(`http://localhost:5371/programs/edit-prog/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
-            if (response.status == 200) {
-                console.log("Abby")
-                console.log(response);
-            } else {
-                console.log(response);
-                setCreateFailed(true);
-            }
+            console.log(response);
         } catch (error) {
             console.error(error.message);
-            setCreateFailed(true);
         }
     }
+
+    const getProduct = async(e) => {
+        try {
+            const detail = await fetch(`http://localhost:5371/programs/get-details-program/${id}`);
+            const detailJson = await detail.json();
+            setTitle(detailJson[0].title);
+            setDeskripsi(detailJson[0].deskripsi);
+            setLokasi(detailJson[0].lokasi);
+            setTgl(detailJson[0].tanggal_program_mulai);
+            setTarget(detailJson[0].target_partisipan);
+            setLink(detailJson[0].linkWA);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+    useEffect(() => {
+        getProduct();
+    }, []);
 
 
     return (
         <div class="flex w-full mt-[82.5px] p-[40px] flex-col justify-center items-center flex-1 self-stretch">
-            <div class="flex w-full md:w-[700px] gap-[10px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
+            <div class="flex w-full md:w-[700px] p-[15px] flex-col justify-between items-center rounded-[15px] bg-[#71825E]">
                 <div class="flex h-[60px] px-[18.75px] justify-between items-center flex-shrink-0 self-stretch">
-                    <button onClick={() => navigate("/dashboard")}>
-                        <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
+                <button onClick={() => navigate("/dashboard")}>
+                    <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px]" alt="Your Image" />
                     </button>
                     <div class="flex w-full h-[38.25px] flex-col justify-center text-white text-center font-poppins font-bold text-[30px]">
-                        Membuat Kegiatan
+                        Edit Kegiatan
                     </div>
-
+                
                     <img src="assets/Arrow.svg" class="w-[38.981px] h-[30px] opacity-0" alt="Your Image" />
 
 
@@ -64,7 +73,7 @@ const CreateProgramCard = () => {
                                     id="activity"
                                     value={title}
                                     onChange={e => setTitle(e.target.value)}
-                                    placeholder="Kegiatan"
+                                    placeholder={title}
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
@@ -75,7 +84,7 @@ const CreateProgramCard = () => {
                                     id="region"
                                     value={lokasi}
                                     onChange={e => setLokasi(e.target.value)}
-                                    placeholder="qissa@ristek.cs.ui.ac.id"
+                                    placeholder={lokasi}
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
@@ -86,7 +95,7 @@ const CreateProgramCard = () => {
                                     id="date"
                                     value={tgl}
                                     onChange={e => setTgl(e.target.value)}
-                                    placeholder="qissa@ristek.cs.ui.ac.id"
+                                    placeholder={tgl}
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
@@ -108,7 +117,7 @@ const CreateProgramCard = () => {
                                     id="participant"
                                     value={target}
                                     onChange={e => setTarget(e.target.value)}
-                                    placeholder="qissa@ristek.cs.ui.ac.id"
+                                    placeholder={target}
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
@@ -119,11 +128,16 @@ const CreateProgramCard = () => {
                                     id="linkGroup"
                                     value={linkGroup}
                                     onChange={e => setLink(e.target.value)}
-                                    placeholder="qissa@ristek.cs.ui.ac.id"
+                                    placeholder={linkGroup}
                                     className="flex flex-col items-start w-[270px] h-[37.5px] px-3 flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                                 />
                             </div>
                         </div>
+                        <button onClick={submitButton} class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D]">
+                            <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
+                                Submit
+                            </div>
+                        </button>
                     </div>
                     <div class="flex flex-col h-full justify-start items-center gap-[15px] flex-1 flex-shrink-0 self-stretch">
                         <div class="flex flex-col items-start gap-[3.75px]">
@@ -133,11 +147,11 @@ const CreateProgramCard = () => {
                                 id="description"
                                 value={deskripsi}
                                 onChange={e => setDeskripsi(e.target.value)}
-                                placeholder="Activity's description"
+                                placeholder={deskripsi}
                                 className="flex flex-col text-wrap items-start w-[270px] h-[150px] resize-none px-[3px] flex-shrink-0 gap-[7.5px] rounded-[4.5px] border-[0.75px] border-gray-400 bg-[#FFF]"
                             />
                         </div>
-                        <div class="flex flex-col items-start gap-[3.75px]">
+                        {/* <div class="flex flex-col items-start gap-[3.75px]">
                             <span class="text-white font-dm-sans text-[15px] font-semibold leading-normal">Photo</span>
                             <input
                                 type="file"
@@ -148,23 +162,8 @@ const CreateProgramCard = () => {
                                 placeholder="Activity's description"
                                 className="flex flex-col text-wrap items-start w-[270px] text-white font-semibold justify-between flex-shrink-0 gap-[7.5px] rounded-[4.5px]"
                             />
-                        </div>
+                        </div> */}
                     </div>
-                </div>
-                <div class="flex h-[60px] px-[18.75px] justify-center items-center flex-shrink-0 self-stretch">
-                    <button
-                        onClick={submitButton}
-                        class="flex w-[113.014px] h-[49px] p-[8.507px] justify-center items-center rounded-[10px] bg-[#305C7D] custom-button relative transform transition-transform hover:scale-105 active:scale-95"
-                    >
-                        <div class="w-[98px] h-[33px] flex flex-col justify-center flex-shrink-0 text-white text-center font-poppins text-[14px] font-semibold leading-[140%]">
-                            Submit
-                        </div>
-                    </button>
-                    {createFailed && (
-                    <div class="justify-center items-center text-[#B30000] font-dm-sans text-sm mt-2">
-                        Create program failed. Please check your program form.
-                    </div>
-                )}
                 </div>
 
             </div>
@@ -172,4 +171,4 @@ const CreateProgramCard = () => {
     )
 }
 
-export default CreateProgramCard
+export default EditProgramCard

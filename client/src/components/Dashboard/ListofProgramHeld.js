@@ -26,6 +26,13 @@ const ListofProgramHeld = () => {
         }
     };
 
+    const delProgram = async(id) => {
+        await fetch(`http://localhost:5371/programs/del-program/${id}`,{
+            method: "DELETE"
+        });
+        navigate('/dashboard');
+    }
+
     useEffect(() => {
         getMadeProducts();
     }, []);
@@ -64,11 +71,13 @@ const ListofProgramHeld = () => {
                                     </div>
                                     <div class="self-stretch flex justify-end items-center gap-[20px]">
 
-                                        <img src="assets/SeeList.svg" alt="Your Image" class="w-[18px] h-[20px]" />
-                                        <img src="assets/Edit.svg" alt="Your Image" class="w-[18px] h-[20px]" />
-                                        <Link to={`/del-program/:${product.id}`} key={product.id}>
-                                            <img src="assets/Trash.svg" alt="Your Image" class="w-[18px] h-[20px]" />
+                                        <Link to={`/del-program/${product.id}`} key={product.id}>
+                                            <img src="assets/SeeList.svg" alt="Your Image" class="w-[18px] h-[20px]" />
                                         </Link>
+                                        <Link to={`/editprogram/${product.id}`} key={product.id}>
+                                            <img src="assets/Edit.svg" alt="Your Image" class="w-[18px] h-[20px]" />
+                                        </Link>
+                                            <img src="assets/Trash.svg" alt="Your Image" onClick={() => delProgram(product.id)} class="w-[18px] h-[20px]" />
                                     </div>
                                 </div>
                             </Link>

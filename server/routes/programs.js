@@ -12,6 +12,7 @@ route.post('/add-program', authenticateToken, upload.single('foto'), async (req,
     console.log('HALOOOOO')
     try {
         const title = req.body.title;
+        console.log(title);
         const foundName = await supabase
             .from('programs')
             .select('title')
@@ -24,32 +25,25 @@ route.post('/add-program', authenticateToken, upload.single('foto'), async (req,
             const lokasi = req.body.lokasi;
             const tgl = req.body.tgl;
             const target = req.body.target;
-            const waktu = req.body.waktu;
-            const linkwa = req.body.linkwa;
+            //const waktu = req.body.waktu;
+            const linkwa = req.body.linkGroup;
             const imageBuffer = req.file ? req.file.buffer : null;
-            const imageBase64 = imageBuffer ? imageBuffer.toString("base64") : null;
+            //const imageBase64 = imageBuffer ? imageBuffer.toString("base64") : null;
 
-            if (desc !== '' && lokasi !== '' && tgl !== '' && target !== '' && waktu !== '' && linkwa !== '') {
-                await supabase.from('programs').insert([{
-                    posted_by: req.user.id,
-                    title: title,
-                    deskripsi: desc,
-                    lokasi: lokasi,
-                    tanggal_program_mulai: tgl,
-                    target_partisipan: target,
-                    waktu: waktu,
-                    linkWA: linkwa,
-                    foto: imageBase64
-                }]).select();
-                //  console.log(target);
-                //console.log(imageBuffer);
-                res.status(200).send(`Program ${title} has been added.`);
-                console.log("isi")
-                console.log(foto)
-            } else {
-                console.log("kosong")
-                return res.status(401).json({ error: "Create program failed." });
-            }
+            await supabase.from('programs').insert([{ posted_by: req.user.id,
+                title: title,
+                deskripsi: desc,
+                lokasi: lokasi,
+                tanggal_program_mulai: tgl,
+                target_partisipan: target,
+                //waktu: waktu,
+                linkWA: linkwa,
+                //foto: imageBase64
+             }]).select();
+            //  console.log(target);
+            //console.log(imageBuffer);
+            res.send(`Program ${title} has been added.`);
+            ///console.log(foto)
         }
     } catch (error) {
         return res.status(401).json({ error: "Create program failed." });
@@ -127,8 +121,8 @@ route.delete('/del-program/:id', async (req, res) => {
 route.get('/get-details-program/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const programs = await supabase.from('programs').select('title, posted_by').eq('id', id);
-        for (const program of programs.data) {
+        const programs = await supabase.from('programs').select('*').eq('id', id);
+        for(const program of programs.data){
             const posted_by = await supabase.from('users').select('nama').eq('id', program.posted_by);
             program['postedby_nama'] = posted_by.data;
         }
@@ -210,8 +204,8 @@ function authenticateToken(req, res, next) {
                 req.user = user
                 next()
             }
-        })
-    }
+        });
+    };
 };
 
 export default route;

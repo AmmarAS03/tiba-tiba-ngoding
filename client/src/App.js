@@ -14,6 +14,7 @@ import MyActivity from './components/MyActivity';
 import Attendance from './components/Attendance';
 import Footer from './components/UI/Commons/Footer';
 import DashboardPage from './pages/Dashboard';
+import EditProgramPage from './components/EditProgram';
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/attendance/:id" element={<Attendance />}></Route>
           <Route path="/tesfooter" element={<Footer />}></Route>
           <Route path="/dashboard" element={<DashboardPage />}></Route>
+          <Route path="/editprogram/:id" element={<EditProgramPage />}></Route>
         
         </Routes>
       </BrowserRouter>
