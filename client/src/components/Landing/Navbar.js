@@ -7,7 +7,7 @@ function Navbar() {
     const navigate = useNavigate();
     
     return (
-        <div class='fixed flex top-0 w-screen h-[82.5px] px-[37.5px] py-[18.75px] justify-between items-center border-[0.844px] border-[#71825E] bg-white'>
+        <div class='fixed flex top-0 w-screen h-[82.5px] px-[37.5px] py-[18.75px] justify-between items-center border-[0.844px] border-[#71825E] bg-white'style={{ zIndex: 1000 }}>
             <div class="flex justify-center items-center gap-[37.5px]">
                 <button onClick={() => navigate("")} class="flex w-[141.75px] flex-col justify-center items-center gap-[7.5px]">
                     <img src="assets/Logo.svg" alt="Your Image" class="w-[62.871px] h-[52.907px]" />
