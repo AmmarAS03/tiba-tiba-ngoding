@@ -9,7 +9,7 @@ const NavLinks = () => {
             <NavLink to="/product" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Activity</NavLink>
             <NavLink to="/leaderboard" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Leaderboard</NavLink>
             <NavLink to="/aboutus" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">About Us</NavLink>
-            <NavLink to="/login" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Login</NavLink>
+            <NavLink to="/" className="hover:bg-[#F5F3F3] hover:scale-110 w-[100px] h-[30px] p-[10px] flex justify-center items-center gap-[10px] rounded-[7px] text-[#71825E] font-dm-sans text-[15px] font-bold">Logout</NavLink>
         </>
     );
 };

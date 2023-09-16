@@ -1,6 +1,29 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
+import { BrowserRouter, RouterProvider, Route, Router, json ,Link } from "react-router-dom";
 
 function SmallCards() {
+
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    try {
+      const data = await fetch("http://localhost:5371/programs/get-allprograms")
+        .then((response) => response.json())
+        .then((responseData) => {
+          setProducts(responseData);
+        });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    //untuk memanggil fungsi getProducts saat komponen "ListProduct" pertama kali di-render.
+    getProducts();
+
+  }, []);
+
   return (
 
       <div class="flex justify-center items-start gap-[20px]">
