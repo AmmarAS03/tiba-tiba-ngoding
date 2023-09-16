@@ -20,6 +20,8 @@ const ListofProgramHeld = () => {
             // .then((responseData) => {
             //     setProducts(responseData);
             // });
+            console.log("masuk1");
+            console.log(dataJson);
 
         } catch (error) {
             console.error(error.message);
@@ -60,7 +62,7 @@ const ListofProgramHeld = () => {
                                                 </div>
                                                 <div class="flex flex-col justify-center items-center self-stretch">
                                                     <div class="self-stretch text-[#545F71] font-Poppins text-[12px] font-semibold leading-[140%]">
-                                                        {product.tanggal_program_mulai}, {product.waktu} WIB
+                                                        {product.tanggal_program_mulai}
                                                     </div>
                                                     <div class="self-stretch text-[#10436A] font-Poppins text-[12px] font-semibold leading-[140%]">
                                                         {product.lokasi}
