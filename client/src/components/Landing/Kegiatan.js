@@ -68,7 +68,7 @@ function Kegiatan() {
                         </div>
                     </div>
                     </Link>
-                    ))};
+                    ))}
                 </div>
             </div>
             <div class="flex justify-end items-center self-stretch">

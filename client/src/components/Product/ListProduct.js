@@ -123,49 +123,49 @@ const ListProduct = () => {
             >
               
               <div
-                class=" py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                class=" py-[2px] px-[10px] bg-[#FFFFFF] rounded-t-lg hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("DKI Jakarta")}
               >
                 DKI Jakarta
               </div>
               <div
-                className="  py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                className="  py-[2px] px-[10px] bg-[#FFFFFF] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Banten")}
               >
                 Banten
               </div>
               <div
-                className=" py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                className=" py-[2px] px-[10px] bg-[#FFFFFF] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Jawa Barat")}
               >
                 Jawa Barat
               </div>
               <div
-                className="py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                className="py-[2px] px-[10px] bg-[#FFFFFF] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Jawa Tengah")}
               >
                 Jawa Tengah
               </div>
               <div
-                className="py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                className="py-[2px] px-[10px] bg-[#FFFFFF] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Jawa Timur")}
               >
                 Jawa Timur
               </div>
               <div
-                className="py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                className="py-[2px] px-[10px] bg-[#FFFFFF] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Daerah Istimewa Yogyakarta")}
               >
                 Daerah Istimewa Yogyakarta
               </div>
               <div
-                className="py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                className="py-[2px] px-[10px] bg-[#FFFFFF] hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Bali")}
               >
                 Bali
               </div>
               <div
-                class=" py-[2px] px-[10px] hover:bg-[#71825E] hover:text-white cursor-pointer"
+                class=" py-[2px] px-[10px] bg-[#FFFFFF] rounded-b-lg hover:bg-[#71825E] hover:text-white cursor-pointer"
                 onClick={() => selectOption("Lihat Semua")}
               >
                 Lihat Semua
