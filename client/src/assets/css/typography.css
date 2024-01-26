@@ -10,21 +10,21 @@
 
 .h1 {
   font-family: Inter;
-  font-size: clamp(2rem, 5vw, 4rem); 
+  font-size: clamp(1.75rem, 5vw, 4rem); 
   font-weight: 700;
   line-height: normal;
 }
 
 .h2 {
   font-family: Inter;
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: clamp(1.25rem, 4vw, 3rem);
   font-weight: 700;
   line-height: normal;
 }
 
 .h3 {
   font-family: Inter;
-  font-size: clamp(1.2rem, 3vw, 2.5rem); 
+  font-size: clamp(1.1rem, 3vw, 2.5rem); 
   font-weight: 700;
   line-height: normal;
 }
@@ -32,14 +32,14 @@
 .p1 {
 
   font-family: Inter;
-  font-size: clamp(1rem, 2vw, 1.5rem); 
+  font-size: clamp(0.9rem, 2vw, 1.5rem); 
   font-weight: 400;
   line-height: normal;
 }
 
 .p2 {
   font-family: Inter;
-  font-size: clamp(0.9rem, 2vw, 1.4rem); 
+  font-size: clamp(0.8rem, 2vw, 1.4rem); 
   font-weight: 400;
   line-height: normal;
 }
@@ -47,7 +47,15 @@
 .p3 {
 
   font-family: Inter;
-  font-size: clamp(0.8rem, 2vw, 1.3rem);
+  font-size: clamp(0.7rem, 2vw, 1.3rem);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.p4 {
+
+  font-family: Inter;
+  font-size: clamp(0.7rem, 2vw, 1.1rem);
   font-weight: 400;
   line-height: normal;
 }
