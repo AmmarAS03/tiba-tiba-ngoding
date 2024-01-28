@@ -4,10 +4,15 @@ import "./ExperienceBox.css";
 function ExperienceBox({ image, name, description }) {
   return (
     <div className="experience-box-container">
-      <img src={image} classname="experience-image"  alt="Banner" />
       <div className="experience-box-text">
-        <p className="p6">{description}</p>
-        <p className="p4">{name}</p>
+        <img src={image} className="theImage" />
+        
+      </div>
+      <div className="experience-description">
+        <p className="p6" style={{ color: "rgb(71, 71, 71)" }}>
+          {description}
+        </p>
+        <p className="p6">{name}</p>
       </div>
     </div>
   );

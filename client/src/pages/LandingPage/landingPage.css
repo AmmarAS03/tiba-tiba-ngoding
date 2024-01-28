@@ -27,9 +27,9 @@
 
 .data-box {
   display: flex;
-  background-color: #71825E;
+  background-color: #71825e;
   width: 40%;
-  max-width: 500px ;
+  max-width: 500px;
   border-radius: 7px;
   flex-direction: row;
   gap: 3%;
@@ -37,12 +37,12 @@
   padding: 1%;
 }
 @media (max-width: 500px) {
-    .data-box {
-        flex-direction: column;
-        padding: 1.5%;
-        gap:8px;
-        width: 25%;
-    }
+  .data-box {
+    flex-direction: column;
+    padding: 1.5%;
+    gap: 8px;
+    width: 25%;
+  }
 }
 
 .landing-second-section {
@@ -51,9 +51,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 }
-.moto-title{
+.moto-title {
   width: 75%;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@
   gap: 10px;
 }
 
-.card-box-container{
+.card-box-container {
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -73,33 +73,38 @@
   gap: 10px;
 }
 
-
-.landing-third-section{
+.landing-third-section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
   margin-top: 5%;
 }
 
-
-.landing-fourth-section{
+.landing-fourth-section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
   margin-top: 5%;
 }
 
-.experience-container{
+.experience-container {
   width: 75%;
+  gap: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+@media (max-width: 619px) {
+  .experience-container {
+    flex-direction: column;
+  }
 }
