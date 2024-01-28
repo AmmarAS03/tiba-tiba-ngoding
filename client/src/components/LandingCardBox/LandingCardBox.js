@@ -7,6 +7,7 @@ function LandingCardBox({ image, title, description }) {
   return (
     <div className="card-box">
       <img src={image} className="image-card-box" />
+      <div className="card-box-word-container">
       <div className="title-container-card-box">
         <p className="h5">{newTitle[0]}</p>
         <p className="h5" style={{ color: "#71825E", marginLeft: "5px" }}>
@@ -14,6 +15,7 @@ function LandingCardBox({ image, title, description }) {
         </p>
       </div>
       <p className="p6">{description}</p>
+      </div>
     </div>
   );
 }
