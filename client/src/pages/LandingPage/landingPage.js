@@ -1,12 +1,18 @@
 import React from "react";
 import "../../assets/css/typography.css";
 import "./LandingPage.css";
-import BannerImage from "../../assets/images/Banner.png";
 import DataBox from "../../components/DataBox/DataBox";
 import LandingCardBox from "../../components/LandingCardBox/LandingCardBox";
+import ExperienceBox from "../../components/ExperienceBox/ExperienceBox";
+
+import BannerImage from "../../assets/images/Banner.png";
 import Kegiatan from "../../assets/images/Kegiatan.png";
 import Relawan from "../../assets/images/Relawan.png";
 import Points from "../../assets/images/Point.png";
+import Faiz from "../../assets/images/Faiz.png";
+import Humaira from "../../assets/images/Maira.png";
+import Qissa from "../../assets/images/Carissa.png";
+import Nadine from "../../assets/images/Nadine.png";
 
 function LandingPage() {
   const data = [
@@ -27,6 +33,33 @@ function LandingPage() {
       title: "Raih Points",
       description:
         "We embody it in everything we do. Compassion is our guiding light, inspiring us to take action and make a meaningful difference in the lives of others.",
+    },
+  ];
+
+  const dataKisah = [
+    {
+      image: Faiz,
+      name: "Faizzarazak Fadhillah",
+      description:
+        "Suka banget sama komunitas yang dibangun sama GotongRuang. Thankzz GotongRuang...sukses terus yaa",
+    },
+    {
+      image: Humaira,
+      name: "Humaira Rinjani",
+      description:
+        "Jujur aku awalnya bukan orang yang suka kegiatan relawan gini, cuman temen-temen pada ngajakin aku dan sistem pointsnya itu loh yang bikin aku jadi rajin ikutan.",
+    },
+    {
+      image: Qissa,
+      name: "Carissa Almira",
+      description:
+        "Aplikasi ini mengubah segala-galanya! Dulu hanya mencoba karena ajakan teman, tapi sekarang waktu luangku jadi lebih berarti berkat Gotong Ruang.",
+    },
+    {
+      image: Nadine,
+      name: "Nadine Kezia",
+      description:
+        "Gotong Ruang mengubah cara saya melihat kegiatan relawan. Terima kasih, GotongRuang, atas pengalaman yang menginspirasi ini!",
     },
   ];
 
@@ -70,19 +103,32 @@ function LandingPage() {
       </section>
 
       <section className="landing-third-section">
-      <div className="moto-title">
-        <p className="h4">Lihat Kegiatan saat ini</p>
-        <p className="p5">
-          Jelajahi Ragam Kegiatan GotongRuang yang Inspiratif dan Bermakna untuk
-          Bumi dan Komunitas Anda.
-        </p>
+        <div className="moto-title">
+          <p className="h4">Lihat Kegiatan saat ini</p>
+          <p className="p5">
+            Jelajahi Ragam Kegiatan GotongRuang yang Inspiratif dan Bermakna
+            untuk Bumi dan Komunitas Anda.
+          </p>
         </div>
       </section>
 
       <section className="landing-fourth-section">
-      <div className="moto-title">
-        <p className="h4">Kisah Mereka:</p>
-        <p className="h4"><span style={{color: "#71825E"}}>Pengalaman</span> Positif Bersama <span style={{color: "#71825E"}}>Gotong Ruang</span></p>
+        <div className="moto-title">
+          <p className="h4">Kisah Mereka:</p>
+          <p className="h4">
+            <span style={{ color: "#71825E" }}>Pengalaman</span> Positif Bersama{" "}
+            <span style={{ color: "#71825E" }}>Gotong Ruang</span>
+          </p>
+        </div>
+        <div className="experience-container">
+        {dataKisah.map((item, index) => (
+              <ExperienceBox
+                key={index}
+                image={item.image}
+                name={item.name}
+                description={item.description}
+              />
+            ))}
         </div>
       </section>
     </div>
