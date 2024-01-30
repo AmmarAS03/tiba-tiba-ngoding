@@ -41,6 +41,23 @@
   font-weight: 700;
   line-height: normal;
 }
+
+.h5-white{
+  font-family: Inter;
+  font-size: clamp(0.7rem, 3vw, 1.5rem); 
+  font-weight: 700;
+  line-height: normal;
+  color: white;
+}
+
+.h6-white{
+  font-family: Inter;
+  font-size: clamp(0.5rem, 2vw, 1rem); 
+  font-weight: 700;
+  line-height: normal;
+  color: white;
+}
+
 .p1 {
 
   font-family: Inter;
@@ -86,4 +103,39 @@
   font-size: clamp(0.4rem, 1.5vw, 0.9rem);
   font-weight: 400;
   line-height: normal;
+}
+
+.p6-white {
+
+  font-family: Inter;
+  font-size: clamp(0.4rem, 1.5vw, 0.9rem);
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+}
+
+.p7 {
+
+  font-family: Inter;
+  font-size: clamp(0.2rem, 1vw, 0.8rem);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.p7-white {
+
+  font-family: Inter;
+  font-size: clamp(0.2rem, 1vw, 0.8rem);
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+}
+
+.p7-blue {
+
+  font-family: Inter;
+  font-size: clamp(0.2rem, 1vw, 0.8rem);
+  font-weight: 400;
+  line-height: normal;
+  color: #03B3D7;
 }

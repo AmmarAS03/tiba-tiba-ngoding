@@ -6,7 +6,6 @@ function ExperienceBox({ image, name, description }) {
     <div className="experience-box-container">
       <div className="experience-box-text">
         <img src={image} className="theImage" />
-        
       </div>
       <div className="experience-description">
         <p className="p6" style={{ color: "rgb(71, 71, 71)" }}>

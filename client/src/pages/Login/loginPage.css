@@ -1,0 +1,91 @@
+.login-first-section {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Atur sesuai kebutuhan Anda untuk memberikan ruang di tengah halaman */
+}
+
+.login-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 447px;
+    padding: 5% 2%;
+    gap: 5%;
+    border-radius: 20px;
+    background-color: #71825E;
+}
+
+.input-section {
+    width: 90%;
+    max-width: 447px;
+    padding: 5% 2%;
+    gap: 5%;
+    border-radius: 20px;
+    background-color: #71825E;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    padding: 2% 2%;
+}
+
+.input-text-field {
+    width: 100%; /* Lebar 100% dari lebar kontainer */
+    height: 40px;
+    max-width: 325px;
+    padding: 0 3px;
+    color: #4E5A6E;
+    font-family: 'DM Sans', sans-serif; /* Sesuaikan dengan font yang Anda gunakan */
+    font-size: 15px;
+    font-weight: normal;
+    border: 1px solid #404040;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+  
+    /* Fokus state */
+    &:focus {
+      border-color: #3182CE;
+      box-shadow: 0 0 5px rgba(49, 130, 206, 0.5);
+    }
+  }
+  
+ /* Media query untuk responsif pada layar md */
+ @media (min-width: 100px) {
+    .input-text-field {
+      width: 325px; /* Lebar tetap saat layar lebih besar dari 768px (ukuran md) */
+    }
+  }
+
+  .custom-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5vw; /* Sesuaikan dengan kebutuhan Anda */
+    width: 8vw; /* Sesuaikan dengan kebutuhan Anda */
+    height: 3vw; /* Sesuaikan dengan kebutuhan Anda */
+    border-radius: 10vw; /* Sesuaikan dengan kebutuhan Anda */
+    background-color: #305C7D;
+    transition: transform 0.3s;
+  }
+  
+  .custom-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .custom-button:active {
+    transform: scale(0.95);
+  }
+  
+.text-card{
+    display: flex;
+    flex-direction: row;
+    padding: 3% 2%;
+}

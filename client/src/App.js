@@ -1,7 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import LandingPage from './pages/LandingPage/LandingPage';
+import LandingPage from './pages/LandingPage/landingPage';
+import LoginPage from './pages/Login/loginPage';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Toaster />
         <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </>
