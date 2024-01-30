@@ -4,6 +4,7 @@ import "./LandingPage.css";
 import DataBox from "../../components/DataBox/DataBox";
 import LandingCardBox from "../../components/LandingCardBox/LandingCardBox";
 import ExperienceBox from "../../components/ExperienceBox/ExperienceBox";
+import LandingCardButton from "../../components/LandingCardButton/LandingCardButton";
 
 import BannerImage from "../../assets/images/Banner.png";
 import Kegiatan from "../../assets/images/Kegiatan.png";
@@ -121,14 +122,34 @@ function LandingPage() {
           </p>
         </div>
         <div className="experience-container">
-        {dataKisah.map((item, index) => (
-              <ExperienceBox
-                key={index}
-                image={item.image}
-                name={item.name}
-                description={item.description}
-              />
-            ))}
+          {dataKisah.map((item, index) => (
+            <ExperienceBox
+              key={index}
+              image={item.image}
+              name={item.name}
+              description={item.description}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="landing-fifth-section">
+        <div className="landing-fifth-title">
+          <p className="h4">
+            Setelah membaca kisah inspiratif kami, sudah{" "}
+            <span style={{ color: "#71825E" }}>siap</span> untuk{" "}
+            <span style={{ color: "#71825E" }}>Bergabung?</span>
+          </p>
+        </div>
+
+        <LandingCardButton text="Lihat Kegiatan Lainnya" link="/" />
+        <div className="landing-fifth-title">
+          <p className="h5">
+            Ayo, jadilah bagian dari perubahan positif untuk{" "}
+            <span style={{ color: "#71825E" }}>Bumi</span> dan komunitas.
+            Bergabunglah dengan{" "}
+            <span style={{ color: "#71825E" }}>GotongRuang</span> sekarang!{" "}
+          </p>
         </div>
       </section>
     </div>
