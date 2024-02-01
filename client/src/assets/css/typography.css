@@ -87,3 +87,11 @@
   font-weight: 400;
   line-height: normal;
 }
+
+.p7 {
+
+  font-family: Inter;
+  font-size: clamp(0.3rem, 1.5vw, 0.8rem);
+  font-weight: 400;
+  line-height: normal;
+}

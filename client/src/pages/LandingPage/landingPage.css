@@ -83,6 +83,21 @@
   margin-top: 5%;
 }
 
+.landing-activity-button-container {
+  display: flex;
+  width: 60.5%;
+  justify-content: flex-end;
+  margin-top: 2%;
+}
+
+.landing-activity-container {
+  display: flex;
+  justify-items: center;
+  width: 60%;
+  flex-direction: row;
+  gap: 15px;
+}
+
 .landing-fourth-section {
   width: 100%;
   display: flex;
@@ -118,7 +133,7 @@
   gap: 20px;
 }
 
-.landing-fifth-button-container{
+.landing-fifth-button-container {
   display: flex;
   width: 30%;
   align-items: center;
@@ -132,5 +147,4 @@
   justify-content: center;
   text-align: center;
   gap: 10px;
-
 }

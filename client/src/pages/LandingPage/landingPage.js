@@ -5,6 +5,7 @@ import DataBox from "../../components/DataBox/DataBox";
 import LandingCardBox from "../../components/LandingCardBox/LandingCardBox";
 import ExperienceBox from "../../components/ExperienceBox/ExperienceBox";
 import LandingCardButton from "../../components/LandingCardButton/LandingCardButton";
+import LandingActivityCard from "../../components/LandingActivityCard/LandingActivityCard";
 
 import BannerImage from "../../assets/images/Banner.png";
 import Kegiatan from "../../assets/images/Kegiatan.png";
@@ -14,6 +15,7 @@ import Faiz from "../../assets/images/Faiz.png";
 import Humaira from "../../assets/images/Maira.png";
 import Qissa from "../../assets/images/Carissa.png";
 import Nadine from "../../assets/images/Nadine.png";
+import Trash from "../../assets/images/Trash.png";
 
 function LandingPage() {
   const data = [
@@ -64,6 +66,39 @@ function LandingPage() {
     },
   ];
 
+  const activityData = [
+    {
+      image: Trash,
+      title: "Pembagian Makanan untuk Tunawisma",
+      target: "75 Relawan",
+      date: "2023-12-11",
+      location: "Jawa Barat",
+      description:
+        "Bergabunglah dengan kami dalam kegiatan pembagian makanan untuk tunawisma di pusat kota. Kegiatan ini akan dilaksanakan pada tanggal 15 November 2023, pukul 18:00 - 20:00. Kami membutuhkan sukarelawan yang peduli dengan sesama manusia. Target kami adalah 40 partisipan. Mari bersama-sama membuat perbedaan dalam kehidupan mereka yang kurang beruntung. Jika Anda ingin berkontribusi, hubungi kami melalui link WhatsApp berikut.",
+      publisher: "Stephanie Agustine"
+    },
+    {
+      image: Trash,
+      title: "Mukulin Warga Tunawisma",
+      target: "75 Relawan",
+      date: "2023-12-11",
+      location: "Jawa Barat",
+      description:
+        "Bergabunglah dengan kami dalam kegiatan pembagian makanan untuk tunawisma di pusat kota. Kegiatan ini akan dilaksanakan pada tanggal 15 November 2023, pukul 18:00 - 20:00. Kami membutuhkan sukarelawan yang peduli dengan sesama manusia. Target kami adalah 40 partisipan. Mari bersama-sama membuat perbedaan dalam kehidupan mereka yang kurang beruntung. Jika Anda ingin berkontribusi, hubungi kami melalui link WhatsApp berikut.",
+      publisher: "Stephanie Agustine"
+    },
+    {
+      image: Trash,
+      title: "Ledekin warga cengkareng",
+      target: "75 Relawan",
+      date: "2023-12-11",
+      location: "Jawa Barat",
+      description:
+        "Bergabunglah dengan kami dalam kegiatan pembagian makanan untuk tunawisma di pusat kota. Kegiatan ini akan dilaksanakan pada tanggal 15 November 2023, pukul 18:00 - 20:00. Kami membutuhkan sukarelawan yang peduli dengan sesama manusia. Target kami adalah 40 partisipan. Mari bersama-sama membuat perbedaan dalam kehidupan mereka yang kurang beruntung. Jika Anda ingin berkontribusi, hubungi kami melalui link WhatsApp berikut.",
+      publisher: "Stephanie Agustine"
+    },
+  ];
+
   return (
     <div>
       <section className="landing-first-section">
@@ -110,6 +145,24 @@ function LandingPage() {
             Jelajahi Ragam Kegiatan GotongRuang yang Inspiratif dan Bermakna
             untuk Bumi dan Komunitas Anda.
           </p>
+        </div>
+
+        <div className="landing-activity-container">
+          {activityData.map((item, index) => (
+            <LandingActivityCard
+              key={index}
+              image={item.image}
+              title={item.title}
+              target={item.target}
+              date={item.date}
+              location={item.location}
+              description={item.description}
+              publisher={item.publisher}
+            />
+          ))}
+        </div>
+        <div className="landing-activity-button-container">
+        <LandingCardButton text="Lihat Kegiatan Lainnya" link="/" />
         </div>
       </section>
 
