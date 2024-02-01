@@ -1,6 +1,6 @@
 import React from "react";
 import "../../assets/css/typography.css";
-import "./LandingPage.css";
+import "./landingPage.css";
 import DataBox from "../../components/DataBox/DataBox";
 import LandingCardBox from "../../components/LandingCardBox/LandingCardBox";
 import ExperienceBox from "../../components/ExperienceBox/ExperienceBox";
