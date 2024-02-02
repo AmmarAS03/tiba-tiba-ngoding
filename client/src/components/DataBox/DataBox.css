@@ -1,0 +1,21 @@
+.background-card{
+    display: flex;
+    flex-direction: row;
+    padding: 3%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 7px;
+    gap:2%;
+}
+
+
+.image-card{
+    width: auto;
+    max-width: 40%;
+}
+
+.text-card{
+    display: flex;
+    flex-direction: column;
+}
