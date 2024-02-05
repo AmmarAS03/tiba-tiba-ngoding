@@ -1,0 +1,81 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.selectLokasi {
+    width: 100%;
+    padding: 2% 2%;
+    color: #4E5A6E;
+    border-radius: 4px; /* Sesuaikan dengan kebutuhan */
+    
+  }
+  
+  .selectLokasi:focus {
+    border-color: #3182CE;
+    box-shadow: 0 0 0 2px #3182CE;
+  }
+
+.register-section{
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Atur sesuai kebutuhan Anda untuk memberikan ruang di tengah halaman */
+}
+
+.register-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 447px;
+    gap: 5%;
+    border-radius: 20px;
+    background-color: #71825E;
+    padding: 5% 1%;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 447px;
+    padding: 2% 2%;
+    gap: 5%;
+    border-radius: 20px;
+    background-color: #71825E;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    padding: 2% 2%;
+}
+
+.input-password{
+    display: absolute;
+    padding: 2% 2%;
+}
+
+.input-text-field {
+    width: 100%; /* Lebar 100% dari lebar kontainer */
+    max-width: 325px;
+    padding: 0 3px;
+    color: #4E5A6E;
+    border: 1px solid #404040;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+  
+    /* Fokus state */
+    &:focus {
+      border-color: #3182CE;
+      box-shadow: 0 0 5px rgba(49, 130, 206, 0.5);
+    }
+  }
+  
